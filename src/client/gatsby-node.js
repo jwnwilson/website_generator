@@ -59,7 +59,7 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     const resp = await fetch(`${apiUrl}/pages`, {headers: {Authorization: `bearer ${jwt.jwt}`}});
     const pages = await resp.json();
 
-    return await Promise.all(pages[0].Cards.map(async page => {
+    return await Promise.all(pages.map(async page => {
         console.log('Loading page: ', `${page.name}`);
         // Add list of fields to pull down to node
         const pageNode =  {

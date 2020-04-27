@@ -28,7 +28,7 @@ export default class PageList extends React.Component {
   getFromMap(moduleName) {
     if (!(moduleName in appModules)){
       console.log(`Unknown moduleName: ${moduleName}`);
-      return { moduleFileName: 'Unknown', shouldLoadJavascript: false };
+      return { moduleFileName: 'Heroimage', shouldLoadJavascript: false };
     } 
     return appModules[moduleName];
   }
@@ -40,12 +40,14 @@ export default class PageList extends React.Component {
 
       console.log("page", page);
       console.log("content", content);
+      console.log("content.cards", content.Cards);
 
-      if (content.modules) {
-        components = content.modules.map((module, index) => {
-          const module_name = module.module.polymorphic_ctype.model;
+      if (content.Cards) {
+        components = content.Cards.map((card, index) => {
+          const card_title = card.title;
+          const card_type = card.__component;
           //const moduleFileName = capitalize(module_name);
-          const { shouldLoadJavascript, moduleFileName } = this.getFromMap(module_name);
+          const { shouldLoadJavascript, moduleFileName } = this.getFromMap(card_type);
           // Get existing html from pre-rendered page if exists use as fallback for 
           // loadable component
           let htmlEl;
@@ -60,16 +62,18 @@ export default class PageList extends React.Component {
           if (!shouldLoadJavascript && fallback) {
             return fallback;
           } else {
-            return this.renderModule(moduleFileName, module, index, fallback);
+            return this.renderModule(moduleFileName, card, index, fallback);
           }
         });
       } else {
         components = [];
       }
+
+      let header = {};
       
       return (
         <Provider store={store}>
-          <Layout header={content.header}>
+          <Layout header={header}>
             <SEO title="Home" />
             {components}
           </Layout>

@@ -1,3 +1,3 @@
 export const appModules = {
-    'heroimage': { moduleFileName: 'Heroimage', shouldLoadJavascript: false }
+    'card.welcome': { moduleFileName: 'Heroimage', shouldLoadJavascript: false }
 }
