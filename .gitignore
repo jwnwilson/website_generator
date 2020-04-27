@@ -1,0 +1,4 @@
+.cov
+.cache
+.idea
+**/node_modules

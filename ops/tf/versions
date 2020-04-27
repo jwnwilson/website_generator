@@ -1,0 +1,7 @@
+Terraform v0.11.14
++ provider.cloudflare v2.1.0
++ provider.external v1.2.0
++ provider.null v2.1.2
++ provider.random v2.2.0
++ provider.scaleway v1.10.0
++ provider.template v2.1.2

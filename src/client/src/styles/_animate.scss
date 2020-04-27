@@ -1,0 +1,26 @@
+@keyframes fadeout50 {
+    from { opacity: 1; }
+    to   { opacity: 0.5; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+.bounce {
+    display: inline-block;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes bounce {
+    60% {
+         -webkit-transform: translate(0px, -10px) scale(1.2);
+    }
+}
+
+@keyframes bounce {
+    60% {
+         -webkit-transform: translate(0px, -10px) scale(1.2);
+    }
+}

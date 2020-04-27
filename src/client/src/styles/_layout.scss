@@ -1,0 +1,89 @@
+.starter {
+  padding-top: 5em;
+}
+
+html,body, #__next, .root { 
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  padding: 0;
+  font-family: Google Sans, Noto, Roboto, Helvetica Neue, sans-serif;
+  color: #244376;
+}
+
+header {
+  height: 7.5%;
+  min-height: 40px;
+}
+
+.overlay {
+  z-index: 10;
+  position: absolute;
+}
+
+.tabbed {
+  height: 80%;
+  overflow: hidden;
+}
+
+.align-container {
+  display: flex;
+  align-items: center;
+}
+
+.hide {
+  display: None;
+}
+
+.hidden {
+  display: None !important;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.center-container {
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  -webkit-align-items: center;
+  justify-content: center;
+}
+
+.start-container {
+  display: -webkit-flex;
+  display: flex;
+  align-items: flex-start;
+  -webkit-align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.center-vertical {
+  display: flex;
+  align-items: center;
+}
+
+.largeText {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fadeout {
+  -webkit-animation: fadeout 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadeout 2s; /* Firefox < 16 */
+  -ms-animation: fadeout 2s; /* Internet Explorer */
+  -o-animation: fadeout 2s; /* Opera < 12.1 */
+  animation: fadeout 2s;
+  opacity: 0;
+}
+
+.clearfix {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}

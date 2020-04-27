@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: server
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: builder
+      labels:
+        name: builder
+    spec:
+      containers:
+        - name: builder
+          image: docker.io/jwnwilson/modular_builder:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "250Mi"
+              cpu: "0.05"
+            limits:
+              memory: "500Gi"
+              cpu: "0.35"
+          tty: true
+          workingDir: /app/src/client
+          env:
+      restartPolicy: Always
+      volumes:
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: builder
+  labels:
+    name: builder
+spec:
+  ports:
+    - name: "builder"
+      port: 3000
+      targetPort: 3000
+  selector:
+    name: builder
+  type: NodePort
+status:
+  loadBalancer: {}

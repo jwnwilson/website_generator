@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "@loadable/babel-plugin",
+    [
+      "module-resolver", {
+        "root": ["."],
+        "alias": {
+          "styles": "./styles"
+        },
+        "cwd": "babelrc"
+    }],
+    [
+      "wrap-in-js",
+      {
+        "extensions": ["css$", "scss$"]
+      }
+    ]
+  ],
+  "presets": [
+    "babel-preset-gatsby"
+  ],
+  "ignore": []
+}

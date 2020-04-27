@@ -1,0 +1,11 @@
+FROM node:10.16.2
+MAINTAINER Noel Wilson <jwnwilson@gmail.com>
+
+# Add project files to DIR
+COPY . /app
+
+WORKDIR /app/src/client
+
+RUN rm -rf node_modules/* && npm i
+
+CMD npm run start

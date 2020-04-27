@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_card_welcomes",
+  "info": {
+    "name": "Welcome",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

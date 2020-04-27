@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_card_portfollios",
+  "info": {
+    "name": "Portfollio",
+    "icon": "angry"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "name": "page"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "Cards": {
+      "type": "dynamiczone",
+      "components": [
+        "card.portfollio",
+        "card.welcome"
+      ]
+    }
+  }
+}
