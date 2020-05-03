@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/03/2020 2:32:32 PM"
+    "x-generation-date": "05/03/2020 11:25:31 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2738,7 +2738,8 @@
                       "type": "string",
                       "enum": [
                         "card.portfollio",
-                        "card.welcome"
+                        "card.welcome",
+                        "card.about-me"
                       ]
                     },
                     "id": {
@@ -2845,7 +2846,8 @@
                       "type": "string",
                       "enum": [
                         "card.portfollio",
-                        "card.welcome"
+                        "card.welcome",
+                        "card.about-me"
                       ]
                     },
                     "id": {
@@ -2855,6 +2857,36 @@
                       "type": "string"
                     },
                     "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.portfollio",
+                        "card.welcome",
+                        "card.about-me"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "paragraph_1": {
+                      "type": "string"
+                    },
+                    "paragraph_2": {
+                      "type": "string"
+                    },
+                    "cv_link": {
                       "type": "string"
                     }
                   },
@@ -2933,7 +2965,8 @@
                       "type": "string",
                       "enum": [
                         "card.portfollio",
-                        "card.welcome"
+                        "card.welcome",
+                        "card.about-me"
                       ]
                     },
                     "id": {
@@ -3040,7 +3073,8 @@
                       "type": "string",
                       "enum": [
                         "card.portfollio",
-                        "card.welcome"
+                        "card.welcome",
+                        "card.about-me"
                       ]
                     },
                     "id": {
@@ -3050,6 +3084,36 @@
                       "type": "string"
                     },
                     "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.portfollio",
+                        "card.welcome",
+                        "card.about-me"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "paragraph_1": {
+                      "type": "string"
+                    },
+                    "paragraph_2": {
+                      "type": "string"
+                    },
+                    "cv_link": {
                       "type": "string"
                     }
                   },

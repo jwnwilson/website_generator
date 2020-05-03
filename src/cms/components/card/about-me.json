@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_card_about_mes",
+  "info": {
+    "name": "about_me",
+    "icon": "chalkboard-teacher"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "paragraph_1": {
+      "type": "text"
+    },
+    "paragraph_2": {
+      "type": "text"
+    },
+    "cv_link": {
+      "type": "string"
+    }
+  }
+}
