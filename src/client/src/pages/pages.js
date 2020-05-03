@@ -8,9 +8,12 @@ render() {
           <h1>Pages</h1>
           {
             this.props.data.allPage.edges.map((edge, index) => {
-              const product = edge.node
+              const page = edge.node;
+              console.log("page", page);
               return (
-                <div key={product.id}>{product.title}</div>
+                <div key={page.id}>
+                  <a href={page.url}>{page.title}</a>
+                </div>
               )
             })
           }
@@ -25,7 +28,8 @@ export const query = graphql`
       edges{
         node{
           id,
-          title
+          title,
+          url
         }
       }
     }

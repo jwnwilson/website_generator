@@ -528,7 +528,7 @@
           "name": {
             "type": "string"
           },
-          "Cards": {
+          "cards": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -580,6 +580,54 @@
                 }
               ]
             }
+          },
+          "header": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "links": {
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "cards": {
+                    "type": "dynamiczone"
+                  },
+                  "header": {
+                    "type": "component"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "url": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
           }
         }
       },
@@ -591,7 +639,7 @@
           "name": {
             "type": "string"
           },
-          "Cards": {
+          "cards": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -643,6 +691,54 @@
                 }
               ]
             }
+          },
+          "header": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "links": {
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "cards": {
+                    "type": "dynamiczone"
+                  },
+                  "header": {
+                    "type": "component"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "url": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
           }
         }
       }

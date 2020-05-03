@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/24/2020 11:35:10 PM"
+    "x-generation-date": "05/02/2020 11:33:47 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2728,7 +2728,7 @@
           "name": {
             "type": "string"
           },
-          "Cards": {
+          "cards": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -2780,6 +2780,54 @@
                 }
               ]
             }
+          },
+          "header": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "links": {
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "cards": {
+                    "type": "dynamiczone"
+                  },
+                  "header": {
+                    "type": "component"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "url": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
           }
         }
       },
@@ -2791,7 +2839,7 @@
           "name": {
             "type": "string"
           },
-          "Cards": {
+          "cards": {
             "type": "array",
             "items": {
               "oneOf": [
@@ -2843,6 +2891,54 @@
                 }
               ]
             }
+          },
+          "header": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "links": {
+                "required": [
+                  "id"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "cards": {
+                    "type": "dynamiczone"
+                  },
+                  "header": {
+                    "type": "component"
+                  },
+                  "url": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "url": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
           }
         }
       },

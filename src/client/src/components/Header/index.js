@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from "gatsby"
 import Scrollspy from 'react-scrollspy';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery';
 
 import './Header.css';
@@ -68,22 +70,23 @@ class Header extends React.Component {
 
     if (data && data.title) {
       title = data.title;
+    } else if (data && data.Title) {
+      title = data.Title;
     }
+    
 
-    if (data && data.ctas) {
-      links = data.ctas.map((cta, index) => {
-        let link;
-        selectors.push(cta.selector);
-        if (cta.link) {
+    if (data && data.links) {
+      links = data.links.map((link, index) => {
+        if (link.url) {
           link = (
-            <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={cta.link.url}>
-              {cta.text}
+            <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={link.url}>
+              {link.title}
             </a>
           );
-        } else {
+        } else if (link.selector) {
           link = (
-            <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={'#' + cta.selector}>
-              {cta.text}
+            <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={'#' + link.selector}>
+              {link.title}
             </a>
           );
         }
@@ -93,6 +96,7 @@ class Header extends React.Component {
           </li>
         );
       });
+      
       headerLinks = (
         <Scrollspy
           className="navbar-nav ml-auto"
@@ -106,14 +110,15 @@ class Header extends React.Component {
     }
 
     return (
-      <nav className="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <nav className="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
         <div className="container">
           <Link className="navbar-brand js-scroll-trigger" to="/#intro">
             {title}
           </Link>
           <button className="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
-            <i className="fa fa-bars" />
+            <FontAwesomeIcon className="ml-2" icon={faBars} />
+            
           </button>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             {headerLinks}

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import settings from '../../config/settings';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar } from '@fortawesome/free-solid-svg-icons'
 import './HeroImage.css';
 
 const HeroImage = (props) => {
-  console.log("props", props);
   const data = props.data;
   return (
     <section id="intro" className="bg-primary text-white text-center">
@@ -14,6 +14,9 @@ const HeroImage = (props) => {
           {data.title}
         </h1>
         <hr className="star-light" />
+        <div className="star-light-star">
+          <FontAwesomeIcon  icon={faStar}/>
+        </div>
         {/* <img
           className="img-fluid rounded-circle col-10 col-sm-8 col-md-6 col-lg-4 mb-5 d-block mx-auto"
           src={settings.serverUrl + data.image.file}

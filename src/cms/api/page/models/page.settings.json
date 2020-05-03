@@ -15,12 +15,23 @@
     "name": {
       "type": "string"
     },
-    "Cards": {
+    "cards": {
       "type": "dynamiczone",
       "components": [
         "card.portfollio",
         "card.welcome"
       ]
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header-1"
+    },
+    "url": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
     }
   }
 }

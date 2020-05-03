@@ -75,8 +75,8 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
             },
             title: page.title,
             content: JSON.stringify(page),
-            slug: page.name,
-            url: '/'
+            slug: page.slug,
+            url: page.url
         }
         console.log("Page loaded", pageNode);
         createNode(pageNode);
