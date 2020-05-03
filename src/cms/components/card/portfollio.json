@@ -1,7 +1,7 @@
 {
   "collectionName": "components_card_portfollios",
   "info": {
-    "name": "Portfollio",
+    "name": "Portfolio",
     "icon": "angry"
   },
   "options": {},
@@ -11,6 +11,11 @@
     },
     "name": {
       "type": "string"
+    },
+    "projects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "project.projects"
     }
   }
 }

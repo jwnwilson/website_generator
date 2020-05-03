@@ -14,7 +14,7 @@ export default class PageList extends React.Component {
 
   renderModule(moduleFileName, module, index, fallback = null) {
     const ModuleComponent = loadable(() => import(`../cards/${moduleFileName}`));
-    console.log("Module data:" + JSON.stringify(module));
+    // console.log("Module data:" + JSON.stringify(module));
     return (
       <div key={index} data-module-index={index}>
         <ModuleComponent data={module} fallback={fallback} />
@@ -23,7 +23,7 @@ export default class PageList extends React.Component {
   }
 
   staticRenderModule(index, htmlEl) {
-    return (<section key={index.toString()} dangerouslySetInnerHTML={{ __html: htmlEl.innerHTML }} />)
+    return (<div key={index.toString()} dangerouslySetInnerHTML={{ __html: htmlEl.innerHTML }} />)
   }
 
   getFromMap(moduleName) {
@@ -39,15 +39,15 @@ export default class PageList extends React.Component {
     const content = JSON.parse(page.content);
     let components;
 
-    console.log("page", page);
-    console.log("content", content);
-    console.log("content.cards", content.cards);
+    // console.log("page", page);
+    // console.log("content", content);
+    // console.log("content.cards", content.cards);
 
     if (content.cards) {
       components = content.cards.map((card, index) => {
         const card_title = card.title;
         const card_type = card.__component;
-        //const moduleFileName = capitalize(module_name);
+        // const moduleFileName = capitalize(module_name);
         const { shouldLoadJavascript, moduleFileName } = this.getFromMap(card_type);
         // Get existing html from pre-rendered page if exists use as fallback for 
         // loadable component
