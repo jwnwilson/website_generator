@@ -17,7 +17,6 @@ class Portfolio extends React.Component {
 
   render() {
     const { data } = this.props;
-    console.log("data", data);
     const portfolioItems = data.projects.map((project, index) => (
       <div key={index} className="col-md-6 col-lg-4">
         <a className="portfolio-item d-block mx-auto" href={'#portfolio-modal-' + index}>
@@ -31,7 +30,6 @@ class Portfolio extends React.Component {
       </div>
     ));
     const modals = data.projects.map((project, index) => {
-      console.log("project", project);
       const url = project.url;
       return (
         <div key={index} className="portfolio-modal mfp-hide" id={'portfolio-modal-' + index}>

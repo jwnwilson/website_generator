@@ -18,9 +18,10 @@
     "cards": {
       "type": "dynamiczone",
       "components": [
-        "card.portfollio",
         "card.welcome",
-        "card.about-me"
+        "card.about-me",
+        "card.contact-me",
+        "card.portfolio"
       ]
     },
     "header": {
@@ -33,6 +34,11 @@
     },
     "slug": {
       "type": "string"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "footer.footer"
     }
   }
 }

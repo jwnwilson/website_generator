@@ -8,19 +8,11 @@ const { $ } = window;
 
 class Footer extends React.Component {
   componentDidMount() {
-    // Scroll to top button appear
-    $(document).scroll(() => {
-      const scrollDistance = $(this).scrollTop();
-      if (scrollDistance > 100) {
-        $('.scroll-to-top').fadeIn();
-      } else {
-        $('.scroll-to-top').fadeOut();
-      }
-    });
   }
 
   render() {
     const data = this.props.data || {};
+    console.log("data", data);
     return (
       !data ? null
         : (
@@ -33,7 +25,7 @@ class Footer extends React.Component {
                       Location
                     </h4>
                     <p className="lead mb-0">
-                      {data.address}
+                      {data.location}
                     </p>
                   </div>
                   <div className="col-md-4 mb-5 mb-lg-0">
@@ -42,22 +34,17 @@ class Footer extends React.Component {
                     </h4>
                     <ul className="list-inline mb-0">
                       <li className="list-inline-item">
-                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.google_link}>
-                          <i className="fa fa-fw fa-google-plus" />
-                        </a>
-                      </li>
-                      <li className="list-inline-item">
-                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.github_link}>
+                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.github_url}>
                           <i className="fa fa-fw fa-github" />
                         </a>
                       </li>
                       <li className="list-inline-item">
-                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.linkedin_link}>
+                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.linkedin_url}>
                           <i className="fa fa-fw fa-linkedin" />
                         </a>
                       </li>
                       <li className="list-inline-item">
-                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.instagram_link}>
+                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.instagram_url}>
                           <i className="fa fa-fw fa-instagram" />
                         </a>
                       </li>
@@ -68,7 +55,7 @@ class Footer extends React.Component {
                       About Me
                     </h4>
                     <p className="lead mb-0">
-                      {data.text}
+                      {data.about_me}
                     </p>
                   </div>
                 </div>
@@ -78,7 +65,7 @@ class Footer extends React.Component {
             <div className="copyright py-4 text-center text-white">
               <div className="container">
                 <small>
-                  Copyright &copy; Noel Wilson 2018
+                  Copyright &copy; Noel Wilson 2020
                 </small>
               </div>
             </div>
@@ -93,9 +80,5 @@ class Footer extends React.Component {
     );
   }
 }
-
-Footer.propTypes = {
-  data: PropTypes.object.isRequired,
-};
 
 export default Footer;

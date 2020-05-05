@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_card_contact_mes",
+  "info": {
+    "name": "contact_me",
+    "icon": "file-contract"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "send_url": {
+      "type": "string"
+    }
+  }
+}

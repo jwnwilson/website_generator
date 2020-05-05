@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_footer_footers",
+  "info": {
+    "name": "footer",
+    "icon": "angle-down"
+  },
+  "options": {},
+  "attributes": {
+    "location_title": {
+      "type": "string"
+    },
+    "location": {
+      "type": "text"
+    },
+    "links_title": {
+      "type": "string"
+    },
+    "github_url": {
+      "type": "string"
+    },
+    "linkedin_url": {
+      "type": "string"
+    },
+    "insta_url": {
+      "type": "string"
+    },
+    "about_title": {
+      "type": "string"
+    },
+    "about_me": {
+      "type": "text"
+    }
+  }
+}

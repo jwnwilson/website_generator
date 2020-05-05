@@ -537,9 +537,91 @@
                     "__component": {
                       "type": "string",
                       "enum": [
-                        "card.portfollio",
                         "card.welcome",
-                        "card.about-me"
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "paragraph_1": {
+                      "type": "string"
+                    },
+                    "paragraph_2": {
+                      "type": "string"
+                    },
+                    "cv_link": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "send_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
                       ]
                     },
                     "id": {
@@ -639,60 +721,6 @@
                   "required": [
                     "id"
                   ]
-                },
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "card.portfollio",
-                        "card.welcome",
-                        "card.about-me"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
-                },
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "card.portfollio",
-                        "card.welcome",
-                        "card.about-me"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "paragraph_1": {
-                      "type": "string"
-                    },
-                    "paragraph_2": {
-                      "type": "string"
-                    },
-                    "cv_link": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
                 }
               ]
             }
@@ -734,6 +762,9 @@
                   },
                   "slug": {
                     "type": "string"
+                  },
+                  "footer": {
+                    "type": "component"
                   }
                 }
               }
@@ -744,6 +775,41 @@
           },
           "slug": {
             "type": "string"
+          },
+          "footer": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "location_title": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "links_title": {
+                "type": "string"
+              },
+              "github_url": {
+                "type": "string"
+              },
+              "linkedin_url": {
+                "type": "string"
+              },
+              "insta_url": {
+                "type": "string"
+              },
+              "about_title": {
+                "type": "string"
+              },
+              "about_me": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -764,9 +830,91 @@
                     "__component": {
                       "type": "string",
                       "enum": [
-                        "card.portfollio",
                         "card.welcome",
-                        "card.about-me"
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "paragraph_1": {
+                      "type": "string"
+                    },
+                    "paragraph_2": {
+                      "type": "string"
+                    },
+                    "cv_link": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "send_url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio"
                       ]
                     },
                     "id": {
@@ -866,60 +1014,6 @@
                   "required": [
                     "id"
                   ]
-                },
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "card.portfollio",
-                        "card.welcome",
-                        "card.about-me"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "name": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
-                },
-                {
-                  "properties": {
-                    "__component": {
-                      "type": "string",
-                      "enum": [
-                        "card.portfollio",
-                        "card.welcome",
-                        "card.about-me"
-                      ]
-                    },
-                    "id": {
-                      "type": "string"
-                    },
-                    "title": {
-                      "type": "string"
-                    },
-                    "paragraph_1": {
-                      "type": "string"
-                    },
-                    "paragraph_2": {
-                      "type": "string"
-                    },
-                    "cv_link": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id"
-                  ]
                 }
               ]
             }
@@ -961,6 +1055,9 @@
                   },
                   "slug": {
                     "type": "string"
+                  },
+                  "footer": {
+                    "type": "component"
                   }
                 }
               }
@@ -971,6 +1068,41 @@
           },
           "slug": {
             "type": "string"
+          },
+          "footer": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "location_title": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "links_title": {
+                "type": "string"
+              },
+              "github_url": {
+                "type": "string"
+              },
+              "linkedin_url": {
+                "type": "string"
+              },
+              "insta_url": {
+                "type": "string"
+              },
+              "about_title": {
+                "type": "string"
+              },
+              "about_me": {
+                "type": "string"
+              }
+            }
           }
         }
       }

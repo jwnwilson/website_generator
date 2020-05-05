@@ -70,11 +70,12 @@ export default class PageList extends React.Component {
       components = [];
     }
 
-    let header = content.header;
+    const header = content.header;
+    const footer = content.footer;
 
     return (
       <Provider store={store}>
-        <Layout header={header}>
+        <Layout header={header} footer={footer}>
           <SEO title="Home" />
           {components}
         </Layout>
