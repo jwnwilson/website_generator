@@ -20,6 +20,15 @@ body {
     background-color: #18BC9C;
     font-size: 2em;
   }
+
+  .star-dark-star {
+    position: relative;
+    top: -2em;
+    display: inline-block;
+    padding: 0 0.25em;
+    background-color: white;
+    font-size: 2em;
+  }
   
   hr.star-light,
   hr.star-dark {
