@@ -23,7 +23,8 @@ setup:
 	cd src/server && pip install -r requirements/local.txt
 	cd src/client && npm i
 
-services: docker-stop
+# Local dev supporting services
+services: docker-stop down
 	docker-compose -f docker-compose.yml up -d db
 
 # docker utilities
