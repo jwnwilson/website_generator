@@ -74,7 +74,6 @@ class Portfolio extends React.Component {
     const modals = data.projects.map((project, index) => {
       const url = project.url;
       return (
-        <div style={{zIndex: 1000}}>
         <Modal
           isOpen={this.state.modalIsOpen && this.state.modalIndex === index}
           onRequestClose={this.closeModal}
@@ -110,7 +109,6 @@ class Portfolio extends React.Component {
             </div>
           </div>
         </Modal>
-        </div>
       );
     });
 

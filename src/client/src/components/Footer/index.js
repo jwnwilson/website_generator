@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 import './Footer.css';
 
@@ -35,17 +37,17 @@ class Footer extends React.Component {
                     <ul className="list-inline mb-0">
                       <li className="list-inline-item">
                         <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.github_url}>
-                          <i className="fa fa-fw fa-github" />
+                          <FontAwesomeIcon  icon={faGithub}/>
                         </a>
                       </li>
                       <li className="list-inline-item">
                         <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.linkedin_url}>
-                          <i className="fa fa-fw fa-linkedin" />
+                          <FontAwesomeIcon  icon={faLinkedin}/>
                         </a>
                       </li>
                       <li className="list-inline-item">
                         <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.instagram_url}>
-                          <i className="fa fa-fw fa-instagram" />
+                          <FontAwesomeIcon  icon={faInstagram}/>
                         </a>
                       </li>
                     </ul>
