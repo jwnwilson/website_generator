@@ -11,6 +11,9 @@
     },
     "links": {
       "collection": "page"
+    },
+    "selectors": {
+      "type": "json"
     }
   }
 }

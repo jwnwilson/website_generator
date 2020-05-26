@@ -73,6 +73,8 @@ class Header extends React.Component {
     } else if (data && data.Title) {
       title = data.Title;
     }
+
+    console.log("header data:",data);
     
 
     if (data && data.links) {

@@ -8,7 +8,6 @@ import { apiUrl } from '../../config/settings';
 
 const HeroImage = (props) => {
   const data = props.data;
-  console.log("data:", data);
   return (
     <section id="intro" className="bg-primary text-white text-center">
       <div className="container">

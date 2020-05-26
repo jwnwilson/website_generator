@@ -14,7 +14,6 @@ class Footer extends React.Component {
 
   render() {
     const data = this.props.data || {};
-    console.log("data", data);
     return (
       !data ? null
         : (

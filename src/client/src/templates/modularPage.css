@@ -61,6 +61,7 @@ body {
   
   section {
     padding: 6rem 0;
+    height: 100vh;
   }
   
   section h2 {
