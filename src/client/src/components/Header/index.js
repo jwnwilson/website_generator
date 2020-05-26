@@ -11,6 +11,13 @@ import './Header.css';
 //import { componentUpdated } from '../../actions';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false
+    };
+  }
+
   componentDidMount() {
     this.smoothScrolling();
 
@@ -39,10 +46,12 @@ class Header extends React.Component {
     $(selector).click(function () {   // eslint-disable-line
       if (window.location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && window.location.hostname === this.hostname) {
         let target = $(this.hash);
+        let expanded = $("#navbarResponsive")[0].className.indexOf("show") > -1;
+        let offset = expanded ? 235 : 0;
         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
         if (target.length) {
           $('html, body').animate({
-            scrollTop: (target.offset().top - 70),
+            scrollTop: (target.offset().top - offset),
           }, 1000, 'easeInOutExpo');
           return false;
         }
@@ -73,43 +82,47 @@ class Header extends React.Component {
     } else if (data && data.Title) {
       title = data.Title;
     }
-
-    console.log("header data:",data);
     
-
-    if (data && data.links) {
-      links = data.links.map((link, index) => {
-        if (link.url) {
-          link = (
-            <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={link.url}>
-              {link.title}
-            </a>
-          );
-        } else if (link.selector) {
-          link = (
-            <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={'#' + link.selector}>
-              {link.title}
-            </a>
-          );
-        }
-        return (
+    if (data && data.selectors) {
+      data.selectors.forEach((selector, index) => {
+        let link = (
+          <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={'#' + selector.selector}>
+            {selector.name}
+          </a>
+        );
+        links.push (
           <li className="nav-item mx-0 mx-lg-1" key={index}>
             {link}
           </li>
         );
       });
-      
-      headerLinks = (
-        <Scrollspy
-          className="navbar-nav ml-auto"
-          items={selectors}
-          currentClassName="active"
-          offset={-100}
-        >
-          {links}
-        </Scrollspy>
-      );
     }
+
+    if (data && data.links) {
+      data.links.forEach((link, index) => {
+        link = (
+          <a className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href={link.url}>
+            {link.title}
+          </a>
+        );
+        links.push (
+          <li className="nav-item mx-0 mx-lg-1" key={index}>
+            {link}
+          </li>
+        );
+      });
+    }
+      
+    headerLinks = (
+      <Scrollspy
+        className="navbar-nav ml-auto"
+        items={selectors}
+        currentClassName="active"
+        offset={-100}
+      >
+        {links}
+      </Scrollspy>
+    );
 
     return (
       <nav className="navbar navbar-expand-lg bg-secondary text-uppercase" id="mainNav">
@@ -117,10 +130,17 @@ class Header extends React.Component {
           <Link className="navbar-brand js-scroll-trigger" to="/#intro">
             {title}
           </Link>
-          <button className="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <button 
+            className="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarResponsive"
+            aria-controls="navbarResponsive"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             Menu
             <FontAwesomeIcon className="ml-2" icon={faBars} />
-            
           </button>
           <div className="collapse navbar-collapse" id="navbarResponsive">
             {headerLinks}
