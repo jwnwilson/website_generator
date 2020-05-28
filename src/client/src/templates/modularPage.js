@@ -16,7 +16,7 @@ export default class PageList extends React.Component {
     const ModuleComponent = loadable(() => import(`../cards/${moduleFileName}`));
     // console.log("Module data:" + JSON.stringify(module));
     return (
-      <div key={index} data-module-index={index}>
+      <div key={index} data-module-index={index} id={"card-section-" + index}>
         <ModuleComponent data={module} fallback={fallback} />
       </div>
     );

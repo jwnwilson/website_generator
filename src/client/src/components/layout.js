@@ -28,7 +28,7 @@ const Layout = ({ children, header, footer }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} data={header} />
-      <main className="clearfix">{children}</main>
+      <main className="clearfix header-offset">{children}</main>
       <Footer data={footer}/>
     </>
   )

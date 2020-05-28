@@ -10,7 +10,7 @@ const HeroImage = (props) => {
   const data = props.data;
   return (
     <section id="intro" className="bg-primary text-white text-center">
-      <div className="container">
+      <div className="container mt-5">
         <img
             className="img-fluid rounded-circle col-10 col-sm-8 col-md-6 col-lg-4 mb-5 d-block mx-auto"
             src={apiUrl + data.image.formats.medium.url}

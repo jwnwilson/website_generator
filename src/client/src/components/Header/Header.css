@@ -4,6 +4,9 @@
   padding-bottom: 1rem;
   font-weight: 700;
   font-family: 'Montserrat';
+  position: fixed;
+  width: 100%;
+  z-index: 500;
 }
 
 #mainNav .navbar-brand {
