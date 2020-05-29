@@ -12,11 +12,11 @@ import "../styles/index.scss";
 
 export default class PageList extends React.Component {
 
-  renderModule(moduleFileName, module, index, fallback = null) {
+  renderModule(moduleFileName, module, index, type, fallback = null) {
     const ModuleComponent = loadable(() => import(`../cards/${moduleFileName}`));
     // console.log("Module data:" + JSON.stringify(module));
     return (
-      <div key={index} data-module-index={index} id={"card-section-" + index}>
+      <div key={index} data-module-index={index} data-module-type={type} id={"card-section-" + index}>
         <ModuleComponent data={module} fallback={fallback} />
       </div>
     );
@@ -55,15 +55,17 @@ export default class PageList extends React.Component {
         // This should only run client side will try catch when building
         try {
           htmlEl = document.querySelector(`[data-module-index="${index.toString()}"]`);
+          htmlEl = htmlEl.getAttribute("data-module-type") !== card_type ? null : htmlEl;
         } catch (err) {
           htmlEl = null;
         }
         const fallback = htmlEl ? this.staticRenderModule(index, htmlEl) : null;
 
         if (!shouldLoadJavascript && fallback) {
+          console.log("fallback", fallback);
           return fallback;
         } else {
-          return this.renderModule(moduleFileName, card, index, fallback);
+          return this.renderModule(moduleFileName, card, index, card_type, fallback);
         }
       });
     } else {

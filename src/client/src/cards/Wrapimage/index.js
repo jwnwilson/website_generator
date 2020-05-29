@@ -1,51 +1,44 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 import './WrapImage.css';
+import { apiUrl } from '../../config/settings';
+
 
 const WrapImage = (props) => {
-  const { module } = props.data;
+  const { data } = props;
+  console.log("Data", data);
   const paras = (
-    <ReactMarkdown source={module.text} />
+    <ReactMarkdown source={data.text} />
   );
-  const link = !module.link ? null : (
-    <a href={module.link} target="_blank" className="wrap-image-link">
-      <i className="fa fa-link mr-2" />
-        Link
+  const link = !data.url ? null : (
+    <a href={data.url} target="_blank" className="wrap-image-link">
+      <FontAwesomeIcon  icon={faLink}/>
+      <span className="ml-3">Link</span>
     </a>
   );
-  const img = !module.image ? '' : module.image.file;
-  // Build optional additional paragraphs
-  const additionalParagraphs = module.paragraphs.map((paragraph, index) => {
-    const additionalParas = (
-      <ReactMarkdown source={paragraph.text} />
-    );
-    return (
-      <div className="clear-fix">
-        <div key={index} className="pull-left col-12 col-md-5 mb-3">
-          <img className="img-responsive rounded" src={img} alt={module.title} width="100%" style={{ width: '100%' }} />
-        </div>
-        {additionalParas}
-      </div>
-    );
-  });
+  console.log("data.image", data.image[0].formats.medium.url);
+  const img = !data.image ? '' : apiUrl + data.image[0].formats.medium.url;
 
   return (
-    <section className="wrap-image bg-primary text-white mb-0 mt-5" id="about">
+    <section className="wrap-image bg-primary text-white mb-0 mt-5" id="wrap-image">
       <div className="container">
-        <div className="pull-left col-12 col-md-5 mb-3">
-          <img className="img-responsive rounded" src={img} alt={module.title} width="100%" style={{ width: '100%' }} />
+        <div className="row">
+          <div className="pull-left col-12 col-md-5 mb-3">
+            <img className="img-responsive rounded" src={img} alt={data.title} width="100%" style={{ width: '100%' }} />
+          </div>
+          <div className="pull-left col-12 col-md-7 mt-3">
+            <h2>
+              {data.title}
+            </h2>
+            {link}
+            <hr />
         </div>
-        <div className="pull-left col-12 col-md-7 mt-3">
-          <h2>
-            {module.title}
-          </h2>
-          {link}
-          <hr />
         </div>
         {paras}
-        {additionalParagraphs}
         <div className="clear-fix col-xs-12">
           <hr />
         </div>

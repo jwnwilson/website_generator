@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/26/2020 9:23:00 AM"
+    "x-generation-date": "05/29/2020 1:58:58 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2740,7 +2740,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -2829,7 +2830,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -2860,7 +2862,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -2885,7 +2888,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -2980,6 +2984,99 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio",
+                        "card.wrap-image"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "name",
+                          "hash",
+                          "mime",
+                          "size",
+                          "url",
+                          "provider"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "alternativeText": {
+                            "type": "string"
+                          },
+                          "caption": {
+                            "type": "string"
+                          },
+                          "width": {
+                            "type": "integer"
+                          },
+                          "height": {
+                            "type": "integer"
+                          },
+                          "formats": {
+                            "type": "object"
+                          },
+                          "hash": {
+                            "type": "string"
+                          },
+                          "ext": {
+                            "type": "string"
+                          },
+                          "mime": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "previewUrl": {
+                            "type": "string"
+                          },
+                          "provider": {
+                            "type": "string"
+                          },
+                          "provider_metadata": {
+                            "type": "object"
+                          },
+                          "related": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
                     }
                   },
                   "required": [
@@ -3100,7 +3197,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -3189,7 +3287,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -3220,7 +3319,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -3245,7 +3345,8 @@
                         "card.welcome",
                         "card.about-me",
                         "card.contact-me",
-                        "card.portfolio"
+                        "card.portfolio",
+                        "card.wrap-image"
                       ]
                     },
                     "id": {
@@ -3340,6 +3441,99 @@
                           }
                         }
                       }
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio",
+                        "card.wrap-image"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "image": {
+                      "type": "array",
+                      "items": {
+                        "required": [
+                          "id",
+                          "name",
+                          "hash",
+                          "mime",
+                          "size",
+                          "url",
+                          "provider"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "alternativeText": {
+                            "type": "string"
+                          },
+                          "caption": {
+                            "type": "string"
+                          },
+                          "width": {
+                            "type": "integer"
+                          },
+                          "height": {
+                            "type": "integer"
+                          },
+                          "formats": {
+                            "type": "object"
+                          },
+                          "hash": {
+                            "type": "string"
+                          },
+                          "ext": {
+                            "type": "string"
+                          },
+                          "mime": {
+                            "type": "string"
+                          },
+                          "size": {
+                            "type": "number"
+                          },
+                          "url": {
+                            "type": "string"
+                          },
+                          "previewUrl": {
+                            "type": "string"
+                          },
+                          "provider": {
+                            "type": "string"
+                          },
+                          "provider_metadata": {
+                            "type": "object"
+                          },
+                          "related": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "text": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
                     }
                   },
                   "required": [

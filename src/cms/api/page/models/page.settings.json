@@ -21,7 +21,8 @@
         "card.welcome",
         "card.about-me",
         "card.contact-me",
-        "card.portfolio"
+        "card.portfolio",
+        "card.wrap-image"
       ]
     },
     "header": {
