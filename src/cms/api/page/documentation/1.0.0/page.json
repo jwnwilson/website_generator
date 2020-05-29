@@ -886,54 +886,6 @@
               ]
             }
           },
-          "header": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "links": {
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "title": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "cards": {
-                    "type": "dynamiczone"
-                  },
-                  "header": {
-                    "type": "component"
-                  },
-                  "url": {
-                    "type": "string"
-                  },
-                  "slug": {
-                    "type": "string"
-                  },
-                  "footer": {
-                    "type": "component"
-                  }
-                }
-              },
-              "selectors": {
-                "type": "object"
-              }
-            }
-          },
           "url": {
             "type": "string"
           },
@@ -941,12 +893,14 @@
             "type": "string"
           },
           "footer": {
-            "type": "object",
             "required": [
               "id"
             ],
             "properties": {
               "id": {
+                "type": "string"
+              },
+              "name": {
                 "type": "string"
               },
               "location_title": {
@@ -972,6 +926,28 @@
               },
               "about_me": {
                 "type": "string"
+              }
+            }
+          },
+          "header": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "selectors": {
+                "type": "object"
+              },
+              "links": {
+                "type": "object"
               }
             }
           }
@@ -1343,54 +1319,6 @@
               ]
             }
           },
-          "header": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "links": {
-                "required": [
-                  "id"
-                ],
-                "properties": {
-                  "id": {
-                    "type": "string"
-                  },
-                  "title": {
-                    "type": "string"
-                  },
-                  "name": {
-                    "type": "string"
-                  },
-                  "cards": {
-                    "type": "dynamiczone"
-                  },
-                  "header": {
-                    "type": "component"
-                  },
-                  "url": {
-                    "type": "string"
-                  },
-                  "slug": {
-                    "type": "string"
-                  },
-                  "footer": {
-                    "type": "component"
-                  }
-                }
-              },
-              "selectors": {
-                "type": "object"
-              }
-            }
-          },
           "url": {
             "type": "string"
           },
@@ -1398,39 +1326,10 @@
             "type": "string"
           },
           "footer": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "location_title": {
-                "type": "string"
-              },
-              "location": {
-                "type": "string"
-              },
-              "links_title": {
-                "type": "string"
-              },
-              "github_url": {
-                "type": "string"
-              },
-              "linkedin_url": {
-                "type": "string"
-              },
-              "insta_url": {
-                "type": "string"
-              },
-              "about_title": {
-                "type": "string"
-              },
-              "about_me": {
-                "type": "string"
-              }
-            }
+            "type": "string"
+          },
+          "header": {
+            "type": "string"
           }
         }
       }

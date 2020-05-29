@@ -1,11 +1,17 @@
 {
-  "collectionName": "components_footer_footers",
+  "kind": "collectionType",
+  "collectionName": "footers",
   "info": {
-    "name": "footer",
-    "icon": "angle-down"
+    "name": "footer"
   },
-  "options": {},
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
   "attributes": {
+    "name": {
+      "type": "string"
+    },
     "location_title": {
       "type": "string"
     },

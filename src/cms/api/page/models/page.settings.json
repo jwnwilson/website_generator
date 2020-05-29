@@ -25,11 +25,6 @@
         "card.wrap-image"
       ]
     },
-    "header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "header.header-1"
-    },
     "url": {
       "type": "string"
     },
@@ -37,9 +32,10 @@
       "type": "string"
     },
     "footer": {
-      "type": "component",
-      "repeatable": false,
-      "component": "footer.footer"
+      "model": "footer"
+    },
+    "header": {
+      "model": "header"
     }
   }
 }

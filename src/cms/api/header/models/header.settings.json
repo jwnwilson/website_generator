@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "headers",
+  "info": {
+    "name": "header"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "selectors": {
+      "type": "json"
+    },
+    "links": {
+      "type": "json"
+    }
+  }
+}
