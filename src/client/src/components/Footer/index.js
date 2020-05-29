@@ -5,9 +5,6 @@ import { faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-
 
 import './Footer.css';
 
-// Load global jQuery
-const { $ } = window;
-
 class Footer extends React.Component {
   componentDidMount() {
   }
