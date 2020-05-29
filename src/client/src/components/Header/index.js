@@ -96,8 +96,6 @@ class Header extends React.Component {
             {link}
           </li>
         );
-        // Need to replace this with a non stupid solution
-        // We need to dynamically add target div ids to this list
         selectors.push(`card-section-${index+1}`);
       });
     }

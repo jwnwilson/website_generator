@@ -5,7 +5,8 @@ import {
 } from 'react-router-dom';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faSearchPlus, faExternalLinkAlt, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+
 
 import { Link } from "gatsby"
 import { apiUrl } from '../../config/settings';
@@ -63,7 +64,7 @@ class Portfolio extends React.Component {
         <a className="portfolio-item d-block mx-auto" onClick={() => this.showProjectModal(index)}>
           <div className="portfolio-item-caption d-flex position-absolute h-100 w-100">
             <div className="portfolio-item-caption-content my-auto w-100 text-center text-white">
-              <i className="fa fa-search-plus fa-3x" />
+              <FontAwesomeIcon  icon={faSearchPlus}/>
             </div>
           </div>
           <img className="img-fluid" src={apiUrl + project.cover_image.formats.medium.url} alt="" />
@@ -97,11 +98,11 @@ class Portfolio extends React.Component {
                       {project.description}
                     </p>
                     <Link className="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss mr-2" to={url}>
-                      <i className="fa fa-external-link mr-2" />
+                      <FontAwesomeIcon  icon={faExternalLinkAlt} className="mr-2"/>
                       Details
                     </Link>
                     <span className="btn btn-primary btn-lg rounded-pill portfolio-modal-close" onClick={this.closeModal}>
-                      <i className="fa fa-close mr-2" />
+                      <FontAwesomeIcon  icon={faWindowClose} className="mr-2"/>
                       Close
                     </span>
                   </div>

@@ -10,7 +10,6 @@ import { apiUrl } from '../../config/settings';
 
 const WrapImage = (props) => {
   const { data } = props;
-  console.log("Data", data);
   const paras = (
     <ReactMarkdown source={data.text} />
   );
@@ -20,7 +19,6 @@ const WrapImage = (props) => {
       <span className="ml-3">Link</span>
     </a>
   );
-  console.log("data.image", data.image[0].formats.medium.url);
   const img = !data.image ? '' : apiUrl + data.image[0].formats.medium.url;
 
   return (
