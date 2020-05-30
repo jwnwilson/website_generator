@@ -1,10 +1,10 @@
 version: '3'
 services:
-  cms:
+  client:
     image: node:10.11.0
     user: root
-    working_dir: /app/src/cms
-    command: npm run start
+    working_dir: /app/src/client
+    command: npm run build-service
     tty: true
     expose:
       - "3000"
@@ -12,7 +12,25 @@ services:
       - 0.0.0.0:3000:3000
     volumes:
       - .:/app
-      - node_modules:/app/node_modules
+      - node_modules_client:/app/node_modules
+    links:
+      - cms
+    depends_on:
+      - cms
+
+  cms:
+    image: node:10.11.0
+    user: root
+    working_dir: /app/src/cms
+    command: npm run develop
+    tty: true
+    expose:
+      - "3000"
+    ports:
+      - 0.0.0.0:3000:3000
+    volumes:
+      - .:/app
+      - node_modules_cms:/app/node_modules
     links:
       - db
     depends_on:
@@ -35,5 +53,6 @@ services:
       - db:/var/lib/postgresql/data/db
 
 volumes:
-  node_modules:
+  node_modules_cms:
+  node_modules_client:
   db:

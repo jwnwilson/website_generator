@@ -75,7 +75,8 @@
     "test": "./node_modules/.bin/jest --env=jsdom",
     "test-i": "node --inspect-brk ./node_modules/.bin/jest --runInBand --env=jsdom",
     "lint": "./node_modules/.bin/eslint src",
-    "build-service": "node src/builder.js"
+    "build-service": "DEPLOY=true node src/builder.js",
+    "deploy": "node src/deploy.js"
   },
   "repository": {
     "type": "git",
