@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
 import './WrapImage.css';
-import { apiUrl } from '../../config/settings';
+import { staticUrl } from '../../config/settings';
 
 
 const WrapImage = (props) => {
@@ -19,7 +19,7 @@ const WrapImage = (props) => {
       <span className="ml-3">Link</span>
     </a>
   );
-  const img = !data.image ? '' : apiUrl + data.image[0].formats.medium.url;
+  const img = !data.image ? '' : staticUrl + data.image[0].formats.medium.url;
 
   return (
     <section className="wrap-image bg-primary text-white mb-0 mt-5" id="wrap-image">

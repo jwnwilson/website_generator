@@ -1,6 +1,6 @@
 version: '3'
 services:
-  client:
+  builder:
     image: node:10.11.0
     user: root
     working_dir: /app/src/client
@@ -12,7 +12,7 @@ services:
       - 0.0.0.0:3000:3000
     volumes:
       - .:/app
-      - node_modules_client:/app/node_modules
+      - node_modules_client:/app/src/client/node_modules
     links:
       - cms
     depends_on:
@@ -25,12 +25,12 @@ services:
     command: npm run develop
     tty: true
     expose:
-      - "3000"
+      - "1337"
     ports:
-      - 0.0.0.0:3000:3000
+      - 0.0.0.0:1337:1337
     volumes:
       - .:/app
-      - node_modules_cms:/app/node_modules
+      - node_modules_cms:/app/src/cms/node_modules
     links:
       - db
     depends_on:

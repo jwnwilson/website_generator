@@ -1,0 +1,22 @@
+version: '3'
+services:
+    client:
+        image: node:10.11.0
+        user: root
+        working_dir: /app/src/client
+        command: npm run develop
+        tty: true
+        expose:
+            - "8000"
+        ports:
+            - 0.0.0.0:8000:8000
+        volumes:
+            - .:/app
+            - node_modules_client:/app/src/client/node_modules
+        links:
+            - cms
+        depends_on:
+            - cms
+
+volumes:
+    node_modules_client:

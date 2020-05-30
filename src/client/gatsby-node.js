@@ -9,9 +9,9 @@ const webpack = require("webpack");
 const http = require('http');
 const FormData = require('form-data');
 
-const baseUrl = process.env.SERVER_URL || 'http://localhost:1337';
-const overwrite = process.env.SERVER_OVERWRITE || 'http://localhost:1337';
-const apiUrl = `${baseUrl}`;
+const baseUrl = process.env.SERVER_URL || 'http://cms:1337';
+const overwrite = process.env.SERVER_OVERWRITE || 'http://cms:1337';
+const staticUrl = `${baseUrl}`;
 
 
 exports.onCreateWebpackConfig = ({ stage, getConfig, rules, loaders, plugins, actions }) => {
@@ -48,15 +48,15 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
 
     // Authing on api
     let auth = await fetch(
-      `${apiUrl}/admin/auth/local`,
+      `${staticUrl}/admin/auth/local`,
       {
         method: "POST",
         body: form,
       });
     let jwt = await auth.json();
 
-    console.log('Fetching from: ', `${apiUrl}/pages`);
-    const resp = await fetch(`${apiUrl}/pages`, {headers: {Authorization: `bearer ${jwt.jwt}`}});
+    console.log('Fetching from: ', `${staticUrl}/pages`);
+    const resp = await fetch(`${staticUrl}/pages`, {headers: {Authorization: `bearer ${jwt.jwt}`}});
     const pages = await resp.json();
 
     return await Promise.all(pages.map(async page => {
