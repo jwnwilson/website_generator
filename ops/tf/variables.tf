@@ -65,7 +65,7 @@ variable "scaleway_type" {
 }
 
 variable "scaleway_image" {
-  default = "Ubuntu Bionic"
+  default = "Ubuntu 20.04 Focal Fossa"
 }
 
 /* digitalocean */

@@ -57,7 +57,7 @@ resource "scaleway_instance_server" "host" {
   provisioner "remote-exec" {
     inline = [
       "apt-get update",
-      "apt-get install -yq apt-transport-https ufw ${join(" ", var.apt_packages)}",
+      "apt-get install -yq apt-transport-https ufw libelf-dev, libelf-devel ${join(" ", var.apt_packages)}",
       # fix a problem with later wireguard installation
       "DEBIAN_FRONTEND=noninteractive apt-get install -yq -o Dpkg::Options::=--force-confnew sudo",
     ]
