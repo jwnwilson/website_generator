@@ -40,6 +40,10 @@ variable "hcloud_image" {
 
 /* scaleway */
 /* These creds have been moved to bash_profile env vars to avoid accidental commits */
+variable "scaleway_ssh" {
+  default = "~/.ssh/id_rsa.pub"
+}
+
 variable "scaleway_organization_id" {
   default = ""
 }

@@ -36,6 +36,7 @@ resource "null_resource" "firewall" {
     host  = element(var.connections, count.index)
     user  = "root"
     agent = true
+    private_key = "${file("~/.ssh/id_rsa")}"
   }
 
   provisioner "remote-exec" {

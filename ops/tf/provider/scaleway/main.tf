@@ -50,6 +50,7 @@ resource "scaleway_instance_server" "host" {
     type = "ssh"
     timeout = "2m"
     host = self.public_ip
+    private_key = "${file("~/.ssh/id_rsa")}"
   }
 
 
