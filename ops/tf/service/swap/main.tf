@@ -1,17 +1,16 @@
-variable "count" {}
+variable "node_count" {}
 
 variable "connections" {
-  type = "list"
+  type = list
 }
 
 resource "null_resource" "swap" {
-  count = "${var.count}"
+  count = var.node_count
 
   connection {
-    host  = "${element(var.connections, count.index)}"
+    host  = element(var.connections, count.index)
     user  = "root"
     agent = true
-    private_key = "${file("~/.ssh/id_rsa")}"
   }
 
   provisioner "remote-exec" {
@@ -31,7 +30,7 @@ resource "null_resource" "swap" {
   }
 
   provisioner "file" {
-    content     = "${file("${path.module}/templates/90-kubelet-extras.conf")}"
+    content     = file("${path.module}/templates/90-kubelet-extras.conf")
     destination = "/etc/systemd/system/kubelet.service.d/90-kubelet-extras.conf"
   }
 
