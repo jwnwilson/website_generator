@@ -14,7 +14,8 @@ until nc -z localhost 6443; do
   sleep 5
 done
 
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+kubectl apply -f "https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
+kubectl apply -f "https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml"
 
 # See: https://kubernetes.io/docs/admin/authorization/rbac/
 kubectl create clusterrolebinding permissive-binding \
@@ -22,3 +23,11 @@ kubectl create clusterrolebinding permissive-binding \
   --user=admin \
   --user=kubelet \
   --group=system:serviceaccounts
+
+
+# edit /etc/kubernetes/manifests/kube-controller-manager.yaml
+# at command ,add
+# --allocate-node-cidrs=true
+# --cluster-cidr=10.244.0.0/16
+# then,reload kubelet
+# systemctl restart kubelet
