@@ -1,3 +1,16 @@
+
+## ToDo
+
+- Push cms & postgres to cluster
+- Setup jwnwilson.co.uk/cms -> cms
+- Push client to cluster
+- Setup jwnwilson.co.uk/ -> client
+- Connect client -> cms
+- Push builder to clister
+- Connect builder -> cms
+- Setup auto deployment of static content
+- Setup a secure login
+
 ## Deploying new versions
 
 - Build new cms and builder docker images
