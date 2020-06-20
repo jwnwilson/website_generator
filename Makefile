@@ -8,8 +8,12 @@ ifndef VERSION
 endif
 
 SHELL := /bin/bash
-DOCKER_REPO = 675468650888.dkr.ecr.eu-west-1.amazonaws.com
+AWS_ACCOUNT = 675468650888
+DOCKER_REPO = $(AWS_ACCOUNT).dkr.ecr.eu-west-1.amazonaws.com
 DOCKER_CONTAINERS = $(shell docker ps -q)
+AWS_REGION = eu-west-1
+AWS_ACCESS_KEY_ID=$(TF_VAR_aws_access_key)
+AWS_SECRET_ACCESS_KEY=$(TF_VAR_aws_secret_key)
 
 # Run docker-setup to install deps
 up: docker-stop docker-setup
@@ -39,3 +43,24 @@ docker-stop:
 ifneq ($(DOCKER_CONTAINERS),)
 	-docker kill $(DOCKER_CONTAINERS)
 endif
+
+# Deployment
+
+build:
+	cd src/cms && docker build -t $(DOCKER_REPO)/website_cms .
+	cd src/client && docker build -t $(DOCKER_REPO)/website_builder .
+
+# Login to AWS and set a 12 hour access token for the cluster have access to the AWS ECR repo
+docker-login:
+	$(eval TOKEN=$(shell AWS_ACCESS_KEY_ID="$(AWS_ACCESS_KEY_ID)" AWS_SECRET_ACCESS_KEY="$(AWS_SECRET_ACCESS_KEY)" aws ecr get-login --region $(AWS_REGION) --registry-ids $(AWS_ACCOUNT) | cut -d' ' -f6))
+	kubectl delete secret --ignore-not-found regcred
+	kubectl create secret docker-registry regcred \
+	--docker-server=https://$(DOCKER_REPO) \
+	--docker-username=AWS \
+	--docker-password="$(TOKEN)" \
+	--docker-email="jwnwilson@gmail.com"
+
+docker-push: docker-login build
+	# Using defined aws env vars
+	docker push $(DOCKER_REPO)/website_builder
+	docker push $(DOCKER_REPO)/website_cms

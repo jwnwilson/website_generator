@@ -218,7 +218,12 @@ variable "vsphere_password" {
   default     = "YourSecretPassword"
 }
 
-variable "container_repo_name" {
+variable "cms_repo" {
   description = "Name of container image repository"
-  default     = "kubernetes_images"
+  default     = "website_cms"
+}
+
+variable "builder_repo" {
+  description = "Name of container image repository"
+  default     = "website_builder"
 }

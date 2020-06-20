@@ -75,28 +75,27 @@ module "swap" {
   connections = module.provider.public_ips
 }
 
-module "dns" {
-  source = "./dns/cloudflare"
+# module "dns" {
+#  source = "./dns/cloudflare"
+#
+#  node_count = var.node_count
+#  email      = var.cloudflare_email
+#  api_token  = var.cloudflare_api_token
+#  domain     = var.domain
+#  public_ips = module.provider.public_ips
+#  hostnames  = module.provider.hostnames
+# }
 
+module "dns" {
+  source = "./dns/aws"
   node_count = var.node_count
-  email      = var.cloudflare_email
-  api_token  = var.cloudflare_api_token
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+  region     = var.aws_region
   domain     = var.domain
   public_ips = module.provider.public_ips
   hostnames  = module.provider.hostnames
 }
-
-# module "dns" {
-#   source = "./dns/aws"
-#
-#   node_count = var.node_count
-#   access_key = var.aws_access_key
-#   secret_key = var.aws_secret_key
-#   region     = var.aws_region
-#   domain     = var.domain
-#   public_ips = module.provider.public_ips
-#   hostnames  = module.provider.hostnames
-# }
 
 # module "dns" {
 #   source = "./dns/google"
@@ -166,5 +165,9 @@ module "kubernetes" {
 module "container_repo" {
   source = "./container_repo/aws"
 
-  name = var.container_repo_name
+  cms_repo     = var.cms_repo
+  builder_repo  = var.builder_repo
+  access_key   = var.aws_access_key
+  secret_key   = var.aws_secret_key
+  region       = var.aws_region
 }
