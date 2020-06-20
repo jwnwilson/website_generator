@@ -4,8 +4,8 @@ MAINTAINER Noel Wilson <jwnwilson@gmail.com>
 # Add project files to DIR
 COPY . /app
 
-WORKDIR /app/src/client
+WORKDIR /app/src/cms
 
 RUN rm -rf node_modules/* && npm i
 
-CMD npm run start
+CMD npm run develop

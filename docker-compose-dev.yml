@@ -1,7 +1,7 @@
 version: '3'
 services:
     client:
-        image: node:10.11.0
+        image: node:12.18.1
         user: root
         working_dir: /app/src/client
         command: npm run develop

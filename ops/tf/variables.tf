@@ -217,3 +217,8 @@ variable "vsphere_password" {
   description = "vSphere Admin Password"
   default     = "YourSecretPassword"
 }
+
+variable "container_repo_name" {
+  description = "Name of container image repository"
+  default     = "kubernetes_images"
+}

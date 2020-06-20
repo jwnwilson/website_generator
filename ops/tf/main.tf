@@ -89,7 +89,7 @@ module "dns" {
 # module "dns" {
 #   source = "./dns/aws"
 #
-#   node_count      = var.node_count
+#   node_count = var.node_count
 #   access_key = var.aws_access_key
 #   secret_key = var.aws_secret_key
 #   region     = var.aws_region
@@ -161,4 +161,10 @@ module "kubernetes" {
   vpn_interface  = module.wireguard.vpn_interface
   vpn_ips        = module.wireguard.vpn_ips
   etcd_endpoints = module.etcd.endpoints
+}
+
+module "container_repo" {
+  source = "./container_repo/aws"
+
+  name = var.container_repo_name
 }

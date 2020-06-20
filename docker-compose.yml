@@ -1,7 +1,7 @@
 version: '3'
 services:
   builder:
-    image: node:10.11.0
+    image: node:12.18.1
     user: root
     working_dir: /app/src/client
     command: npm run build-service
@@ -19,7 +19,7 @@ services:
       - cms
 
   cms:
-    image: node:10.11.0
+    image: node:12.18.1
     user: root
     working_dir: /app/src/cms
     command: npm run develop

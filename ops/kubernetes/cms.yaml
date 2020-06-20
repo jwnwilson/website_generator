@@ -8,28 +8,36 @@ spec:
     type: Recreate
   template:
     metadata:
-      name: builder
+      name: server
       labels:
-        name: builder
+        name: cms
     spec:
       containers:
-        - name: builder
-          image: docker.io/jwnwilson/website_builder:1.0.0
+        - name: server
+          image: docker.io/jwnwilson/cms:1.0.0
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 1337
           resources:
             requests:
-              memory: "250Mi"
+              memory: "500Mi"
               cpu: "0.05"
             limits:
-              memory: "500Gi"
+              memory: "1Gi"
               cpu: "0.35"
           tty: true
-          workingDir: /app/src/client
+          volumeMounts:
+            - mountPath: /app/src/cms/media
+              name: media
+          workingDir: /app/src/cms
           env:
+            - name: ENV
+              value: prod
       restartPolicy: Always
       volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: media
 status: {}
 
 ---
@@ -37,16 +45,16 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: builder
+  name: server
   labels:
-    name: builder
+    name: cms
 spec:
   ports:
-    - name: "builder"
-      port: 3000
-      targetPort: 3000
+    - name: "server"
+      port: 1337
+      targetPort: 1337
   selector:
-    name: builder
+    name: cms
   type: NodePort
 status:
   loadBalancer: {}
