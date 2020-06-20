@@ -3,11 +3,13 @@ setup:
 	terraform init && \
 	terraform plan && \
 	terraform apply
+	# The following is done by terraform scripts but incase there are issues
 	# Backup existing kube config
-	cp ~/.kube/config ~/.kube/config.backup
+	# cp ~/.kube/config ~/.kube/config.backup
 	# Get master node settings
-	scp root@MASTER_IP:/etc/kubernetes/admin.conf ~/.kube/config
+	# scp root@MASTER_IP:/etc/kubernetes/admin.conf ~/.kube/config
 	kubectl get nodes
+	kubectl get pods -A
 
 auth:
 	TOKEN=$(kubectl -n kube-system describe secret default| awk '$1=="token:"{print $2}')
