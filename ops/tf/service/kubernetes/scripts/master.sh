@@ -29,5 +29,6 @@ kubectl create clusterrolebinding permissive-binding \
 # at command ,add
 # --allocate-node-cidrs=true
 # --cluster-cidr=10.244.0.0/16
+sed -i 's/- kube-controller-manager/- kube-controller-manager\n    - --allocate-node-cidrs=true\n    - --cluster-cidr=10.244.0.0\/16/' /etc/kubernetes/manifests/kube-controller-manager.yaml
 # then,reload kubelet
-# systemctl restart kubelet
+systemctl restart kubelet
