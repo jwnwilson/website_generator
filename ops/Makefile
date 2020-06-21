@@ -12,7 +12,7 @@ setup:
 	kubectl get pods -A
 
 auth:
-	TOKEN=$(kubectl -n kube-system describe secret default| awk '$1=="token:"{print $2}')
+	$(eval TOKEN=$(shell kubectl -n kube-system describe secret default| awk '$$1=="token:"{print $$2}'))
 	kubectl config set-credentials kubernetes-admin --token="${TOKEN}"
 
 proxy:

@@ -1,9 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server
+  name: cms
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: cms
   strategy:
     type: Recreate
   template:
@@ -12,6 +15,8 @@ spec:
       labels:
         name: cms
     spec:
+      imagePullSecrets:
+        - name: regcred
       containers:
         - name: server
           image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_cms:latest
