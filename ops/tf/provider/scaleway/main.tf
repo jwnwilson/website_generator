@@ -4,29 +4,8 @@ variable "access_key" {}
 
 variable "secret_key" {}
 
-variable "hosts" {
-  default = 0
-}
-
-variable "hostname_format" {
-  type = string
-}
-
 variable "zone" {
   type = string
-}
-
-variable "type" {
-  type = string
-}
-
-variable "image" {
-  type = string
-}
-
-variable "apt_packages" {
-  type    = list
-  default = []
 }
 
 provider "scaleway" {
@@ -37,50 +16,21 @@ provider "scaleway" {
   version         = ">= 1.14"
 }
 
-resource "scaleway_instance_server" "host" {
-  name                = format(var.hostname_format, count.index + 1)
-  type                = var.type
-  image               = data.scaleway_instance_image.image.id
-  enable_dynamic_ip   = true
-
-  count = var.hosts
-
-  connection {
-    user = "root"
-    type = "ssh"
-    timeout = "2m"
-    host = self.public_ip
-    private_key = "${file("~/.ssh/id_rsa")}"
-  }
-
-
-  provisioner "remote-exec" {
-    inline = [
-      "apt-get update",
-      "apt-get install -yq apt-transport-https ufw libelf-dev ${join(" ", var.apt_packages)}",
-      # fix a problem with later wireguard installation
-      "DEBIAN_FRONTEND=noninteractive apt-get install -yq -o Dpkg::Options::=--force-confnew sudo",
-    ]
-  }
+resource "scaleway_k8s_cluster_beta" "cluster" {
+  name = "jwnwilson_cluster"
+  version = "1.18.0"
+  cni = "cilium"
+  enable_dashboard = true
 }
 
-data "scaleway_instance_image" "image" {
-  architecture = "x86_64"
-  name         = var.image
-}
-
-output "hostnames" {
-  value = scaleway_instance_server.host.*.name
-}
-
-output "public_ips" {
-  value = scaleway_instance_server.host.*.public_ip
-}
-
-output "private_ips" {
-  value = scaleway_instance_server.host.*.private_ip
-}
-
-output "private_network_interface" {
-  value = "ens2"
+resource "scaleway_k8s_pool_beta" "pool" {
+  cluster_id = scaleway_k8s_cluster_beta.cluster.id
+  name = "jwnwilson_pool"
+  node_type = "DEV1-M"
+  size = 2
+  min_size = 0
+  max_size = 2
+  autoscaling = true
+  autohealing = true
+  container_runtime = "docker"
 }

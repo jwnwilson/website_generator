@@ -1,5 +1,3 @@
-variable "node_count" {}
-
 variable "access_key" {}
 
 variable "secret_key" {}
@@ -12,8 +10,8 @@ variable "hostnames" {
   type = list
 }
 
-variable "public_ips" {
-  type = list
+variable "wildcard_dns" {
+  type = string
 }
 
 # Configure the AWS Provider
@@ -27,35 +25,11 @@ data "aws_route53_zone" "selected_domain" {
   name = "${var.domain}."
 }
 
-resource "aws_route53_record" "hosts" {
-  count = var.node_count
-
-  zone_id = "${data.aws_route53_zone.selected_domain.zone_id}"
-  name    = "${element(var.hostnames, count.index)}.${data.aws_route53_zone.selected_domain.name}"
-  type    = "A"
-  ttl     = "300"
-  records = ["${element(var.public_ips, count.index)}"]
-}
-
-resource "aws_route53_record" "domain" {
-  zone_id = data.aws_route53_zone.selected_domain.zone_id
-
-  name    = data.aws_route53_zone.selected_domain.name
-  type    = "A"
-  ttl     = "300"
-  records = ["${element(var.public_ips, 0)}"]
-}
-
 resource "aws_route53_record" "wildcard" {
-  depends_on = ["aws_route53_record.domain"]
-
   zone_id = data.aws_route53_zone.selected_domain.zone_id
   name    = "*"
   type    = "CNAME"
   ttl     = "300"
-  records = ["${data.aws_route53_zone.selected_domain.name}"]
+  records = [var.wildcard_dns]
 }
 
-output "domains" {
-  value = "${aws_route53_record.hosts.*.name}"
-}
