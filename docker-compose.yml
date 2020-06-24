@@ -1,6 +1,6 @@
 version: '3'
 services:
-  builder:
+  client:
     image: node:12.18.1
     user: root
     working_dir: /app/src/client

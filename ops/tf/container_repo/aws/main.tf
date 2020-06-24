@@ -1,6 +1,6 @@
 variable "cms_repo" {}
 
-variable "builder_repo" {}
+variable "client_repo" {}
 
 variable "access_key" {}
 
@@ -23,8 +23,8 @@ resource "aws_ecr_repository" "cms" {
   }
 }
 
-resource "aws_ecr_repository" "builder" {
-  name                 = var.builder_repo
+resource "aws_ecr_repository" "client" {
+  name                 = var.client_repo
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

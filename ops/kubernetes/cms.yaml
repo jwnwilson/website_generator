@@ -50,14 +50,14 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: server
+  name: cms
   labels:
     name: cms
 spec:
   ports:
-    - name: "server"
+    - name: "cms"
       port: 1337
-      targetPort: 1337
+      targetPort: 80
   selector:
     name: cms
   type: NodePort

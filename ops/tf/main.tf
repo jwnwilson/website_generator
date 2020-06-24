@@ -21,7 +21,7 @@ module "container_repo" {
   source = "./container_repo/aws"
 
   cms_repo     = var.cms_repo
-  builder_repo  = var.builder_repo
+  client_repo  = var.client_repo
   access_key   = var.aws_access_key
   secret_key   = var.aws_secret_key
   region       = var.aws_region

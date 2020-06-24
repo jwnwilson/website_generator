@@ -27,7 +27,7 @@ down:
 
 docker-setup:
 	docker-compose -f docker-compose.yml run cms npm i
-	docker-compose -f docker-compose.yml run builder npm i
+	docker-compose -f docker-compose.yml run client npm i
 
 # Local Development
 setup:
@@ -48,7 +48,7 @@ endif
 
 build:
 	cd src/cms && docker build -t $(DOCKER_REPO)/website_cms .
-	cd src/client && docker build -t $(DOCKER_REPO)/website_builder .
+	cd src/client && docker build -t $(DOCKER_REPO)/website_client .
 
 # Login to AWS and set a 12 hour access token for the cluster have access to the AWS ECR repo
 docker-login:
@@ -62,5 +62,5 @@ docker-login:
 
 docker-push: docker-login build
 	# Using defined aws env vars
-	docker push $(DOCKER_REPO)/website_builder
+	docker push $(DOCKER_REPO)/website_client
 	docker push $(DOCKER_REPO)/website_cms

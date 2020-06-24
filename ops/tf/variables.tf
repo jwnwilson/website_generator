@@ -223,7 +223,7 @@ variable "cms_repo" {
   default     = "website_cms"
 }
 
-variable "builder_repo" {
+variable "client_repo" {
   description = "Name of container image repository"
-  default     = "website_builder"
+  default     = "website_client"
 }

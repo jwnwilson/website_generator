@@ -21,6 +21,7 @@ resource "scaleway_k8s_cluster_beta" "cluster" {
   version = "1.18.0"
   cni = "cilium"
   enable_dashboard = true
+  ingress = "nginx"
 }
 
 resource "scaleway_k8s_pool_beta" "pool" {

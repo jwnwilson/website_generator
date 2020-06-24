@@ -3,11 +3,8 @@ setup:
 	terraform init && \
 	terraform plan && \
 	terraform apply
-	# The following is done by terraform scripts but incase there are issues
-	# Backup existing kube config
-	# cp ~/.kube/config ~/.kube/config.backup
-	# Get master node settings
-	# scp root@MASTER_IP:/etc/kubernetes/admin.conf ~/.kube/config
+	# Download the kubeconfig from the scaleway site until we setup automated download
+	export KUBECONFIG=~/Downloads/kubeconfig-jwnwilson_cluster.yaml
 	kubectl get nodes
 	kubectl get pods -A
 

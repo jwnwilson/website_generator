@@ -25,6 +25,16 @@ data "aws_route53_zone" "selected_domain" {
   name = "${var.domain}."
 }
 
+resource "aws_route53_record" "root" {
+  zone_id = data.aws_route53_zone.selected_domain.zone_id
+  name    = ""
+  type    = "A"
+  ttl     = "300"
+  # This is a service that redirects to www.domain to get around naked domain
+  # not allowed with cname restriction
+  records = ["174.129.25.170"]
+}
+
 resource "aws_route53_record" "wildcard" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
   name    = "*"

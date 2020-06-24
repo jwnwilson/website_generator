@@ -8,4 +8,4 @@ WORKDIR /app/src/client
 
 RUN rm -rf node_modules/* && npm i
 
-CMD npm run start
+CMD npm run develop
