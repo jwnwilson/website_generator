@@ -5,6 +5,7 @@ module "provider" {
   access_key      = var.scaleway_access_key
   secret_key      = var.scaleway_secret_key
   zone            = var.scaleway_zone
+  node_count      = var.node_count
 }
 
 module "dns" {
