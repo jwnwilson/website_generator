@@ -1,41 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cms
+  name: client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: cms
+      name: client
   strategy:
     type: Recreate
   template:
     metadata:
-      name: server
+      name: client
       labels:
-        name: cms
+        name: client
     spec:
       imagePullSecrets:
         - name: regcred
       containers:
-        - name: server
-          image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_cms:latest
+        - name: client
+          image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_client:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 1337
+            - containerPort: 3000
           resources:
             requests:
-              memory: "500Mi"
+              memory: "250Mi"
               cpu: "0.05"
             limits:
-              memory: "1Gi"
+              memory: "500Gi"
               cpu: "0.35"
           tty: true
-          workingDir: /app/src/cms
+          workingDir: /app/src/client
           env:
-            - name: ENV
-              value: prod
       restartPolicy: Always
+      volumes:
 status: {}
 
 ---
@@ -43,16 +42,16 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: cms
+  name: client
   labels:
-    name: cms
+    name: client
 spec:
   ports:
-    - name: "cms"
-      port: 1337
-      targetPort: 1337
+    - name: "client"
+      port: 3000
+      targetPort: 3000
   selector:
-    name: cms
+    name: client
   type: NodePort
 status:
   loadBalancer: {}

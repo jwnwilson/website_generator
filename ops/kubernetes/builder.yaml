@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client
+  name: builder
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: client
+      name: builder
   strategy:
     type: Recreate
   template:
     metadata:
-      name: client
+      name: builder
       labels:
-        name: client
+        name: builder
     spec:
       imagePullSecrets:
         - name: regcred
@@ -21,6 +21,8 @@ spec:
         - name: client
           image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_client:latest
           imagePullPolicy: Always
+          command: ["npm"]
+          args: ["run", "build-service"]
           ports:
             - containerPort: 3000
           resources:
@@ -42,16 +44,16 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: client
+  name: builder
   labels:
-    name: client
+    name: builder
 spec:
   ports:
-    - name: "client"
+    - name: "builder"
       port: 3000
       targetPort: 3000
   selector:
-    name: client
+    name: builder
   type: NodePort
 status:
   loadBalancer: {}

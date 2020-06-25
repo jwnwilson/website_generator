@@ -8,6 +8,8 @@ variable "zone" {
   type = string
 }
 
+variable "node_count" {}
+
 provider "scaleway" {
   organization_id = var.organization_id
   access_key      = var.access_key
@@ -29,7 +31,7 @@ resource "scaleway_k8s_pool_beta" "pool" {
   name = "jwnwilson_pool"
   node_type = "DEV1-M"
   size = var.node_count
-  min_size = 0
+  min_size = 1
   max_size = var.node_count
   autoscaling = true
   autohealing = true

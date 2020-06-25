@@ -19,7 +19,7 @@ spec:
       paths:
       - backend:
           serviceName: cms
-          servicePort: 80
+          servicePort: 1337
   - host: client.jwnwilson.co.uk
     http:
       paths:
