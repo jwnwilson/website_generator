@@ -22,7 +22,7 @@ services:
     image: node:12.18.1
     user: root
     working_dir: /app/src/cms
-    command: npm run develop
+    command: npm run start
     tty: true
     expose:
       - "1337"
