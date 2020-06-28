@@ -8,6 +8,7 @@ setup:
 	terraform apply
 	# Download the kubeconfig from the scaleway site until we setup automated download
 	export KUBECONFIG=~/Downloads/kubeconfig-jwnwilson_cluster.yaml
+	# Test connection
 	kubectl get nodes
 	kubectl get pods -A
 
