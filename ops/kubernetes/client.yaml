@@ -33,6 +33,10 @@ spec:
           tty: true
           workingDir: /app/src/client
           env:
+            - name: "CMS_USERNAME"
+              value: "jwnwilson"
+            - name: "CMS_PASSWORD"
+              value: "$J9Z9dYi*AP^"
       restartPolicy: Always
       volumes:
 status: {}

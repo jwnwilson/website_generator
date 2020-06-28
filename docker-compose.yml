@@ -4,12 +4,12 @@ services:
     image: node:12.18.1
     user: root
     working_dir: /app/src/client
-    command: npm run build-service
+    command: npm run develop
     tty: true
     expose:
-      - "3000"
+      - "8000"
     ports:
-      - 0.0.0.0:3000:3000
+      - 0.0.0.0:8000:8000
     volumes:
       - .:/app
       - node_modules_client:/app/src/client/node_modules

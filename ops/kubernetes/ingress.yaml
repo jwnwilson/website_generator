@@ -25,4 +25,4 @@ spec:
       paths:
       - backend:
           serviceName: client
-          servicePort: 80
+          servicePort: 3000

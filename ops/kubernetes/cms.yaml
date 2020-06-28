@@ -37,8 +37,8 @@ spec:
           env:
             - name: ENV
               value: prod
-            - name: HOST
-              value: 0.0.0.0
+            - name: NODE_ENV
+              value: production
       restartPolicy: Always
 status: {}
 

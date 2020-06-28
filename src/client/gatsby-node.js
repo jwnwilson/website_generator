@@ -11,6 +11,8 @@ const FormData = require('form-data');
 
 const baseUrl = process.env.SERVER_URL || 'http://cms:1337';
 const overwrite = process.env.SERVER_OVERWRITE || 'http://cms:1337';
+const cmsUser = process.env.CMS_USERNAME || 'admin';
+const cmsPassword = process.env.CMS_PASSWORD || 'Y9bt53cS6nfDfJr';
 const staticUrl = `${baseUrl}`;
 
 
@@ -43,8 +45,8 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     const { createNode } = boundActionCreators;
 
     const form = new FormData();
-    form.append("identifier", "admin");
-    form.append("password", "Y9bt53cS6nfDfJr");
+    form.append("identifier", cmsUser);
+    form.append("password", cmsPassword);
 
     // Authing on api
     let auth = await fetch(
