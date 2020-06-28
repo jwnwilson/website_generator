@@ -6,7 +6,7 @@
       "settings": {
         "client": "postgres",
         "database": "cms",
-        "host": "db",
+        "host": "cms",
         "port": 5432,
         "username": "docker",
         "password": "docker"

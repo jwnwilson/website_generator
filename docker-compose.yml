@@ -23,6 +23,8 @@ services:
     user: root
     working_dir: /app/src/cms
     command: npm run start
+    environment:
+      NODE_ENV: production
     tty: true
     expose:
       - "1337"

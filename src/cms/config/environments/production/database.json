@@ -5,21 +5,12 @@
       "connector": "bookshelf",
       "settings": {
         "client": "postgres",
-        "host": "${process.env.DATABASE_HOST || 'cms'}",
+        "host": "${process.env.DATABASE_HOST || 'db'}",
         "port": "${process.env.DATABASE_PORT || 5432}",
         "database": "${process.env.DATABASE_NAME || 'cms'}",
         "username": "${process.env.DATABASE_USERNAME || 'docker'}",
-        "password": "${process.env.DATABASE_PASSWORD || 'docker'}"
-      },
-      "options": {
-        "debug": true,
-        "pool": {
-          "min": 0,
-          "max": 10,
-          "idleTimeoutMillis": 30000,
-          "createTimeoutMillis": 30000,
-          "acquireTimeoutMillis": 30000
-        }
+        "password": "${process.env.DATABASE_PASSWORD || 'docker'}",
+        "ssl": false
       }
     }
   }
