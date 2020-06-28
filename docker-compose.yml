@@ -6,6 +6,8 @@ services:
     working_dir: /app/src/client
     command: npm run develop
     tty: true
+    environment:
+      ENV: production
     expose:
       - "8000"
     ports:

@@ -22,7 +22,7 @@ spec:
           image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_client:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 8000
           resources:
             requests:
               memory: "250Mi"
@@ -33,9 +33,9 @@ spec:
           tty: true
           workingDir: /app/src/client
           env:
-            - name: "CMS_USERNAME"
+            - name: CMS_USERNAME
               value: "jwnwilson"
-            - name: "CMS_PASSWORD"
+            - name: CMS_PASSWORD
               value: "$J9Z9dYi*AP^"
       restartPolicy: Always
       volumes:
@@ -52,8 +52,8 @@ metadata:
 spec:
   ports:
     - name: "client"
-      port: 3000
-      targetPort: 3000
+      port: 8000
+      targetPort: 8000
   selector:
     name: client
   type: NodePort

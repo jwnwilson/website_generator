@@ -67,7 +67,7 @@ class Portfolio extends React.Component {
               <FontAwesomeIcon  icon={faSearchPlus}/>
             </div>
           </div>
-          <img className="img-fluid" src={staticUrl + project.cover_image.formats.medium.url} alt="" />
+          <img className="img-fluid" src={staticUrl + project.cover_image.url} alt="" />
         </a>
       </div>
     ));
@@ -93,7 +93,7 @@ class Portfolio extends React.Component {
                       {project.title}
                     </h2>
                     <hr className="star-dark mb-5" />
-                    <img className="img-fluid mb-5" src={staticUrl + project.cover_image.formats.medium.url} alt="" />
+                    <img className="img-fluid mb-5" src={staticUrl + project.cover_image.url} alt="" />
                     <p className="mb-5">
                       {project.description}
                     </p>
