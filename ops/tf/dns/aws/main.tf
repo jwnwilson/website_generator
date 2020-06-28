@@ -6,6 +6,10 @@ variable "region" {}
 
 variable "domain" {}
 
+variable "ips" {
+  type = list
+}
+
 variable "hostnames" {
   type = list
 }
@@ -30,9 +34,7 @@ resource "aws_route53_record" "root" {
   name    = ""
   type    = "A"
   ttl     = "300"
-  # This is a service that redirects to www.domain to get around naked domain
-  # not allowed with cname restriction
-  records = ["174.129.25.170"]
+  records = var.ips
 }
 
 resource "aws_route53_record" "wildcard" {

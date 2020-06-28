@@ -1,3 +1,6 @@
+install:
+	brew install terraform helm
+
 setup:
 	cd tf && \
 	terraform init && \
@@ -7,6 +10,11 @@ setup:
 	export KUBECONFIG=~/Downloads/kubeconfig-jwnwilson_cluster.yaml
 	kubectl get nodes
 	kubectl get pods -A
+
+ssl:
+	kubectl create namespace cert-manager
+	kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.3/cert-manager.yaml
+	kubectl apply -f kubernetes/letsencrypt.yaml
 
 auth:
 	$(eval TOKEN=$(shell kubectl -n kube-system describe secret default| awk '$$1=="token:"{print $$2}'))

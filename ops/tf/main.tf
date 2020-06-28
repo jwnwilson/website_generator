@@ -16,6 +16,7 @@ module "dns" {
   domain     = var.domain
   wildcard_dns = module.provider.wildcard_dns
   hostnames  = ["jwnwilson"]
+  ips   = module.provider.ips
 }
 
 module "container_repo" {
