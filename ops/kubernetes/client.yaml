@@ -37,6 +37,10 @@ spec:
               value: "jwnwilson"
             - name: CMS_PASSWORD
               value: "$J9Z9dYi*AP^"
+            - name: SERVER_URL
+              value: http://cms:1337
+            - name: SERVER_OVERWRITE
+              value: http://cms:1337
       restartPolicy: Always
       volumes:
 status: {}

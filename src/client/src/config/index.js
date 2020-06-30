@@ -2,7 +2,12 @@ import dev_settings from './settings.json';
 import prod_settings from './prod.json';
 
 let settings;
-const host = window.location.hostname;
+let host = null;
+
+// Only used in dev mode
+if (typeof window !== `undefined`) {
+    host = window.location.hostname;
+}
 
 console.log('host', host);
 

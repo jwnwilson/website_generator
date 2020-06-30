@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "05/29/2020 11:30:31 PM"
+    "x-generation-date": "06/30/2020 10:39:30 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -23,7 +23,7 @@
   },
   "servers": [
     {
-      "url": "http://cms:1337",
+      "url": "http://localhost:1337",
       "description": "Development server"
     },
     {
@@ -3844,7 +3844,8 @@
       },
       "Page": {
         "required": [
-          "id"
+          "id",
+          "status"
         ],
         "properties": {
           "id": {
@@ -4278,10 +4279,16 @@
                 "type": "object"
               }
             }
+          },
+          "deployed_at": {
+            "type": "datetime"
           }
         }
       },
       "NewPage": {
+        "required": [
+          "status"
+        ],
         "properties": {
           "title": {
             "type": "string"
@@ -4658,6 +4665,20 @@
           },
           "header": {
             "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "draft",
+              "published",
+              "archived"
+            ]
+          },
+          "published_at": {
+            "type": "datetime"
+          },
+          "deployed_at": {
+            "type": "datetime"
           }
         }
       },

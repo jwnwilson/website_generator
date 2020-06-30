@@ -7,7 +7,11 @@
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
-  // beforeSave: async (model, attrs, options) => {},
+  beforeSave: async (model, attrs, options) => {
+    if(model.changed.status == 'published' || model.attributes.status == 'published') {
+      attrs['published_at'] = new Date();
+    }
+  },
 
   // After saving a value.
   // Fired after an `insert` or `update` query.

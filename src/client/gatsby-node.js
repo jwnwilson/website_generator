@@ -9,8 +9,8 @@ const webpack = require("webpack");
 const http = require('http');
 const FormData = require('form-data');
 
-const baseUrl = process.env.SERVER_URL || 'http://cms:1337';
-const overwrite = process.env.SERVER_OVERWRITE || 'http://cms:1337';
+const baseUrl = process.env.SERVER_URL || 'http://localhost:1337';
+const overwrite = process.env.SERVER_OVERWRITE || 'http://localhost:1337';
 const cmsUser = process.env.CMS_USERNAME || 'admin';
 const cmsPassword = process.env.CMS_PASSWORD || 'Y9bt53cS6nfDfJr';
 const staticUrl = `${baseUrl}`;

@@ -36,6 +36,23 @@
     },
     "header": {
       "model": "header"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "published",
+        "archived"
+      ],
+      "required": true,
+      "private": true
+    },
+    "published_at": {
+      "type": "datetime",
+      "private": true
+    },
+    "deployed_at": {
+      "type": "datetime"
     }
   }
 }

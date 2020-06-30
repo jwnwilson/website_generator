@@ -1,15 +1,18 @@
 
 ## ToDo
 
-- Push cms & postgres to cluster
-- Setup jwnwilson.co.uk/cms -> cms
-- Push client to cluster
-- Setup jwnwilson.co.uk/ -> client
-- Connect client -> cms
-- Push builder to clister
-- Connect builder -> cms
+- Add draft / publish / archive to content-types
+- If content moved to published state cron job will publish the new site
 - Setup auto deployment of static content
-- Setup a secure login
+- Setup an AWS service account to push to S3 bucket
+- Add builder to cluster
+- Connect builder -> cms
+- Add deploy button to cms
+
+
+
+- Setup sentry on client
+
 
 ## Deploying new versions
 
