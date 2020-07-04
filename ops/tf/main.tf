@@ -29,3 +29,9 @@ module "container_repo" {
   secret_key   = var.aws_secret_key
   region       = var.aws_region
 }
+
+module "deploy" {
+  source = "./deploy/aws"
+
+  site_name    = var.deploy_jwnwilson
+}

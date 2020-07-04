@@ -4,7 +4,7 @@ const Options = awsCli.Options;
 const Aws = awsCli.Aws;
 const region = 'us-west-2';
 const staticFolder = '../client/public';
-const s3Bucket = "jwnwilson.co.uk";
+const s3Bucket = process.env.SITE_NAME || "jwnwilson.co.uk";
 const options = new Options(
 /* accessKey */ process.env.ACCESS_KEY,
 /* secretKey */ process.env.SECRET_KEY,

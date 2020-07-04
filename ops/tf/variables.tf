@@ -64,3 +64,10 @@ variable "nginx_repo" {
   description = "Name of container image repository"
   default     = "website_nginx"
 }
+
+# Deployment vars
+
+variable "deploy_jwnwilson" {
+  description = "deployment url for jwnwilson.co.uk"
+  default     = "jwnwilson.co.uk"
+}
