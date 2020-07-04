@@ -15,11 +15,13 @@
     "@loadable/component": "^5.10.2",
     "@loadable/webpack-plugin": "^5.7.1",
     "await-exec": "^0.1.2",
+    "aws-cli-js": "^2.0.6",
     "babel-jest": "^24.8.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-wrap-in-js": "^1.1.1",
     "bootstrap": "^4.4.1",
     "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "form-data": "^3.0.0",
     "gatsby": "^2.13.45",
@@ -75,7 +77,6 @@
     "test": "./node_modules/.bin/jest --env=jsdom",
     "test-i": "node --inspect-brk ./node_modules/.bin/jest --runInBand --env=jsdom",
     "lint": "./node_modules/.bin/eslint src",
-    "build-service": "DEPLOY=true node src/builder.js",
     "deploy": "node src/deploy.js"
   },
   "repository": {

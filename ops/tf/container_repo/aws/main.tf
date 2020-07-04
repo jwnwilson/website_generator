@@ -2,6 +2,8 @@ variable "cms_repo" {}
 
 variable "client_repo" {}
 
+variable "nginx_repo" {}
+
 variable "access_key" {}
 
 variable "secret_key" {}
@@ -25,6 +27,15 @@ resource "aws_ecr_repository" "cms" {
 
 resource "aws_ecr_repository" "client" {
   name                 = var.client_repo
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+}
+
+resource "aws_ecr_repository" "nginx" {
+  name                 = var.nginx_repo
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {

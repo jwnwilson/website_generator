@@ -18,7 +18,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: echo
+          serviceName: nginx
           servicePort: 80
   - host: cms.jwnwilson.co.uk
     http:
@@ -26,7 +26,7 @@ spec:
       - backend:
           serviceName: cms
           servicePort: 1337
-  - host: client.jwnwilson.co.uk
+  - host: preview.jwnwilson.co.uk
     http:
       paths:
       - backend:

@@ -4,7 +4,7 @@ variable "node_count" {
 }
 
 variable "domain" {
-  default = "jwnwilson.co.uk"
+  default = "jwnwilson-kube.co.uk"
 }
 
 /* scaleway */
@@ -58,4 +58,9 @@ variable "cms_repo" {
 variable "client_repo" {
   description = "Name of container image repository"
   default     = "website_client"
+}
+
+variable "nginx_repo" {
+  description = "Name of container image repository"
+  default     = "website_nginx"
 }

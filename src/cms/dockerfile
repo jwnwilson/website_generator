@@ -7,5 +7,6 @@ COPY . /app
 WORKDIR /app/src/cms
 
 RUN rm -rf node_modules/* && npm i
+RUN cd ../client && rm -rf node_modules/* && npm i
 
 CMD NODE_ENV=production npm run start

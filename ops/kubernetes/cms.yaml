@@ -39,7 +39,14 @@ spec:
               value: prod
             - name: NODE_ENV
               value: production
+          volumeMounts:
+            - mountPath: /app/src/cms/public
+              name: public
       restartPolicy: Always
+      volumes:
+        - name: public
+          persistentVolumeClaim:
+            claimName: public-claim
 status: {}
 
 ---
@@ -60,3 +67,19 @@ spec:
   type: NodePort
 status:
   loadBalancer: {}
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: public-claim
+  labels:
+    app: cms
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi

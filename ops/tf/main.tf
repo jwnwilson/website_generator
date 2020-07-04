@@ -24,6 +24,7 @@ module "container_repo" {
 
   cms_repo     = var.cms_repo
   client_repo  = var.client_repo
+  nginx_repo   = var.nginx_repo
   access_key   = var.aws_access_key
   secret_key   = var.aws_secret_key
   region       = var.aws_region
