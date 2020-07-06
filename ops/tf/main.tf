@@ -34,4 +34,7 @@ module "deploy" {
   source = "./deploy/aws"
 
   site_name    = var.deploy_jwnwilson
+  access_key   = var.aws_access_key
+  secret_key   = var.aws_secret_key
+  region       = var.aws_region
 }
