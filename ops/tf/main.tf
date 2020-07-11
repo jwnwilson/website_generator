@@ -15,7 +15,6 @@ module "dns" {
   region     = var.aws_region
   domain     = var.domain
   wildcard_dns = module.provider.wildcard_dns
-  hostnames  = ["jwnwilson"]
   ips        = module.provider.ips
 }
 

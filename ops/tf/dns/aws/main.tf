@@ -10,9 +10,6 @@ variable "ips" {
   type = list
 }
 
-variable "hostnames" {
-  type = list
-}
 
 variable "wildcard_dns" {
   type = string
