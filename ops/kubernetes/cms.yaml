@@ -22,7 +22,7 @@ spec:
           image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_cms:latest
           imagePullPolicy: Always
           command: ["npm"]
-          args: ["run", "start"]
+          args: ["run", "develop"]
           ports:
             - containerPort: 1337
           resources:
@@ -39,14 +39,23 @@ spec:
               value: prod
             - name: NODE_ENV
               value: production
+            - name: ACCESS_KEY
+              value: AKIAZ2RIRVGEFTXHOXFW
+            - name: SECRET_KEY
+              value: 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
           volumeMounts:
             - mountPath: /app/src/cms/public
               name: public
+            - mountPath: /app/src/cms/.tmp/
+              name: sqlite
       restartPolicy: Always
       volumes:
         - name: public
           persistentVolumeClaim:
             claimName: public-claim
+        - name: sqlite
+          persistentVolumeClaim:
+            claimName: sqlite-claim
 status: {}
 
 ---
@@ -74,6 +83,22 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: public-claim
+  labels:
+    app: cms
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sqlite-claim
   labels:
     app: cms
 spec:

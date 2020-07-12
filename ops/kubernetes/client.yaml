@@ -41,6 +41,8 @@ spec:
               value: http://cms:1337
             - name: SERVER_OVERWRITE
               value: http://cms:1337
+            - name: ENABLE_GATSBY_REFRESH_ENDPOINT
+              value: "1"
       restartPolicy: Always
       volumes:
 status: {}

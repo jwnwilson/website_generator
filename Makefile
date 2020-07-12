@@ -47,8 +47,8 @@ endif
 # Deployment
 
 build:
-	# cd src/cms && docker build -t $(DOCKER_REPO)/website_cms .
-	# cd src/client && docker build -t $(DOCKER_REPO)/website_client .
+	cd src/cms && docker build -t $(DOCKER_REPO)/website_cms .
+	cd src/client && docker build -t $(DOCKER_REPO)/website_client .
 	cd ops/nginx && docker build -t $(DOCKER_REPO)/website_nginx .
 
 # Login to AWS and set a 12 hour access token for the cluster have access to the AWS ECR repo
@@ -63,6 +63,6 @@ docker-login:
 
 docker-push: docker-login build
 	# Using defined aws env vars
-	# docker push $(DOCKER_REPO)/website_client
-	# docker push $(DOCKER_REPO)/website_cms
+	docker push $(DOCKER_REPO)/website_client
+	docker push $(DOCKER_REPO)/website_cms
 	docker push $(DOCKER_REPO)/website_nginx
