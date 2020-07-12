@@ -44,18 +44,13 @@ spec:
             - name: SECRET_KEY
               value: FM+Nm9WJxjx6xy/SfyXpQpPeRvmckg5wAYLV4EPG
           volumeMounts:
-            - mountPath: /app/src/cms/public
+            - mountPath: /app/src/cms/public/uploads
               name: public
-            - mountPath: /app/src/cms/.tmp/
-              name: sqlite
       restartPolicy: Always
       volumes:
         - name: public
           persistentVolumeClaim:
             claimName: public-claim
-        - name: sqlite
-          persistentVolumeClaim:
-            claimName: sqlite-claim
 status: {}
 
 ---
@@ -83,22 +78,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: public-claim
-  labels:
-    app: cms
-spec:
-  accessModes:
-    - ReadWriteOnce
-  volumeMode: Filesystem
-  resources:
-    requests:
-      storage: 1Gi
-
----
-
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: sqlite-claim
   labels:
     app: cms
 spec:
