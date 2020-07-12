@@ -1,4 +1,4 @@
-{
+module.exports = {
   "timeout": 3000,
   "load": {
     "before": [],
