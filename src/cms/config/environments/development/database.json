@@ -2,16 +2,18 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "bookshelf",
+      "connector": "mongoose",
       "settings": {
-        "client": "postgres",
         "database": "cms",
-        "host": "localhost",
-        "port": 5432,
+        "host": "127.0.0.1",
+        "srv": false,
+        "port": 27017,
         "username": "docker",
         "password": "docker"
       },
-      "options": {}
+      "options": {
+        "authenticationDatabase": ""
+      }
     }
   }
 }

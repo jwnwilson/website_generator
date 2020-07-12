@@ -2,11 +2,10 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "bookshelf",
+      "connector": "mongoose",
       "settings": {
-        "client": "postgres",
-        "host": "${process.env.DATABASE_HOST || 'cms'}",
-        "port": "${process.env.DATABASE_PORT || 5432}",
+        "host": "${process.env.DATABASE_HOST || 'db'}",
+        "port": "${process.env.DATABASE_PORT || 27017}",
         "database": "${process.env.DATABASE_NAME || 'cms'}",
         "username": "${process.env.DATABASE_USERNAME || 'docker'}",
         "password": "${process.env.DATABASE_PASSWORD || 'docker'}"
@@ -15,3 +14,4 @@
     }
   }
 }
+

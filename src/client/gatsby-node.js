@@ -61,6 +61,8 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     const resp = await fetch(`${staticUrl}/pages`, {headers: {Authorization: `bearer ${jwt.jwt}`}});
     const pages = await resp.json();
 
+    console.log("pages", pages);
+
     return await Promise.all(pages.map(async page => {
         console.log('Loading page: ', `${page.name}`);
         // Add list of fields to pull down to node
@@ -101,7 +103,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             }
           }
         `  ).then(result => {
-            if (result.data.allPage === undefined) {
+            if (result.data ===undefined || result.data.allPage === undefined) {
               console.log("No result from API, aborting!");
               resolve();
               return;

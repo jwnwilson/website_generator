@@ -2,7 +2,7 @@ FROM node:12.18.1
 MAINTAINER Noel Wilson <jwnwilson@gmail.com>
 
 # Add project files to DIR
-COPY . /app
+COPY . /app/src/client
 
 WORKDIR /app/src/client
 

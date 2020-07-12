@@ -8,6 +8,9 @@ services:
     tty: true
     environment:
       ENV: production
+      ENABLE_GATSBY_REFRESH_ENDPOINT: 1
+      SERVER_URL: http://cms:1337
+      SERVER_OVERWRITE: http://cms:1337
     expose:
       - "8000"
     ports:
@@ -24,7 +27,7 @@ services:
     image: node:12.18.1
     user: root
     working_dir: /app/src/cms
-    command: npm run start
+    command: npm run develop
     environment:
       NODE_ENV: production
     tty: true
@@ -41,20 +44,19 @@ services:
       - db
 
   db:
-    image: postgres
+    image: mongo
     restart: always
     environment:
-      POSTGRES_USER: docker
-      POSTGRES_PASSWORD: docker
-      POSTGRES_DB: cms
-      DB_PORT: 5432
-      PGDATA: /var/lib/postgresql/data/db/
+      MONGO_INITDB_DATABASE: cms
+      MONGO_INITDB_ROOT_USERNAME: docker
+      MONGO_INITDB_ROOT_PASSWORD: docker
     ports:
-      - 0.0.0.0:5432:5432
+      - 0.0.0.0:27017-27019:27017-27019
     expose:
-      - "5432"
+      - "27017-27019"
     volumes:
-      - db:/var/lib/postgresql/data/db
+      - ./ops/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - db:/data/db
 
 volumes:
   node_modules_cms:
