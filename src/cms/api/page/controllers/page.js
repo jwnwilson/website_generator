@@ -14,7 +14,7 @@ module.exports = {
 
       ctx.query = {
         ...ctx.query,
-        status: 'published',
+        status_nin: ['archived'],
       };
 
 

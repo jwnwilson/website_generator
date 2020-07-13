@@ -33,6 +33,28 @@ resource "aws_acm_certificate" "cert" {
   }
 }
 
+resource "aws_s3_bucket_policy" "site_policy" {
+  bucket = "${aws_s3_bucket.site_bucket.id}"
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1594656855742",
+    "Statement": [
+        {
+            "Sid": "Stmt1594656849271",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::jwnwilson.co.uk/*"
+        }
+    ]
+}
+POLICY
+}
+
 # s3 Bucket with Website settings
 resource "aws_s3_bucket" "site_bucket" {
   bucket = "${var.site_name}"

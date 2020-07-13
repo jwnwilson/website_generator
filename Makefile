@@ -47,6 +47,8 @@ endif
 # Deployment
 
 build:
+	rm -rf src/client/.cache
+	rm -rf src/cms/.cache
 	docker build -t $(DOCKER_REPO)/website_cms .
 	cd src/client && docker build -t $(DOCKER_REPO)/website_client .
 	cd ops/nginx && docker build -t $(DOCKER_REPO)/website_nginx .

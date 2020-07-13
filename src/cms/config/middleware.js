@@ -12,13 +12,9 @@ module.exports = {
         path: './public',
         maxAge: 60000,
       },
-      "favicon": {
-        "path": "favicon.ico",
-        "maxAge": 86400000
+      favicon: {
+        path: "favicon.ico",
+        maxAge: 86400000
       },
-      "public": {
-        "path": "./public",
-        "maxAge": 60000
-      }
     },
   };
