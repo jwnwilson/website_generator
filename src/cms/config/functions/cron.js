@@ -57,7 +57,6 @@ const build_if_published = async () => {
 
   // Update values before deploying to avoid re-deploy
   let results = await Promise.all(draftPageToPublish.map(async page => {
-    return true;
     let updated = false;
     if (page.deployed_at === null || new Date(page.deployed_at) < five_min_ago) {
       updated = true;
