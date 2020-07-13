@@ -19,10 +19,17 @@ spec:
         - name: regcred
       containers:
         - name: server
+          resources:
+            limits:
+              cpu: 0.5
+              memory: "500Mi"
+            requests:
+              cpu: 0.25
+              memory: "500Mi"
           image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_cms:latest
           imagePullPolicy: Always
           command: ["npm"]
-          args: ["run", "develop"]
+          args: ["run", "start"]
           ports:
             - containerPort: 1337
           resources:
@@ -43,6 +50,12 @@ spec:
               value: AKIAZ2RIRVGEFTXHOXFW
             - name: SECRET_KEY
               value: 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
+            - name: DATABASE_HOST
+              value: db
+            - name: CMS_USERNAME
+              value: jwnwilson
+            - name: CMS_PASSWORD
+              value: $J9Z9dYi*AP^
           volumeMounts:
             - mountPath: /app/src/cms/public/uploads
               name: public

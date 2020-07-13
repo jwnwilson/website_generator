@@ -61,7 +61,7 @@ const build_if_published = async () => {
     let updated = false;
     if (page.deployed_at === null || new Date(page.deployed_at) < five_min_ago) {
       updated = true;
-      // await strapi.api.page.services.page.update({ id: page.id }, { deployed_at: new Date() });
+      await strapi.api.page.services.page.update({ id: page.id }, { deployed_at: new Date() });
     }
     return updated;
   }));

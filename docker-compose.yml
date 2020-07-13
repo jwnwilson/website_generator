@@ -30,6 +30,7 @@ services:
     command: npm run develop
     environment:
       NODE_ENV: production
+      DATABASE_HOST: db
     tty: true
     expose:
       - "1337"

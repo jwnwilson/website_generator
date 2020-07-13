@@ -68,3 +68,6 @@ docker-push: docker-login build
 	docker push $(DOCKER_REPO)/website_client
 	docker push $(DOCKER_REPO)/website_cms
 	docker push $(DOCKER_REPO)/website_nginx
+
+refresh-preview:
+	curl -X POST https://preview.jwnwilson-kube.co.uk/__refresh
