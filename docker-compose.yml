@@ -7,7 +7,7 @@ services:
     command: npm run develop
     tty: true
     environment:
-      ENV: production
+      ENV: development
       ENABLE_GATSBY_REFRESH_ENDPOINT: 1
       SERVER_URL: http://cms:1337
       SERVER_OVERWRITE: http://cms:1337
@@ -29,7 +29,7 @@ services:
     working_dir: /app/src/cms
     command: npm run develop
     environment:
-      NODE_ENV: production
+      NODE_ENV: development
       DATABASE_HOST: db
     tty: true
     expose:

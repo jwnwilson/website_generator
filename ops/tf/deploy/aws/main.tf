@@ -64,6 +64,35 @@ resource "aws_s3_bucket" "site_bucket" {
     error_document = "error.html"
   }
 }
+
+resource "aws_s3_bucket_policy" "static_policy" {
+  bucket = "${aws_s3_bucket.static.id}"
+
+  policy = <<POLICY
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1594656855742",
+    "Statement": [
+        {
+            "Sid": "Stmt1594656849271",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::jwnwilson.co.uk/*"
+        }
+    ]
+}
+POLICY
+}
+
+# s3 Bucket with Website settings
+resource "aws_s3_bucket" "static" {
+  bucket = "static-${var.site_name}"
+  acl = "public-read"
+}
+
 # Route53 Domain Name & Resource Records
 resource "aws_route53_zone" "site_zone" {
   name = "${var.site_name}"
