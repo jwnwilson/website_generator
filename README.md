@@ -1,11 +1,10 @@
 
 ## ToDo
 
-- Setup new cluster domain jwnwilson-kube.co.uk
-- Setup static S3 bucket + cloudfront for deployed site
-- Add restricted service account to cluster / env vars
-- Test deployment cluster -> S3
-- Fix static site
+- Setup image download -> S3 hosting
+
+- Add testing to CMS
+- Add testing to Client
 
 - Setup multi-site deployment:
   - New cms -> database per site
