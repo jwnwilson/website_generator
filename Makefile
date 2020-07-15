@@ -29,6 +29,12 @@ docker-setup:
 	docker-compose -f docker-compose.yml run cms npm i
 	docker-compose -f docker-compose.yml run client npm i
 
+cms:
+	cd src/cms && NODE_ENV=development npm run develop
+
+client:
+	cd src/client && NODE_ENV=development npm run develop
+
 # Local Development
 setup:
 	cd src/client && npm i
