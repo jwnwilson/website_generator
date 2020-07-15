@@ -8,11 +8,8 @@ import {
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faSearchPlus, faExternalLinkAlt, faWindowClose } from '@fortawesome/free-solid-svg-icons'
-
-
 import { Link } from "gatsby"
-import { staticUrl } from '../../config/settings';
-
+import config from '../../config';
 import './Portfolio.css';
 
 Modal.setAppElement('#___gatsby');
@@ -68,6 +65,7 @@ class Portfolio extends React.Component {
   }
 
   render() {
+    console.log("Static url", config.staticUrl);
     const { data } = this.props;
     const portfolioItems = data.projects.map((project, index) => (
       <div key={index} className="col-md-6 col-lg-4">
@@ -77,7 +75,7 @@ class Portfolio extends React.Component {
               <FontAwesomeIcon icon={faSearchPlus} />
             </div>
           </div>
-          <img className="img-fluid" src={staticUrl + project.cover_image.url} alt="" />
+          <img className="img-fluid" src={config.staticUrl + project.cover_image.url} alt="" />
         </a>
       </div>
     ));
@@ -111,7 +109,7 @@ class Portfolio extends React.Component {
                   <div className="col">
                     <div className="row">
                       <div className="col-6">
-                        <img className="img-fluid mb-5" src={staticUrl + project.cover_image.url} alt="" />
+                        <img className="img-fluid mb-5" src={config.staticUrl + project.cover_image.url} alt="" />
                       </div>
                       <div className="col-6">
                         <ReactMarkdown source={project.description} /> 

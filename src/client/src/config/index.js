@@ -11,11 +11,13 @@ if (typeof window !== `undefined`) {
 
 console.log('host', host);
 
-if (host == "localhost") {
+if (host === "localhost") {
     settings = dev_settings;
 }
 else {
     settings = prod_settings;
 }
+
+console.log('settings', settings);
 
 export default settings;
