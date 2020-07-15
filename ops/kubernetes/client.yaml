@@ -19,8 +19,11 @@ spec:
         - name: regcred
       containers:
         - name: client
-          image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_client:latest
+          image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_cms:latest
           imagePullPolicy: Always
+          workingDir: /app/src/client
+          command: ["npm"]
+          args: ["run", "develop"]
           ports:
             - containerPort: 8000
           resources:

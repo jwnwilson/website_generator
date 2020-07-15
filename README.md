@@ -1,7 +1,7 @@
 
 ## ToDo
 
-- Setup image download -> S3 hosting
+- Store S3 in same S3 bucket as site to reduce buckets and CDN
 
 - Add testing to CMS
 - Add testing to Client
