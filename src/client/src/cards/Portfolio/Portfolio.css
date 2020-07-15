@@ -2,6 +2,10 @@ bg-white{
     background:#ffffff;
 }
 
+.portfolio-modal-close {
+    float: right;
+}
+
 /* Magnific Popup CSS */
 .mfp-bg {
     top: 0;

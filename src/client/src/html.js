@@ -5,12 +5,17 @@ export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
+        <title>Noel Wilson</title>
+        <meta name="author" content="Noel Wilson" />
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <meta name="description" content="Noel Wilson, fullstack developer"></meta>
+        <meta name="keywords" content="noel, wilson, noel wilson, python, javascript, django, web, developer, software, engineer"></meta>
+        <meta name="author" content="Noel Wilson"></meta>
         {props.headComponents}
         {/* <link 
           rel="stylesheet" 

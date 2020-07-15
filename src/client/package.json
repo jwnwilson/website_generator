@@ -73,7 +73,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop --host=0.0.0.0",
+    "develop": "ENABLE_GATSBY_REFRESH_ENDPOINT=1 gatsby develop --host=0.0.0.0",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",

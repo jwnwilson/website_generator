@@ -67,5 +67,10 @@ docker-push: docker-login build
 	docker push $(DOCKER_REPO)/website_cms
 	docker push $(DOCKER_REPO)/website_nginx
 
+# This is handled in the strapi webhooks automatically
 refresh-preview:
 	curl -X POST https://preview.jwnwilson-kube.co.uk/__refresh
+
+# This needs to be moved to terraform
+refresh-cdn:
+	aws cloudfront create-invalidation --distribution-id xxxxxx --paths "/*"

@@ -1,6 +1,8 @@
 
 ## ToDo
 
+- Set portfolio as pop up only
+- Add SEO meta tags to my site
 - Store S3 in same S3 bucket as site to reduce buckets and CDN
 
 - Add testing to CMS

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
+
 import {
   NavLink,
 } from 'react-router-dom';
@@ -18,7 +20,15 @@ Modal.setAppElement('#___gatsby');
 const customStyles = {
   overlay: {
     zIndex: 1000,
-    boxShadow: "0px 0px 15px 0px rgba(0,0,0,0.75)"
+    boxShadow: "0px 0px 15px 0px rgba(0,0,0,0.75)",
+  },
+  content: {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
   }
 };
 
@@ -41,7 +51,7 @@ class Portfolio extends React.Component {
   componentDidMount() {
   }
 
-  openModal = () =>  {
+  openModal = () => {
     this.setIsOpen();
   }
 
@@ -64,14 +74,14 @@ class Portfolio extends React.Component {
         <a className="portfolio-item d-block mx-auto" onClick={() => this.showProjectModal(index)}>
           <div className="portfolio-item-caption d-flex position-absolute h-100 w-100">
             <div className="portfolio-item-caption-content my-auto w-100 text-center text-white">
-              <FontAwesomeIcon  icon={faSearchPlus}/>
+              <FontAwesomeIcon icon={faSearchPlus} />
             </div>
           </div>
           <img className="img-fluid" src={staticUrl + project.cover_image.url} alt="" />
         </a>
       </div>
     ));
-  
+
     const modals = data.projects.map((project, index) => {
       const url = project.url;
       return (
@@ -83,30 +93,39 @@ class Portfolio extends React.Component {
           style={customStyles}
         >
           <div className="modal-container" id={'portfolio-modal-' + index}>
-              <a className="close-button d-none d-md-block portfolio-modal-close" href="#">
-                <i className="fa fa-3x fa-times" />
-              </a>
-              <div className="container text-center">
+            <span className="btn btn-primary btn-lg rounded-pill portfolio-modal-close" onClick={this.closeModal}>
+              <FontAwesomeIcon icon={faWindowClose} className="mr-2" />
+                Close
+              </span>
+          <div className="row">
+              <div className="col text-center">
+                <h2 className="text-secondary text-uppercase mb-0">
+                  {project.title}
+                </h2>
+                <hr />
+              </div>
+            </div>
+            <div className="center-vertical">
+              <div className="container">
                 <div className="row">
-                  <div className="col-lg-8 mx-auto">
-                    <h2 className="text-secondary text-uppercase mb-0">
-                      {project.title}
-                    </h2>
-                    <hr className="star-dark mb-5" />
-                    <img className="img-fluid mb-5" src={staticUrl + project.cover_image.url} alt="" />
-                    <p className="mb-5">
-                      {project.description}
-                    </p>
-                    <Link className="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss mr-2" to={url}>
-                      <FontAwesomeIcon  icon={faExternalLinkAlt} className="mr-2"/>
-                      Details
-                    </Link>
-                    <span className="btn btn-primary btn-lg rounded-pill portfolio-modal-close" onClick={this.closeModal}>
-                      <FontAwesomeIcon  icon={faWindowClose} className="mr-2"/>
-                      Close
-                    </span>
+                  <div className="col">
+                    <div className="row">
+                      <div className="col-6">
+                        <img className="img-fluid mb-5" src={staticUrl + project.cover_image.url} alt="" />
+                      </div>
+                      <div className="col-6">
+                        <ReactMarkdown source={project.description} /> 
+                      </div>
+                    </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="row center-container">
+              <a className="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss mr-2" href={url}>
+                <FontAwesomeIcon icon={faExternalLinkAlt} className="mr-2" />
+                Check it out
+              </a>
             </div>
           </div>
         </Modal>
@@ -120,19 +139,19 @@ class Portfolio extends React.Component {
             <h2 className="text-center text-uppercase text-secondary mb-0">
               Portfolio
             </h2>
-            <div style={{textAlign: "center"}}>
+            <div style={{ textAlign: "center" }}>
               <hr className="star-dark" />
               <div className="star-dark-star">
-                <FontAwesomeIcon  icon={faStar}/>
+                <FontAwesomeIcon icon={faStar} />
               </div>
             </div>
-            
+
             <div className="row">
               {portfolioItems}
             </div>
           </div>
         </section>
-        {modals}        
+        {modals}
       </div>
     );
   }
