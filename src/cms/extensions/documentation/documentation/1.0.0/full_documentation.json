@@ -2,24 +2,29 @@
   "openapi": "3.0.0",
   "info": {
     "version": "1.0.0",
-    "title": "DOCUMENTATION",
+    "title": "Jwnwilson Documentation",
     "description": "",
     "termsOfService": "YOUR_TERMS_OF_SERVICE_URL",
     "contact": {
-      "name": "TEAM",
-      "email": "contact-email@something.io",
-      "url": "mywebsite.io"
+      "name": "Noel Wilson",
+      "email": "jwnwilson@hotmail.co.uk",
+      "url": "https://jwnwilson.co.uk"
     },
     "license": {
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/12/2020 11:23:12 PM"
+    "x-generation-date": "07/16/2020 5:15:18 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
     "showGeneratedFiles": true,
-    "generateDefaultResponse": true
+    "generateDefaultResponse": true,
+    "pluginsForWhichToGenerateDoc": [
+      "email",
+      "upload",
+      "users-permissions"
+    ]
   },
   "servers": [
     {
@@ -28,16 +33,12 @@
     },
     {
       "url": "https://cms.jwnwilson-kube.co.uk",
-      "description": "Staging server"
-    },
-    {
-      "url": "https://cms.jwnwilson-kube.co.uk",
       "description": "Production server"
     }
   ],
   "externalDocs": {
     "description": "Find out more",
-    "url": "https://strapi.io/documentation/v3.x/"
+    "url": "https://strapi.io/documentation/"
   },
   "security": [
     {
