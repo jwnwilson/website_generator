@@ -43,6 +43,7 @@ class Portfolio extends React.Component {
     this.setState({
       modalIsOpen: true
     });
+    console.log("modalIsOpen", this.modalIsOpen);
   }
 
   componentDidMount() {
@@ -66,6 +67,7 @@ class Portfolio extends React.Component {
 
   render() {
     console.log("Static url", config.staticUrl);
+    console.log("modalIsOpen", this.modalIsOpen);
     const { data } = this.props;
     const portfolioItems = data.projects.map((project, index) => (
       <div key={index} className="col-md-6 col-lg-4">
