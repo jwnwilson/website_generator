@@ -27,11 +27,11 @@
       "description": "Development server"
     },
     {
-      "url": "YOUR_STAGING_SERVER",
+      "url": "https://cms.jwnwilson-kube.co.uk",
       "description": "Staging server"
     },
     {
-      "url": "YOUR_PRODUCTION_SERVER",
+      "url": "https://cms.jwnwilson-kube.co.uk",
       "description": "Production server"
     }
   ],

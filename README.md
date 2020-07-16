@@ -2,6 +2,7 @@
 ## ToDo
 
 - set height to 100vh and fix menu selector
+- Add downward arrow to Intro card
 - Add SEO meta tags to my site
 - Store S3 in same S3 bucket as site to reduce buckets and CDN
 - Setup image versioning
