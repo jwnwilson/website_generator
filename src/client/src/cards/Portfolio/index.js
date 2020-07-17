@@ -134,7 +134,7 @@ class Portfolio extends React.Component {
 
     return (
       <div className="bg-white">
-        <section className="portfolio " id="portfolio" style="height: 100%">
+        <section className="portfolio " id="portfolio" style={{height: "100%"}}>
           <div className="container">
             <h2 className="text-center text-uppercase text-secondary mb-0">
               Portfolio
