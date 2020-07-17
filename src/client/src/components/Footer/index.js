@@ -42,7 +42,7 @@ class Footer extends React.Component {
                         </a>
                       </li>
                       <li className="list-inline-item">
-                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.instagram_url}>
+                        <a className="btn btn-outline-light btn-social text-center rounded-circle" href={data.insta_url}>
                           <FontAwesomeIcon  icon={faInstagram}/>
                         </a>
                       </li>
