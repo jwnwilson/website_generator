@@ -1,22 +1,27 @@
 
 ## ToDo
 
-- set height to 100vh and fix menu selector
+- Setup mail server for static site
+- Finish Current site
 - Add downward arrow to Intro card
+
 - Add SEO meta tags to my site
 - Store S3 in same S3 bucket as site to reduce buckets and CDN
-- Setup image versioning
 
 - Add testing to CMS
 - Add testing to Client
 
 - Setup multi-site deployment:
-  - New cms -> database per site
-  - Set S3 bucket settings in env vars
+  - Add Site model with S3 bucket name
+  - Link Pages to a Site
+  - Add Pages filter by Site
+  - When publishing get all pages by site
+  - Get S3 bucket from site
   - new site will require:
-    - New cms container with new env vars
-    - New DB env vars
-    - New S3 bucket env vars
     - New S3 bucket terraform settings
+    - Terraform for new subdomain DNS to S3 bucket
+
+- Scale out client
+- Create node package for new projects to import
 
 - Setup sentry on client

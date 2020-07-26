@@ -48,7 +48,7 @@ class Header extends React.Component {
       if (window.location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && window.location.hostname === this.hostname) {
         let target = $(this.hash);
         let expanded = $("#navbarResponsive")[0].className.indexOf("show") > -1;
-        let offset = expanded ? 235 : 50;
+        let offset = expanded ? 72 : 50;
         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
         if (target.length) {
           $('html, body').animate({
