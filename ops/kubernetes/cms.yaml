@@ -24,21 +24,14 @@ spec:
               cpu: 1
               memory: "2000Mi"
             requests:
-              cpu: 1
-              memory: "2000Mi"
+              cpu: 0.5
+              memory: "1000Mi"
           image: 675468650888.dkr.ecr.eu-west-1.amazonaws.com/website_cms:latest
           imagePullPolicy: Always
           command: ["npm"]
           args: ["run", "start"]
           ports:
             - containerPort: 1337
-          resources:
-            requests:
-              memory: "500Mi"
-              cpu: "0.05"
-            limits:
-              memory: "1Gi"
-              cpu: "0.35"
           tty: true
           workingDir: /app/src/cms
           env:
