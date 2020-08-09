@@ -12,6 +12,7 @@ spec:
     - jwnwilson-kube.co.uk
     - cms.jwnwilson-kube.co.uk
     - preview.jwnwilson-kube.co.uk
+    - mail.jwnwilson-kube.co.uk
     secretName: jwnwilson-kube-co-uk-tls
   rules:
   - host: jwnwilson-kube.co.uk
@@ -32,3 +33,9 @@ spec:
       - backend:
           serviceName: client
           servicePort: 8000
+  - host: mail.jwnwilson-kube.co.uk
+    http:
+      paths:
+      - backend:
+          serviceName: mail
+          servicePort: 5000
