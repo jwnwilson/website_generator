@@ -2,7 +2,7 @@ import React from 'react';
 import utils from '../../utilities';
 import './ContactMe.css';
 
-const mailApiUrlDefault = 'https://mail.jwnwilson-kube.ci.uk/send';
+const mailApiUrlDefault = 'https://mail.jwnwilson-kube.co.uk/send';
 
 class ContactMe extends React.Component {
   constructor(props) {
@@ -27,16 +27,14 @@ class ContactMe extends React.Component {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-      }).then(
-    	(response) => (response.json())
-       ).then((response)=>{
-      if (response.status === 'success'){
-        alert("E-mail Sent I'll be in touch soon!"); 
-        this.resetForm();
-      }
-    }).catch(err => {
-      alert("Sorry Message failed to send, please e-mail me directly.");
-    })
+      }).then(response => {
+        if (response.status === 200){
+          alert("E-mail Sent I'll be in touch soon!"); 
+          this.resetForm();
+        }
+      }).catch(err => {
+        alert("Sorry Message failed to send, please e-mail me directly.");
+      });
   }
 
   onNameChange = (event) => {
