@@ -2,7 +2,7 @@ import React from 'react';
 import utils from '../../utilities';
 import './ContactMe.css';
 
-const mailApiUrlDefault = 'http://localhost:5000/send';
+const mailApiUrlDefault = 'https://mail.jwnwilson-kube.ci.uk/send';
 
 class ContactMe extends React.Component {
   constructor(props) {
