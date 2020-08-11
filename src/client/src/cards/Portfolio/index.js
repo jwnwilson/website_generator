@@ -20,7 +20,6 @@ const customStyles = {
     boxShadow: "0px 0px 15px 0px rgba(0,0,0,0.75)",
   },
   content: {
-    color                 : 'black',
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
@@ -67,8 +66,6 @@ class Portfolio extends React.Component {
   }
 
   render() {
-    console.log("Static url", config.staticUrl);
-    console.log("modalIsOpen", this.modalIsOpen);
     const { data } = this.props;
     const portfolioItems = data.projects.map((project, index) => (
       <div key={index} className="col-md-6 col-lg-4">
@@ -138,7 +135,7 @@ class Portfolio extends React.Component {
         <section className="portfolio " id="portfolio" style={{height: "100%"}}>
           <div className="container">
             <h2 className="text-center text-uppercase text-secondary mb-0">
-              Portfolio
+              {data.name}
             </h2>
             <div style={{ textAlign: "center" }}>
               <hr className="star-dark" />
