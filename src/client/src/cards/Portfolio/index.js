@@ -69,7 +69,7 @@ class Portfolio extends React.Component {
     const { data } = this.props;
     const portfolioItems = data.projects.map((project, index) => (
       <div key={index} className="col-md-6 col-lg-4">
-        <a className="portfolio-item d-block mx-auto" onClick={() => this.showProjectModal(index)}>
+        <a className="portfolio-item d-block d-flex mx-auto" onClick={() => this.showProjectModal(index)}>
           <div className="portfolio-item-caption d-flex position-absolute h-100 w-100">
             <div className="portfolio-item-caption-content my-auto w-100 text-center text-white">
               <FontAwesomeIcon icon={faSearchPlus} />
@@ -108,7 +108,7 @@ class Portfolio extends React.Component {
                 <div className="row">
                   <div className="col">
                     <div className="row">
-                      <div className="col-6">
+                      <div className="col-6 d-flex" style={{justifyContent: "center"}}>
                         <img className="img-fluid mb-5" src={config.staticUrl + project.cover_image.url} alt="" />
                       </div>
                       <div className="col-6">
