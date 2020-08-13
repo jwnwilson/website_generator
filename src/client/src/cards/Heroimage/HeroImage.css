@@ -1,4 +1,9 @@
 .title {
-  font-size: 3.75em;
   line-height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 3.75em;
+  }
 }

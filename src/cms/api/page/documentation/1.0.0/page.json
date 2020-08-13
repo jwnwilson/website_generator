@@ -949,6 +949,9 @@
               },
               "links": {
                 "type": "object"
+              },
+              "subtitle": {
+                "type": "string"
               }
             }
           },

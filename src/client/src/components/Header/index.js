@@ -15,11 +15,19 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
+      mobile: null
     };
   }
 
+  componentWillUnmount() {
+      window.removeEventListener("resize", this.resize.bind(this));
+  }
+
   componentDidMount() {
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+
     this.smoothScrolling();
 
     // Closes responsive menu when a scroll trigger link is clicked
@@ -38,6 +46,10 @@ class Header extends React.Component {
       this.smoothScrolling();
       // this.props.componentUpdated();
     }
+  }
+
+  resize() {
+    this.setState({mobile: window.innerWidth <= 760});
   }
 
   smoothScrolling() {
@@ -80,8 +92,10 @@ class Header extends React.Component {
 
     if (data && data.title) {
       title = data.title;
-    } else if (data && data.Title) {
-      title = data.Title;
+    }
+
+    if (data && data.subtitle && this.state.mobile === false) {
+      title += " - " + data.subtitle;
     }
     
     if (data && data.selectors) {

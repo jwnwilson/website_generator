@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/16/2020 5:15:18 PM"
+    "x-generation-date": "08/13/2020 11:40:36 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -33,6 +33,10 @@
     },
     {
       "url": "https://cms.jwnwilson-kube.co.uk",
+      "description": "Production server"
+    },
+    {
+      "url": "YOUR_PRODUCTION_SERVER",
       "description": "Production server"
     }
   ],
@@ -3824,6 +3828,9 @@
           },
           "links": {
             "type": "object"
+          },
+          "subtitle": {
+            "type": "string"
           }
         }
       },
@@ -3840,6 +3847,9 @@
           },
           "links": {
             "type": "object"
+          },
+          "subtitle": {
+            "type": "string"
           }
         }
       },
@@ -4278,6 +4288,9 @@
               },
               "links": {
                 "type": "object"
+              },
+              "subtitle": {
+                "type": "string"
               }
             }
           },

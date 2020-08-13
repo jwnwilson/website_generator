@@ -20,6 +20,9 @@
     },
     "links": {
       "type": "json"
+    },
+    "subtitle": {
+      "type": "string"
     }
   }
 }
