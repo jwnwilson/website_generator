@@ -21,11 +21,11 @@ class Header extends React.Component {
   }
 
   componentWillUnmount() {
-      window.removeEventListener("resize", this.resize.bind(this));
+      window.removeEventListener("resize", this.resize);
   }
 
   componentDidMount() {
-    window.addEventListener("resize", this.resize.bind(this));
+    window.addEventListener("resize", this.resize);
     this.resize();
 
     this.smoothScrolling();
@@ -48,7 +48,7 @@ class Header extends React.Component {
     }
   }
 
-  resize() {
+  resize = () => {
     this.setState({mobile: window.innerWidth <= 760});
   }
 

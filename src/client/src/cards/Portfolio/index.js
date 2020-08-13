@@ -25,7 +25,9 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    overflow              : 'auto',
+    maxHeight             : '100vh'
   }
 };
 
@@ -35,7 +37,8 @@ class Portfolio extends React.Component {
 
     this.state = {
       modalIsOpen: false,
-      modalIndex: 0
+      modalIndex: 0,
+      mobile: null
     }
   }
 
@@ -43,10 +46,19 @@ class Portfolio extends React.Component {
     this.setState({
       modalIsOpen: true
     });
-    console.log("modalIsOpen", this.modalIsOpen);
   }
 
   componentDidMount() {
+    window.addEventListener("resize", this.resize);
+    this.resize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize);
+  }
+
+  resize = () => {
+    this.setState({mobile: window.innerWidth <= 760});
   }
 
   openModal = () => {
@@ -67,6 +79,8 @@ class Portfolio extends React.Component {
 
   render() {
     const { data } = this.props;
+    const closeText = this.state.mobile ? "": "Close";
+    const buttonClasses = this.state.mobile ? "": "mr-2";
     const portfolioItems = data.projects.map((project, index) => (
       <div key={index} className="col-md-6 col-lg-4">
         <a className="portfolio-item d-block d-flex mx-auto" onClick={() => this.showProjectModal(index)}>
@@ -92,8 +106,8 @@ class Portfolio extends React.Component {
         >
           <div className="modal-container" id={'portfolio-modal-' + index}>
             <span className="btn btn-primary btn-lg rounded-pill portfolio-modal-close" onClick={this.closeModal}>
-              <FontAwesomeIcon icon={faWindowClose} className="mr-2" />
-                Close
+              <FontAwesomeIcon icon={faWindowClose} className={buttonClasses} />
+                {closeText}
               </span>
           <div className="row">
               <div className="col text-center">
