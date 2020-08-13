@@ -108,10 +108,10 @@ class Portfolio extends React.Component {
                 <div className="row">
                   <div className="col">
                     <div className="row">
-                      <div className="col-6 d-flex" style={{justifyContent: "center"}}>
+                      <div className="col-md-6 col-12 d-flex" style={{justifyContent: "center"}}>
                         <img className="img-fluid mb-5" src={config.staticUrl + project.cover_image.url} alt="" />
                       </div>
-                      <div className="col-6">
+                      <div className="col-md-6 col-12">
                         <ReactMarkdown source={project.description} /> 
                       </div>
                     </div>
