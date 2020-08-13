@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Noel Wilson - Full Stack Dev`,
+    description: `Full Stack developer, specializing in Django backend engineering`,
+    author: `Noel Wilson`,
   },
   plugins: [
     `gatsby-plugin-sass`,
