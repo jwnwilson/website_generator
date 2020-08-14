@@ -3,6 +3,7 @@ module.exports = {
     title: `Noel Wilson - Full Stack Dev`,
     description: `Full Stack developer, specializing in Django backend engineering`,
     author: `Noel Wilson`,
+    siteUrl: `https://jwnwilson.co.uk`,
   },
   plugins: [
     `gatsby-plugin-sass`,
@@ -66,5 +67,6 @@ module.exports = {
         windowKey: '__PRELOADED_STATE__',
       },
     },
+    `gatsby-plugin-sitemap`
   ],
 }
