@@ -80,6 +80,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "./node_modules/.bin/jest --env=jsdom",
+    "test-update": "./node_modules/.bin/jest --env=jsdom --updateSnapshot",
     "test-i": "node --inspect-brk ./node_modules/.bin/jest --runInBand --env=jsdom",
     "lint": "./node_modules/.bin/eslint src",
     "deploy": "node src/deploy.js"
