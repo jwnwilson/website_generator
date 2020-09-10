@@ -1,6 +1,8 @@
 
 ## ToDo
 
+- Add gatsby markdown card:
+  - https://www.gatsbyjs.com/docs/adding-markdown-pages/
 - Add SEO meta tags to my site
 - Store S3 in same S3 bucket as site to reduce buckets and CDN
 
