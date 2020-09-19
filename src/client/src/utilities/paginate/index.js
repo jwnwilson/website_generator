@@ -25,8 +25,8 @@ class PageList extends Component {
 
   render() {
     return (
-      <div className="blog-posts">
-        <div id="blog" className="blog-list">
+      <div className="paginator">
+        <div id="paginator" className="paginator-list">
           <ul>{this.props.children}</ul>
         </div>
         <hr />

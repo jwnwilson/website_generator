@@ -7,10 +7,10 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { appModules } from "../cards";
 import store from '../store';
-import "./modularPage.css";
+import "./app.css";
 import "../styles/index.scss";
 
-export default class PageList extends React.Component {
+export default class App extends React.Component {
 
   renderModule(moduleFileName, module, index, type, fallback = null) {
     const ModuleComponent = loadable(() => import(`../cards/${moduleFileName}`));

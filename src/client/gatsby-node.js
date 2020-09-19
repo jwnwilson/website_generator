@@ -112,7 +112,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 console.log(JSON.stringify(node));
                 createPage({
                     path: node.url,
-                    component: path.resolve(`./src/templates/modularPage.js`),
+                    component: path.resolve(`./src/templates/app.js`),
                     context: {
                         pageId: node.id,
                     },

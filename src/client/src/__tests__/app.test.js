@@ -5,7 +5,7 @@ import React from 'react'
 import { useStaticQuery } from "gatsby"
 import renderer from 'react-test-renderer'
 
-import PageList from '../templates/modularPage';
+import App from '../templates/app';
 
 const testData = {
   site: {
@@ -23,23 +23,37 @@ const testData = {
 const setup = () => {
 }
 
+const originalConsoleError = console.error;
+
 beforeEach(() => {
   // Use this for more complicated tests and logic
   useStaticQuery.mockReturnValue(testData);
+  // Suppress SSR warning
+  console.error = jest.fn((msg) => {
+    if (msg.includes('Warning: useLayoutEffect does nothing on the server')) {
+      return null;
+    } else {
+      originalConsoleError(msg);
+    }
+  });
 })
+
+afterEach(() => {
+  console.error = originalConsoleError;
+});
 
 describe('With Enzyme', () => {
   it('App shows "Noel Wilson"', () => {
     setup();
-    const pageList = render(<PageList data={testData} />)
-    expect(pageList.find('a').text()).toContain('Noel Wilson')
+    const app = render(<App data={testData} />)
+    expect(app.find('a').text()).toContain('Noel Wilson')
   })
 })
 
 describe('With Snapshot Testing', () => {
   it('App shows "Noel Wilson"', () => {
     setup();
-    const component = renderer.create(<PageList data={testData} />)
+    const component = renderer.create(<App data={testData} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
   })

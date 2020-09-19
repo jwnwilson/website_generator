@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`With Snapshot Testing App shows "Modular static website" 1`] = `
+exports[`With Snapshot Testing App shows "Noel Wilson" 1`] = `
 Array [
   <nav
     className="navbar navbar-expand-lg bg-secondary text-uppercase"
