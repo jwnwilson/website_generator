@@ -1,13 +1,6 @@
 
 ## ToDo
 
-- add www redirect to route 53
-- Reduce cluster size to 1
-- Check ssl generation on cluster
-
-- Add SEO meta tags to my site
-- Store S3 in same S3 bucket as site to reduce buckets and CDN
-
 - Add testing to Client
   - Test loadable components
 
