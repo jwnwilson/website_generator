@@ -11,8 +11,7 @@ import { faStar, faSearchPlus, faExternalLinkAlt, faWindowClose } from '@fortawe
 import { Link } from "gatsby"
 import config from '../../config';
 import './Portfolio.css';
-
-Modal.setAppElement('#___gatsby');
+import {canUseDom} from '../../utilities';
 
 const customStyles = {
   overlay: {
@@ -78,6 +77,8 @@ class Portfolio extends React.Component {
   }
 
   render() {
+    Modal.setAppElement('body');
+
     const { data } = this.props;
     const closeText = this.state.mobile ? "": "Close";
     const buttonClasses = this.state.mobile ? "": "mr-2";
@@ -94,55 +95,59 @@ class Portfolio extends React.Component {
       </div>
     ));
 
-    const modals = data.projects.map((project, index) => {
-      const url = project.url;
-      return (
-        <Modal
-          isOpen={this.state.modalIsOpen && this.state.modalIndex === index}
-          onRequestClose={this.closeModal}
-          contentLabel="Project summary"
-          key={index}
-          style={customStyles}
-        >
-          <div className="modal-container" id={'portfolio-modal-' + index}>
-            <span className="btn btn-primary btn-lg rounded-pill portfolio-modal-close" onClick={this.closeModal}>
-              <FontAwesomeIcon icon={faWindowClose} className={buttonClasses} />
-                {closeText}
-              </span>
-          <div className="row">
-              <div className="col text-center">
-                <h2 className="text-secondary text-uppercase mb-0">
-                  {project.title}
-                </h2>
-                <hr />
+    let modals = [];
+    // Avoid rendering in tests as will error
+    if (canUseDom) {
+      modals = data.projects.map((project, index) => {
+        const url = project.url;
+        return (
+          <Modal
+            isOpen={this.state.modalIsOpen && this.state.modalIndex === index}
+            onRequestClose={this.closeModal}
+            contentLabel="Project summary"
+            key={index}
+            style={customStyles}
+          >
+            <div className="modal-container" id={'portfolio-modal-' + index}>
+              <span className="btn btn-primary btn-lg rounded-pill portfolio-modal-close" onClick={this.closeModal}>
+                <FontAwesomeIcon icon={faWindowClose} className={buttonClasses} />
+                  {closeText}
+                </span>
+            <div className="row">
+                <div className="col text-center">
+                  <h2 className="text-secondary text-uppercase mb-0">
+                    {project.title}
+                  </h2>
+                  <hr />
+                </div>
               </div>
-            </div>
-            <div className="center-vertical">
-              <div className="container">
-                <div className="row">
-                  <div className="col">
-                    <div className="row">
-                      <div className="col-md-6 col-12 d-flex" style={{justifyContent: "center"}}>
-                        <img className="img-fluid mb-5" src={config.staticUrl + project.cover_image.url} alt="" />
-                      </div>
-                      <div className="col-md-6 col-12">
-                        <ReactMarkdown source={project.description} /> 
+              <div className="center-vertical">
+                <div className="container">
+                  <div className="row">
+                    <div className="col">
+                      <div className="row">
+                        <div className="col-md-6 col-12 d-flex" style={{justifyContent: "center"}}>
+                          <img className="img-fluid mb-5" src={config.staticUrl + project.cover_image.url} alt="" />
+                        </div>
+                        <div className="col-md-6 col-12">
+                          <ReactMarkdown source={project.description} /> 
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="row center-container">
+                <a className="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss mr-2" href={url}>
+                  <FontAwesomeIcon icon={faExternalLinkAlt} className="mr-2" />
+                  Check it out
+                </a>
+              </div>
             </div>
-            <div className="row center-container">
-              <a className="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss mr-2" href={url}>
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="mr-2" />
-                Check it out
-              </a>
-            </div>
-          </div>
-        </Modal>
-      );
-    });
+          </Modal>
+        );
+      });
+    }
 
     return (
       <div className="bg-white">
