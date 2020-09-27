@@ -14,6 +14,10 @@ import "../styles/index.scss";
 let CARDS = {};
 
 export async function preloadCards() {
+  /**
+   * Preload our dynamically loaded cards, this can be used to load the cards in advance.
+   * Currently used for testing.
+   */
   let promises = Object.keys(appModules).map(async module => {
     let cardName = appModules[module].moduleFileName;
     CARDS[cardName] = loadable(() => import(`../cards/${cardName}`));
@@ -26,6 +30,7 @@ export default class App extends React.Component {
 
   renderCard(cardName, module, index, type, fallback = null) {
     let Card;
+    // Load card component if not in cache.
     if (!(cardName in CARDS)){
       CARDS[cardName] = loadable(() => import(`../cards/${cardName}`));
     }
