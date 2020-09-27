@@ -3,6 +3,9 @@
 
 - Add testing to Client
   - Test loadable components
+  - Test SSR and code splitting
+    - Does the intial HTML get loaded?
+    - Does the component avoid reload?
 
 - Add gatsby markdown card:
   - https://www.gatsbyjs.com/docs/adding-markdown-pages/
@@ -10,6 +13,10 @@
 - Add testing to CMS
 
 - Move to typescript (Auto supported by gatsby)
+
+- Fix jwnwilson-kube.co.uk redirect
+  - Need to setup reserved ip address for A record in DNS
+  - https://www.scaleway.com/en/docs/using-a-load-balancer-to-expose-your-kubernetes-kapsule-ingress-controller-service/#-Using-a-Reserved-IP-as-the-IP-Address-of-Your-Load-Balancer
 
 - Setup multi-site deployment:
   - Add Site model with S3 bucket name

@@ -11,7 +11,7 @@ import { faStar, faSearchPlus, faExternalLinkAlt, faWindowClose } from '@fortawe
 import { Link } from "gatsby"
 import config from '../../config';
 import './Portfolio.css';
-import {canUseDom} from '../utilities';
+import {canUseDom} from '../../utilities';
 
 const customStyles = {
   overlay: {
@@ -97,7 +97,7 @@ class Portfolio extends React.Component {
 
     let modals = [];
     // Avoid rendering in tests as will error
-    if (canUseDom()) {
+    if (canUseDom) {
       modals = data.projects.map((project, index) => {
         const url = project.url;
         return (
