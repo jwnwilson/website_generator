@@ -127,7 +127,105 @@ Array [
       data-module-type="card.portfolio"
       id="card-section-1"
     >
-      <div />
+      <div
+        className="bg-white"
+      >
+        <section
+          className="portfolio "
+          id="portfolio"
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        >
+          <div
+            className="container"
+          >
+            <h2
+              className="text-center text-uppercase text-secondary mb-0"
+            >
+              Projects
+            </h2>
+            <div
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              <hr
+                className="star-dark"
+              />
+              <div
+                className="star-dark-star"
+              >
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-star fa-w-18 "
+                  data-icon="star"
+                  data-prefix="fas"
+                  focusable="false"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 576 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              className="row"
+            >
+              <div
+                className="col-md-6 col-lg-4"
+              >
+                <a
+                  className="portfolio-item d-block d-flex mx-auto"
+                  onClick={[Function]}
+                >
+                  <div
+                    className="portfolio-item-caption d-flex position-absolute h-100 w-100"
+                  >
+                    <div
+                      className="portfolio-item-caption-content my-auto w-100 text-center text-white"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="svg-inline--fa fa-search-plus fa-w-16 "
+                        data-icon="search-plus"
+                        data-prefix="fas"
+                        focusable="false"
+                        role="img"
+                        style={Object {}}
+                        viewBox="0 0 512 512"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z"
+                          fill="currentColor"
+                          style={Object {}}
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <img
+                    alt=""
+                    className="img-fluid"
+                    src="http://localhost:1337/uploads/safari_mixer_small_c568e0cd3c.jpeg"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div />
+      </div>
     </div>
     <div
       data-module-index={2}

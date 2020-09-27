@@ -10,11 +10,10 @@ function loadable(load) {
     // Create a react component which renders the loaded component
     const Loadable = (props) => {
         if (!Component) {
-            // throw new Error(
-            //     'Bundle split module not loaded yet, ensure you beforeAll(() => MyLazyComponent.load()) in your test, import statement: ' +
-            //         load.toString()
-            // )
-            return <div></div>;
+            throw new Error(
+                'Bundle split module not loaded yet, ensure you beforeAll(() => MyLazyComponent.load()) in your test, import statement: ' +
+                    load.toString()
+            )
         }
         return <Component {...props} />
     }
