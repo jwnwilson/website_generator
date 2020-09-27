@@ -4,8 +4,11 @@ import { shallow, render } from 'enzyme'
 import React from 'react'
 import { useStaticQuery } from "gatsby"
 import renderer from 'react-test-renderer'
+import loadable from '@loadable/component';
+
 
 import App from '../templates/app';
+import { preloadCards } from '../templates/app';
 
 const testData = {
   site: {
@@ -20,10 +23,11 @@ const testData = {
   }
 };
 
-const setup = () => {
-}
-
 const originalConsoleError = console.error;
+
+beforeAll(() => {
+  return preloadCards();
+})
 
 beforeEach(() => {
   // Use this for more complicated tests and logic
@@ -44,15 +48,13 @@ afterEach(() => {
 
 describe('With Enzyme', () => {
   it('App shows "Noel Wilson"', () => {
-    setup();
     const app = render(<App data={testData} />)
     expect(app.find('a').text()).toContain('Noel Wilson')
   })
 })
 
 describe('With Snapshot Testing', () => {
-  it('App shows "Noel Wilson"', () => {
-    setup();
+  it('App snapshot with test data', () => {
     const component = renderer.create(<App data={testData} />)
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()

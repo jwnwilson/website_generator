@@ -10,18 +10,35 @@ import store from '../store';
 import "./app.css";
 import "../styles/index.scss";
 
+// Cache cards 
+let CARDS = {};
+
+export async function preloadCards() {
+  let promises = Object.keys(appModules).map(async module => {
+    let cardName = appModules[module].moduleFileName;
+    CARDS[cardName] = loadable(() => import(`../cards/${cardName}`));
+    return CARDS[cardName];
+  });
+  return await Promise.all(promises);
+}
+
 export default class App extends React.Component {
 
-  renderModule(moduleFileName, module, index, type, fallback = null) {
-    const ModuleComponent = loadable(() => import(`../cards/${moduleFileName}`));
+  renderCard(cardName, module, index, type, fallback = null) {
+    let Card;
+    if (!(cardName in CARDS)){
+      CARDS[cardName] = loadable(() => import(`../cards/${cardName}`));
+    }
+    
+    Card = CARDS[cardName];
     return (
       <div key={index} data-module-index={index} data-module-type={type} id={"card-section-" + index}>
-        <ModuleComponent data={module} fallback={fallback} />
+        <Card data={module} fallback={fallback} />
       </div>
     );
   }
 
-  staticRenderModule(index, htmlEl) {
+  staticRenderCard(index, htmlEl) {
     return (<div key={index.toString()} dangerouslySetInnerHTML={{ __html: htmlEl.innerHTML }} />)
   }
 
@@ -55,13 +72,13 @@ export default class App extends React.Component {
         } catch (err) {
           htmlEl = null;
         }
-        const fallback = htmlEl ? this.staticRenderModule(index, htmlEl) : null;
+        const fallback = htmlEl ? this.staticRenderCard(index, htmlEl) : null;
 
         if (!shouldLoadJavascript && fallback) {
-          console.log("fallback", fallback);
+          console.log("Using Html instead of rendering", fallback);
           return fallback;
         } else {
-          return this.renderModule(moduleFileName, card, index, card_type, fallback);
+          return this.renderCard(moduleFileName, card, index, card_type, fallback);
         }
       });
     } else {
