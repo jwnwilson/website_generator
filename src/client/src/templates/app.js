@@ -62,7 +62,6 @@ export default class App extends React.Component {
 
     if (content.cards) {
       components = content.cards.map((card, index) => {
-        const card_title = card.title;
         const card_type = card.__component;
 
         const { shouldLoadJavascript, moduleFileName } = this.getFromMap(card_type);
@@ -77,10 +76,10 @@ export default class App extends React.Component {
         } catch (err) {
           htmlEl = null;
         }
-        const fallback = htmlEl ? this.staticRenderCard(index, htmlEl) : null;
 
+        // If we have existing html and no javascript to load then re-inject it into our returned html
+        const fallback = htmlEl ? this.staticRenderCard(index, htmlEl) : null;
         if (!shouldLoadJavascript && fallback) {
-          console.log("Using Html instead of rendering", fallback);
           return fallback;
         } else {
           return this.renderCard(moduleFileName, card, index, card_type, fallback);

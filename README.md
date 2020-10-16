@@ -1,14 +1,9 @@
 
 ## ToDo
 
-- Add testing to Client
-  - Test loadable components
-  - Test SSR and code splitting
-    - Does the intial HTML get loaded?
-    - Does the component avoid reload?
-
-- Add gatsby markdown card:
-  - https://www.gatsbyjs.com/docs/adding-markdown-pages/
+- Add markdown card to modify via the CMS
+  - Add images with URL
+  - Add images in CMS
 
 - Add testing to CMS
 
