@@ -2,7 +2,7 @@
 ## ToDo
 
 - Automate deployment
-- Improve site publishing / add visuals
+- Improve site publishing / add visual indicator
 - Setup multi-site deployment:
   - Add Site model with S3 bucket name
   - Link Pages to a Site
