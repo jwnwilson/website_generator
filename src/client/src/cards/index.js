@@ -4,4 +4,5 @@ export const appModules = {
     'card.about-me': { moduleFileName: 'About', shouldLoadJavascript: false },
     'card.contact-me': { moduleFileName: 'Contactme', shouldLoadJavascript: true },
     'card.wrap-image': { moduleFileName: 'Wrapimage', shouldLoadJavascript: true },
+    'card.markdown': { moduleFileName: 'Markdown', shouldLoadJavascript: true },
 }

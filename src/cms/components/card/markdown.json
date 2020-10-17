@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_card_markdowns",
+  "info": {
+    "name": "markdown",
+    "icon": "align-justify"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "markdown": {
+      "type": "richtext"
+    }
+  }
+}

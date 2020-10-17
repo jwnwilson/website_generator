@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "08/13/2020 11:40:36 AM"
+    "x-generation-date": "10/17/2020 9:58:29 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3881,7 +3881,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -3971,7 +3972,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4003,7 +4005,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4029,7 +4032,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4139,7 +4143,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4216,6 +4221,36 @@
                       "type": "string"
                     },
                     "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio",
+                        "card.wrap-image",
+                        "card.markdown"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "markdown": {
                       "type": "string"
                     }
                   },
@@ -4323,7 +4358,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4413,7 +4449,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4445,7 +4482,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4471,7 +4509,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4581,7 +4620,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -4658,6 +4698,36 @@
                       "type": "string"
                     },
                     "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio",
+                        "card.wrap-image",
+                        "card.markdown"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "markdown": {
                       "type": "string"
                     }
                   },

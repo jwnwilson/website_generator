@@ -247,6 +247,7 @@ describe('With Enzyme mount', () => {
     const wrapper = mount(<App data={testData}/>, { attachTo: document.getElementById('container') });
     expect(App.prototype.renderCard.callCount).toBe(3);
     const hydratedWrapper = mount(<App data={testData}/>, { hydrateIn: document.getElementById('container') });
+    // Expect 1 less call as we can skip welcome render
     expect(App.prototype.renderCard.callCount).toBe(5);
   })
 })

@@ -22,7 +22,8 @@
         "card.about-me",
         "card.contact-me",
         "card.portfolio",
-        "card.wrap-image"
+        "card.wrap-image",
+        "card.markdown"
       ]
     },
     "url": {

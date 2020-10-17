@@ -542,7 +542,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -632,7 +633,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -664,7 +666,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -690,7 +693,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -800,7 +804,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -877,6 +882,36 @@
                       "type": "string"
                     },
                     "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio",
+                        "card.wrap-image",
+                        "card.markdown"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "markdown": {
                       "type": "string"
                     }
                   },
@@ -984,7 +1019,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -1074,7 +1110,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -1106,7 +1143,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -1132,7 +1170,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -1242,7 +1281,8 @@
                         "card.about-me",
                         "card.contact-me",
                         "card.portfolio",
-                        "card.wrap-image"
+                        "card.wrap-image",
+                        "card.markdown"
                       ]
                     },
                     "id": {
@@ -1319,6 +1359,36 @@
                       "type": "string"
                     },
                     "url": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id"
+                  ]
+                },
+                {
+                  "properties": {
+                    "__component": {
+                      "type": "string",
+                      "enum": [
+                        "card.welcome",
+                        "card.about-me",
+                        "card.contact-me",
+                        "card.portfolio",
+                        "card.wrap-image",
+                        "card.markdown"
+                      ]
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "subtitle": {
+                      "type": "string"
+                    },
+                    "markdown": {
                       "type": "string"
                     }
                   },

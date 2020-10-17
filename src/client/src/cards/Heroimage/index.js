@@ -3,17 +3,23 @@ import PropTypes from 'prop-types';
 import settings from '../../config/settings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+
 import './HeroImage.css';
 import config from '../../config';
 
 const HeroImage = (props) => {
   const data = props.data;
+  let heroImageUrl = null;
+
+  if (data.image !== undefined) {
+    heroImageUrl = config.staticUrl + data.image.url;
+  }
   return (
     <section id="intro" className="bg-primary text-white text-center">
       <div className="container mt-0 mt-md-5">
         <img
             className="img-fluid rounded-circle col-10 col-sm-8 col-md-6 col-lg-4 mb-5 d-block mx-auto"
-            src={config.staticUrl + data.image.url}
+            src={heroImageUrl}
             alt=""
         />
         <h1 className="text-uppercase mb-0 title">

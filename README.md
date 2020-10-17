@@ -1,12 +1,8 @@
 
 ## ToDo
 
-- Add markdown card to modify via the CMS
-  - Add images with URL
-  - Add images in CMS
-
+- Add card tests
 - Add testing to CMS
-
 - Move to typescript (Auto supported by gatsby)
 
 - Fix jwnwilson-kube.co.uk redirect
