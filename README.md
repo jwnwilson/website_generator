@@ -1,14 +1,8 @@
 
 ## ToDo
 
-- Add card tests
-- Add testing to CMS
-- Move to typescript (Auto supported by gatsby)
-
-- Fix jwnwilson-kube.co.uk redirect
-  - Need to setup reserved ip address for A record in DNS
-  - https://www.scaleway.com/en/docs/using-a-load-balancer-to-expose-your-kubernetes-kapsule-ingress-controller-service/#-Using-a-Reserved-IP-as-the-IP-Address-of-Your-Load-Balancer
-
+- Automate deployment
+- Improve site publishing / add visuals
 - Setup multi-site deployment:
   - Add Site model with S3 bucket name
   - Link Pages to a Site
@@ -18,6 +12,13 @@
   - new site will require:
     - New S3 bucket terraform settings
     - Terraform for new subdomain DNS to S3 bucket
+- Add card tests
+- Add testing to CMS
+- Move to typescript (Auto supported by gatsby)
+
+- Fix jwnwilson-kube.co.uk redirect
+  - Need to setup reserved ip address for A record in DNS
+  - https://www.scaleway.com/en/docs/using-a-load-balancer-to-expose-your-kubernetes-kapsule-ingress-controller-service/#-Using-a-Reserved-IP-as-the-IP-Address-of-Your-Load-Balancer
 
 - Scale out client
 - Create node package for new projects to import
