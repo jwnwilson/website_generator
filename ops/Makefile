@@ -9,6 +9,9 @@ kube-auth:
 install:
 	brew install terraform helm scw
 
+refresh-deployment: kube-auth
+	kubectl rollout restart deployment cms client
+
 setup: kube-auth
 	cd tf && \
 	terraform init && \
@@ -33,6 +36,6 @@ auth: kube-auth
 
 infra: setup ssl
 
-proxy: kube-auth
+dashboard: kube-auth
 	kubectl proxy --kubeconfig ${KUBE_CONFIG_PATH} &
 	open http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/

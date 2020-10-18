@@ -14,6 +14,7 @@ DOCKER_CONTAINERS = $(shell docker ps -q)
 AWS_REGION = eu-west-1
 AWS_ACCESS_KEY_ID=$(TF_VAR_aws_access_key)
 AWS_SECRET_ACCESS_KEY=$(TF_VAR_aws_secret_key)
+CDN_ID = "EDQHVNYKREFIB"
 
 # Run docker-setup to install deps
 up: docker-stop docker-setup
@@ -73,10 +74,20 @@ docker-push: docker-login build
 	docker push $(DOCKER_REPO)/website_cms
 	docker push $(DOCKER_REPO)/website_nginx
 
+# increase version
+# push images to ecr
+# NOTE: Requires aws creds in ~/.aws/config
+deploy: docker-push
+	cd ops
+	# refresh kubernetes deployments
+	make refresh-deployment
+	# invalidate cdn
+	make refresh-cdn
+
 # This is handled in the strapi webhooks automatically
 refresh-preview:
 	curl -X POST https://preview.jwnwilson-kube.co.uk/__refresh
 
 # This needs to be moved to terraform
 refresh-cdn:
-	aws cloudfront create-invalidation --distribution-id xxxxxx --paths "/*"
+	aws cloudfront create-invalidation --distribution-id $(CDN_ID) --paths "/*"
