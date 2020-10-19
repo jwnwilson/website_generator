@@ -49,7 +49,7 @@ const build_if_published = async () => {
   const five_min_ago = new Date(Date.now() - 1000 * 60 * 5);
   const draftPageToPublish = await strapi.api.page.services.page.find({
     status: 'published',
-    published_at_gt: five_min_ago
+    //published_at_gt: five_min_ago
   });
   let deploy = false;
 

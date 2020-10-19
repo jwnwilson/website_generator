@@ -48,10 +48,6 @@
       "required": true,
       "private": true
     },
-    "published_at": {
-      "type": "datetime",
-      "private": true
-    },
     "deployed_at": {
       "type": "datetime"
     }
