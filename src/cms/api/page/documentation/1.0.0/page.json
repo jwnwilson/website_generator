@@ -613,6 +613,12 @@
                         },
                         "related": {
                           "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
                         }
                       }
                     },
@@ -781,6 +787,12 @@
                               },
                               "related": {
                                 "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
                               }
                             }
                           },
@@ -874,6 +886,12 @@
                           },
                           "related": {
                             "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -962,6 +980,12 @@
               },
               "about_me": {
                 "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
@@ -987,11 +1011,22 @@
               },
               "subtitle": {
                 "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
               }
             }
           },
           "deployed_at": {
-            "type": "datetime"
+            "type": "string",
+            "format": "date-time"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -1090,6 +1125,12 @@
                         },
                         "related": {
                           "type": "string"
+                        },
+                        "created_by": {
+                          "type": "string"
+                        },
+                        "updated_by": {
+                          "type": "string"
                         }
                       }
                     },
@@ -1258,6 +1299,12 @@
                               },
                               "related": {
                                 "type": "string"
+                              },
+                              "created_by": {
+                                "type": "string"
+                              },
+                              "updated_by": {
+                                "type": "string"
                               }
                             }
                           },
@@ -1351,6 +1398,12 @@
                           },
                           "related": {
                             "type": "string"
+                          },
+                          "created_by": {
+                            "type": "string"
+                          },
+                          "updated_by": {
+                            "type": "string"
                           }
                         }
                       }
@@ -1419,11 +1472,19 @@
               "archived"
             ]
           },
-          "published_at": {
-            "type": "datetime"
-          },
           "deployed_at": {
-            "type": "datetime"
+            "type": "string",
+            "format": "date-time"
+          },
+          "published_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "updated_by": {
+            "type": "string"
           }
         }
       }

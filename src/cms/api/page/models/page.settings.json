@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "pages",
   "info": {
-    "name": "page"
+    "name": "page",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "title": {
@@ -46,10 +48,6 @@
         "archived"
       ],
       "required": true,
-      "private": true
-    },
-    "published_at": {
-      "type": "datetime",
       "private": true
     },
     "deployed_at": {
