@@ -33,5 +33,5 @@
     "python.linting.pycodestyleEnabled": true,
     "python.linting.enabled": true,
     "python.linting.flake8Enabled": true,
-    
+    "terminal.integrated.inheritEnv": true
 }

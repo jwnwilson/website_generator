@@ -17,16 +17,16 @@ AWS_SECRET_ACCESS_KEY=$(TF_VAR_aws_secret_key)
 CDN_ID = "EDQHVNYKREFIB"
 
 # Run docker-setup to install deps
-up: docker-stop docker-setup
+up: docker-stop setup
 	docker-compose -f docker-compose.yml up -d
 
-dev: docker-stop docker-setup
+dev: docker-stop setup
 	docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d
 
 down:
 	docker-compose -f docker-compose.yml down
 
-docker-setup:
+setup:
 	docker-compose -f docker-compose.yml run cms npm i
 	docker-compose -f docker-compose.yml run client npm i
 

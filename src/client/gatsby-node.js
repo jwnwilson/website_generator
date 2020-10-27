@@ -8,10 +8,11 @@ const LoadablePlugin = require('@loadable/webpack-plugin');
 const webpack = require("webpack");
 const http = require('http');
 const FormData = require('form-data');
+const { stringify } = require('querystring');
 
 const baseUrl = process.env.SERVER_URL || 'http://localhost:1337';
 const overwrite = process.env.SERVER_OVERWRITE || 'http://localhost:1337';
-const cmsUser = process.env.CMS_USERNAME || 'admin';
+const cmsUser = process.env.CMS_USERNAME || 'jwnwilson@hotmail.co.uk';
 const cmsPassword = process.env.CMS_PASSWORD || 'Y9bt53cS6nfDfJr';
 const staticUrl = `${baseUrl}`;
 
@@ -45,22 +46,30 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     const { createNode } = boundActionCreators;
 
     const form = new FormData();
-    form.append("identifier", cmsUser);
+    form.append("email", cmsUser);
     form.append("password", cmsPassword);
 
+    let jwt;
+    let auth;
     // Authing on api
-    let auth = await fetch(
-      `${staticUrl}/admin/auth/local`,
-      {
-        method: "POST",
-        body: form,
-      });
-    let jwt = await auth.json();
+    try {
+      auth = await fetch(
+        `${staticUrl}/admin/login`,
+        {
+          method: "POST",
+          body: form,
+        });
+      jwt = await auth.text();
+      jwt = JSON.parse(jwt);  
+      console.log(`Got token: ${jwt.data.token}`)
+    } catch(err) {
+      console.error(`Error authorizing with the cms: ${err}, ${jwt}`);
+      throw(err);
+    }
 
     console.log('Fetching from: ', `${staticUrl}/pages`);
-    const resp = await fetch(`${staticUrl}/pages`, {headers: {Authorization: `bearer ${jwt.jwt}`}});
+    const resp = await fetch(`${staticUrl}/pages`, {headers: {Authorization: `Bearer ${jwt.data.token}`}});
     const pages = await resp.json();
-
     console.log("pages", pages);
 
     return await Promise.all(pages.map(async page => {
