@@ -4,6 +4,10 @@
 - Add docker-compose prod setup
 - Add docker-compose dev setup 
 - Improve site publishing / add visual indicator
+  - Improve publishing logs
+  - Add publishing boolean
+  - Store logs in a mongo doc
+  - Customize the CMS to show bool and logs
 - Setup multi-site deployment:
   - Add Site model with S3 bucket name
   - Link Pages to a Site

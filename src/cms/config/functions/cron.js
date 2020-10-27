@@ -53,21 +53,21 @@ const build_if_published = async () => {
   });
   let deploy = false;
 
-  console.log("draftPageToPublish", draftPageToPublish);
+  console.log("draftPageToPublish", draftPageToPublish.map(page => page.name));
 
   // Update values before deploying to avoid re-deploy
   let results = await Promise.all(draftPageToPublish.map(async page => {
     let updated = false;
-    if (page.deployed_at === null || new Date(page.deployed_at) < five_min_ago) {
+    console.log('page.deployed_at', page.deployed_at);
+    if (page.deployed_at === undefined || new Date(page.deployed_at) < five_min_ago) {
       updated = true;
       await strapi.api.page.services.page.update({ id: page.id }, { deployed_at: new Date() });
     }
     return updated;
   }));
 
-  console.log("results", results);
-
   if (results.includes(true)) {
+    console.log("New pages to deploy");
     deploy = true;
   }
 
