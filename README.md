@@ -1,8 +1,6 @@
 
 ## ToDo
 
-- Add docker-compose prod setup
-- Add docker-compose dev setup 
 - Improve site publishing / add visual indicator
   - Improve publishing logs
   - Add publishing boolean

@@ -4,11 +4,9 @@ services:
     image: node:12.18.1
     user: root
     working_dir: /app/src/client
-    command: npm run develop
+    command: npm run start
     tty: true
     environment:
-      ENV: development
-      NODE_ENV: development
       ENABLE_GATSBY_REFRESH_ENDPOINT: 1
       SERVER_URL: http://cms:1337
       SERVER_OVERWRITE: http://cms:1337
