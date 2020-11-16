@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deployment",
+  "info": {
+    "name": "deployment"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "timestamps": true,
+    "increments": true,
+    "comment": ""
+  },
+  "attributes": {
+    "deployStatus": { "type": "string" },
+    "progress": { "type": "json" }
+  }
+}

@@ -23,6 +23,11 @@ up: docker-stop setup
 dev: docker-stop setup
 	docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d
 
+dev-admin: docker-stop setup
+	docker-compose run -d --service-ports db
+	cd src/cms && npm run develop &
+	cd src/cms && npm run develop:admin &
+
 down:
 	docker-compose -f docker-compose.yml down
 

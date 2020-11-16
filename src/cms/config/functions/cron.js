@@ -16,6 +16,7 @@ const build_site = async () => {
   }
   console.log('Building:');
   console.log('output:', output);
+  return output;
 }
 
 const deploy_site = async () => {
@@ -31,6 +32,7 @@ const deploy_site = async () => {
   console.log('Deploying:');
   console.log('output:', output);
   console.log('Deploy complete');
+  return output;
 }
 
 /**
@@ -53,31 +55,68 @@ const build_if_published = async () => {
   });
   let deploy = false;
 
-  console.log("draftPageToPublish", draftPageToPublish.map(page => page.name));
+  if (draftPageToPublish.length > 0) {
+    console.log("Found pages to publish:", draftPageToPublish.map(page => page.name));
+  } else {
+    console.log("No pages to publish")
+    return;
+  }
 
   // Update values before deploying to avoid re-deploy
-  let results = await Promise.all(draftPageToPublish.map(async page => {
-    let updated = false;
-    console.log('page.deployed_at', page.deployed_at);
-    if (page.deployed_at === undefined || new Date(page.deployed_at) < five_min_ago) {
-      updated = true;
-      await strapi.api.page.services.page.update({ id: page.id }, { deployed_at: new Date() });
-    }
-    return updated;
-  }));
+  let existingDeployment = await strapi
+    .query("deployment", "deploy")
+    .find({deployStatus: "Processing"})
 
-  if (results.includes(true)) {
-    console.log("New pages to deploy");
+  if (existingDeployment.length === 0) {
     deploy = true;
+  } else {
+    console.log("Existing deployment running skipping");
   }
 
   // Build and Deploy 
   if (deploy) {
-    await build_site();
-    if(deployFlag) {
-      await deploy_site();
-    } else {
-      console.log("Skipping deployment")
+    let progress = await strapi.query("deployment", "deploy").create({
+      deployStatus: "Processing",
+      progress: {
+        output: "Waiting for command output..."
+      }
+    });
+    console.log("Starting deployment:", progress);
+    try {
+      let commandOutput = await build_site();
+      await strapi.query("deployment", "deploy").update(
+        {id: progress.id},
+        {
+        deployStatus: "Processing",
+        progress: {
+          output: commandOutput
+        }
+      })
+
+      if(deployFlag) {
+        await deploy_site();
+      } else {
+        commandOutput += console.log("Skipping deployment")
+      }
+      console.log('Saving result', commandOutput)
+      await strapi.query("deployment", "deploy").update(
+        {id: progress.id},
+        {
+        deployStatus: "Success",
+        progress: {
+          output: commandOutput
+        }
+      })
+    } catch(err) {
+      console.log('saving error', err)
+      await strapi.query("deployment", "deploy").update(
+        {id: progress.id},
+        {
+        deployStatus: "Failed",
+        progress: {
+          output: commandOutput
+        }
+      })
     }
   }
 }
