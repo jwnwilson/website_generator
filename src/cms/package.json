@@ -12,7 +12,10 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "bootstrap": "^4.5.3",
     "knex": "<0.20.0",
+    "react-bootstrap": "^1.4.0",
+    "react-icons": "^3.11.0",
     "sqlite3": "latest",
     "strapi": "3.2.4",
     "strapi-admin": "3.2.4",

@@ -5,22 +5,41 @@
  */
 
 import React, { memo, Component} from 'react';
+import Button from  'react-bootstrap/Button';
+import Accordion from 'react-bootstrap/Accordion';
+import { FaCheck, FaTimes, FaSpinner, FaQuestion } from 'react-icons/fa';
 // import PropTypes from 'prop-types';
 import pluginId from '../../pluginId';
 import {request} from "strapi-helper-plugin";
 
-const Deployment = (deployment) => {
-  return (<div key={deployment._id} className="row">
+const Deployment = (deployment, index) => {
+  let statusIcon = <FaQuestion className="ml-3"></FaQuestion>;
+
+  statusIcon = deployment.deployStatus == "Success" ? <FaCheck className="ml-3" style={{color: "green"}}></FaCheck> : statusIcon;
+  statusIcon = deployment.deployStatus == "Processing" ? <FaSpinner className="ml-3" style={{color: "orange"}}></FaSpinner> : statusIcon;
+  statusIcon = deployment.deployStatus == "Failed" ? <FaTimes className="ml-3" style={{color: "red"}}></FaTimes> : statusIcon;
+
+  return (<div key={index.toString()} className="row">
     <div className="col">
-      <div className="row mb-2">
-        <h3>Deployment: {deployment._id} </h3>
-      </div>
-      <div className="row">
-        <p>Status: {deployment.deployStatus}</p>
-      </div>
-      <div className="row">
-        <pre>Output: {deployment.progress.output}</pre>
-      </div>
+      <Accordion.Toggle as={Button} variant="link" eventKey={index.toString()}>
+        <div className="row mb-2">
+          <h3>Deployment: {deployment._id} </h3>
+          {statusIcon}
+        </div>
+      </Accordion.Toggle>
+      <Accordion.Collapse eventKey={index.toString()}>
+        <div className="col">
+          <div className="row">
+            <p>Time: {new Date(deployment.updatedAt).toLocaleString("en-UK")}</p>
+          </div>
+          <div className="row">
+            <p>Status: {deployment.deployStatus}</p>
+          </div>
+          <div className="row">
+            <pre>Output: {deployment.progress.output}</pre>
+          </div>
+        </div>
+      </Accordion.Collapse>
     </div>
   </div>)
 }
@@ -58,7 +77,7 @@ class HomePage extends Component {
 
   render() {
     console.log("this.state.deployments", this.state.deployments);
-    const deployments = this.state.deployments ? this.state.deployments.map(deployment => Deployment(deployment)) : null;
+    const deployments = this.state.deployments ? this.state.deployments.map((deployment, index) => Deployment(deployment, index)) : null;
     return (
       <div className="container">
         <div className="col">
@@ -66,7 +85,9 @@ class HomePage extends Component {
             <h1>Deployments</h1>
           </div>
           <hr></hr>
-          {deployments}
+          <Accordion defaultActiveKey="0">
+            {deployments}
+          </Accordion>
         </div>
       </div>
     );
