@@ -108,7 +108,7 @@ const build_if_published = async () => {
       })
 
       if(deployFlag) {
-        await deploy_site();
+        commandOutput += await deploy_site();
       } else {
         commandOutput += console.log("Skipping deployment")
       }

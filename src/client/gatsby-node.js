@@ -13,7 +13,7 @@ const { stringify } = require('querystring');
 const baseUrl = process.env.SERVER_URL || 'http://localhost:1337';
 const overwrite = process.env.SERVER_OVERWRITE || 'http://localhost:1337';
 const cmsUser = process.env.CMS_USERNAME || 'jwnwilson@hotmail.co.uk';
-const cmsPassword = process.env.CMS_PASSWORD || 'Y9bt53cS6nfDfJr';
+const cmsPassword = process.env.CMS_PASSWORD || '$J9Z9dYi*AP^';
 const staticUrl = `${baseUrl}`;
 
 
@@ -49,6 +49,7 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
     form.append("email", cmsUser);
     form.append("password", cmsPassword);
 
+    let text;
     let jwt;
     let auth;
     // Authing on api
@@ -59,11 +60,11 @@ exports.sourceNodes = async ({ boundActionCreators }) => {
           method: "POST",
           body: form,
         });
-      jwt = await auth.text();
-      jwt = JSON.parse(jwt);  
-      console.log(`Got token: ${jwt.data.token}`)
+      text = await auth.text();
+      jwt = JSON.parse(text);  
+      console.log(`Got response: ${text}`)
     } catch(err) {
-      console.error(`Error authorizing with the cms: ${err}, ${jwt}`);
+      console.error(`Error authorizing with the cms: ${err}, response: ${text}`);
       throw(err);
     }
 

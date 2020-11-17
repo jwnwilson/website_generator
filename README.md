@@ -39,6 +39,7 @@ Deploy code:
 
 ## ToDo
 
+- Fix error on no deployments in deploy plugin
 - Setup multi-site deployment:
   - Do through ops, have list of products and for each create:
   - new db
@@ -47,6 +48,7 @@ Deploy code:
   - new subdomains for each
   - Add Site model with S3 bucket name
   - Setup cdn for new website
+- Setup CI / CD
 - Add card tests
 - Add testing to CMS
 - Move to typescript (Auto supported by gatsby)

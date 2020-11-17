@@ -46,7 +46,7 @@ spec:
             - name: DATABASE_HOST
               value: db
             - name: CMS_USERNAME
-              value: jwnwilson
+              value: jwnwilson@hotmail.co.uk
             - name: CMS_PASSWORD
               value: $J9Z9dYi*AP^
       restartPolicy: Always
