@@ -63,6 +63,7 @@ endif
 build:
 	rm -rf src/client/.cache
 	rm -rf src/cms/.cache
+	cd src/cms && npm run build
 	docker build -t $(DOCKER_REPO)/website_cms .
 	cd ops/nginx && docker build -t $(DOCKER_REPO)/website_nginx .
 
