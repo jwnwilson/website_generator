@@ -85,9 +85,8 @@ push: login build
 # push images to ecr
 # NOTE: Requires aws creds in ~/.aws/config
 deploy: push
-	cd ops
 	# refresh kubernetes deployments
-	make refresh-deployment
+	cd ops && make refresh-deployment
 	# invalidate cdn
 	make refresh-cdn
 

@@ -1,11 +1,44 @@
+# Deployment
+
+To deployment and run this project:
+
+Install dependancies:
+
+- docker
+- kubectrl
+- awscli
+- terraform
+- make command
+
+Authenticate aws:
+
+`aws configure` / set ~/.aws/credentials
+
+Set env vars in .bashrc / bash_profile
+
+```
+export TF_VAR_aws_access_key=
+export TF_VAR_aws_secret_key=
+export TF_VAR_scaleway_access_key=
+export TF_VAR_scaleway_secret_key=
+```
+
+Authenticate docker:
+
+NOTE: Might need to manually remove -e option on ubuntu from return value in aws command
+
+`eval $(aws ecr get-login --region $(AWS_REGION) --registry-ids $(AWS_ACCOUNT)))`
+
+Setup infra:
+
+`cd ops && make infra`
+
+Deploy code:
+
+`make deploy`
 
 ## ToDo
 
-- Improve site publishing / add visual indicator
-  - Improve publishing logs
-  - Add publishing boolean
-  - Store logs in a mongo doc
-  - Customize the CMS to show bool and logs
 - Setup multi-site deployment:
   - Do through ops, have list of products and for each create:
   - new db

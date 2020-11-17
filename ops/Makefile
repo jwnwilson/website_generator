@@ -1,9 +1,11 @@
 KUBE_CONFIG_PATH=~/.kube/config
 CLUSTER_ID=45593a44-5e71-48b5-bbe4-8e9809f3dbc0
+SW_SECRET_ACCESS_KEY=$(TF_VAR_scaleway_secret_key)
 
 kube-auth:
-	rm ${KUBE_CONFIG_PATH}
-	curl -H "X-Auth-Token: ${TF_VAR_scaleway_secret_key}" "https://api.scaleway.com/k8s/v1/regions/fr-par/clusters/${CLUSTER_ID}/kubeconfig?dl=1" >> ${KUBE_CONFIG_PATH}
+	-rm ${KUBE_CONFIG_PATH}
+	-mkdir ~/.kube
+	curl -H "X-Auth-Token: ${SW_SECRET_ACCESS_KEY}" "https://api.scaleway.com/k8s/v1/regions/fr-par/clusters/${CLUSTER_ID}/kubeconfig?dl=1" >> ${KUBE_CONFIG_PATH}
 	export KUBECONFIG=$(KUBE_CONFIG_PATH)
 
 install:
@@ -37,5 +39,6 @@ auth: kube-auth
 infra: setup ssl
 
 dashboard: kube-auth
+	-pkill -f "kubectl"
 	kubectl proxy --kubeconfig ${KUBE_CONFIG_PATH} &
 	open http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
