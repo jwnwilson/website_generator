@@ -9,6 +9,22 @@ import React, { memo, Component} from 'react';
 import pluginId from '../../pluginId';
 import {request} from "strapi-helper-plugin";
 
+const Deployment = (deployment) => {
+  return (<div key={deployment._id} className="row">
+    <div className="col">
+      <div className="row mb-2">
+        <h3>Deployment: {deployment._id} </h3>
+      </div>
+      <div className="row">
+        <p>Status: {deployment.deployStatus}</p>
+      </div>
+      <div className="row">
+        <pre>Output: {deployment.progress.output}</pre>
+      </div>
+    </div>
+  </div>)
+}
+
 
 class HomePage extends Component {
   state = {
@@ -17,18 +33,15 @@ class HomePage extends Component {
 
   deployState = async () => {
     try {
-      const response = await request("/deploy/deployment", {
+      const response = await request("/deploy/deployment?_sort=createdAt:desc", {
         method: "GET",
       });
 
       console.log("response", response)
-
-      this.setState({ deployments: response}, () => {
-        strapi.notification.success(`Deployment updated`);
-      });
+      this.setState({ deployments: response});
     } catch (e) {
       this.setState({ deployments: null }, () => {
-        strapi.notification.error(`Deployment Failed`);
+        strapi.notification.error(`Unable to get deployment info.`);
         strapi.notification.error(`${e}`);
       });
     }
@@ -36,17 +49,25 @@ class HomePage extends Component {
 
   async componentDidMount() {
     await this.deployState();
- }
+    this.interval = setInterval(async () => this.deployState(), 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
 
   render() {
     console.log("this.state.deployments", this.state.deployments);
-    const status = this.state.deployments ? this.state.deployments[0].deployStatus : null;
-    const output = this.state.deployments ? this.state.deployments[0].progress.output : null;
+    const deployments = this.state.deployments ? this.state.deployments.map(deployment => Deployment(deployment)) : null;
     return (
-      <div>
-        <h1>Deployment status</h1>
-        <p>Status: {status}</p>
-        <pre>Output: {output}</pre>
+      <div className="container">
+        <div className="col">
+          <div className="row pt-3">
+            <h1>Deployments</h1>
+          </div>
+          <hr></hr>
+          {deployments}
+        </div>
       </div>
     );
   };

@@ -9,7 +9,7 @@ const build_site = async () => {
   let output;
   try {
     output = await exec('cd ../client && npm run build');
-  } 
+  }
   catch (err) {
     console.log("Error building client:", err);
     throw(err);
@@ -24,7 +24,7 @@ const deploy_site = async () => {
   let output
   try {
     output = await exec('cd ../client && npm run deploy');
-  } 
+  }
   catch (err) {
     console.log("Error deploying client:", err);
     throw(err);
@@ -55,6 +55,25 @@ const build_if_published = async () => {
   });
   let deploy = false;
 
+  // Check for failed deployments and fail them
+  let existingDeployment = await strapi
+    .query("deployment", "deploy")
+    .find({deployStatus_in: ["Processing", "Success", "Failed"], createdAt_gt: five_min_ago});
+  let remainingDeployments = [];
+
+  existingDeployment.forEach(async deployment => {
+    if (deployment.deployStatus === 'Processing' && deployment.updatedAt < five_min_ago) {
+      console.log(`Found unfinished existing deployment: ${deployment.id} setting to failed`);
+      await strapi.query("deployment", "deploy").update(
+        {id: deployment.id},
+        {deployStatus: "Failed"}
+      );
+    } else {
+      remainingDeployments.push(deployment)
+    }
+  });
+
+
   if (draftPageToPublish.length > 0) {
     console.log("Found pages to publish:", draftPageToPublish.map(page => page.name));
   } else {
@@ -62,18 +81,13 @@ const build_if_published = async () => {
     return;
   }
 
-  // Update values before deploying to avoid re-deploy
-  let existingDeployment = await strapi
-    .query("deployment", "deploy")
-    .find({deployStatus: "Processing"})
-
-  if (existingDeployment.length === 0) {
+  if (remainingDeployments.length === 0) {
     deploy = true;
   } else {
-    console.log("Existing deployment running skipping");
+    console.log("Existing deployments running skipping");
   }
 
-  // Build and Deploy 
+  // Build and Deploy
   if (deploy) {
     let progress = await strapi.query("deployment", "deploy").create({
       deployStatus: "Processing",
@@ -104,7 +118,7 @@ const build_if_published = async () => {
         {
         deployStatus: "Success",
         progress: {
-          output: commandOutput
+          output: commandOutput.stdout
         }
       })
     } catch(err) {
@@ -114,7 +128,7 @@ const build_if_published = async () => {
         {
         deployStatus: "Failed",
         progress: {
-          output: commandOutput
+          output: err.stdout
         }
       })
     }

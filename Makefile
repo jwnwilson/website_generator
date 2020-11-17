@@ -17,13 +17,13 @@ AWS_SECRET_ACCESS_KEY=$(TF_VAR_aws_secret_key)
 CDN_ID = "EDQHVNYKREFIB"
 
 # Run docker-setup to install deps
-up: docker-stop setup
+up: stop setup
 	docker-compose -f docker-compose.yml up -d
 
-dev: docker-stop setup
+dev: stop setup
 	docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d
 
-dev-admin: docker-stop setup
+dev-admin: stop setup-local
 	docker-compose run -d --service-ports db
 	cd src/cms && npm run develop &
 	cd src/cms && npm run develop:admin &
@@ -42,16 +42,18 @@ client:
 	cd src/client && NODE_ENV=development npm run develop
 
 # Local Development
-setup:
+setup-local:
 	cd src/client && npm i
 	cd src/cms && npm i
 
 # Local dev supporting services
-services: docker-stop down
+services: stop down
 	docker-compose -f docker-compose.yml up -d db
 
 # docker utilities
-docker-stop:
+stop:
+	-pkill -f "npm run"
+	-pkill -f "strapi"
 ifneq ($(DOCKER_CONTAINERS),)
 	-docker kill $(DOCKER_CONTAINERS)
 endif
@@ -65,7 +67,7 @@ build:
 	cd ops/nginx && docker build -t $(DOCKER_REPO)/website_nginx .
 
 # Login to AWS and set a 12 hour access token for the cluster have access to the AWS ECR repo
-docker-login:
+login:
 	$(eval TOKEN=$(shell AWS_ACCESS_KEY_ID="$(AWS_ACCESS_KEY_ID)" AWS_SECRET_ACCESS_KEY="$(AWS_SECRET_ACCESS_KEY)" aws ecr get-login --region $(AWS_REGION) --registry-ids $(AWS_ACCOUNT) | cut -d' ' -f6))
 	kubectl delete secret --ignore-not-found regcred
 	kubectl create secret docker-registry regcred \
@@ -74,7 +76,7 @@ docker-login:
 	--docker-password="$(TOKEN)" \
 	--docker-email="jwnwilson@gmail.com"
 
-docker-push: docker-login build
+push: login build
 	# Using defined aws env vars
 	docker push $(DOCKER_REPO)/website_cms
 	docker push $(DOCKER_REPO)/website_nginx
@@ -82,7 +84,7 @@ docker-push: docker-login build
 # increase version
 # push images to ecr
 # NOTE: Requires aws creds in ~/.aws/config
-deploy: docker-push
+deploy: push
 	cd ops
 	# refresh kubernetes deployments
 	make refresh-deployment
