@@ -97,28 +97,30 @@ const build_if_published = async () => {
     });
     console.log("Starting deployment:", progress);
     try {
-      let commandOutput = await build_site();
+      let buildOutput = await build_site();
       await strapi.query("deployment", "deploy").update(
         {id: progress.id},
         {
         deployStatus: "Processing",
         progress: {
-          output: commandOutput
+          output: buildOutput.stdout
         }
       })
 
+      let deployOutput;
       if(deployFlag) {
-        commandOutput += await deploy_site();
+        deployOutput = await deploy_site();
       } else {
-        commandOutput += console.log("Skipping deployment")
+        let msg = "Skipping deployment";
+        console.log(msg)
       }
-      console.log('Saving result', commandOutput)
+      console.log('Saving result', deployOutput)
       await strapi.query("deployment", "deploy").update(
         {id: progress.id},
         {
         deployStatus: "Success",
         progress: {
-          output: commandOutput.stdout
+          output: buildOutput.stdout + deployOutput.stdout
         }
       })
     } catch(err) {
