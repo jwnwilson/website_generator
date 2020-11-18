@@ -69,13 +69,7 @@ build:
 
 # Login to AWS and set a 12 hour access token for the cluster have access to the AWS ECR repo
 login:
-	$(eval TOKEN=$(shell AWS_ACCESS_KEY_ID="$(AWS_ACCESS_KEY_ID)" AWS_SECRET_ACCESS_KEY="$(AWS_SECRET_ACCESS_KEY)" aws ecr get-login --region $(AWS_REGION) --registry-ids $(AWS_ACCOUNT) | cut -d' ' -f6))
-	kubectl delete secret --ignore-not-found regcred
-	kubectl create secret docker-registry regcred \
-	--docker-server=https://$(DOCKER_REPO) \
-	--docker-username=AWS \
-	--docker-password="$(TOKEN)" \
-	--docker-email="jwnwilson@gmail.com"
+	bash ./ops/scripts/docker_login.sh
 
 push: login build
 	# Using defined aws env vars

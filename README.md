@@ -27,7 +27,7 @@ Authenticate docker:
 
 NOTE: Might need to manually remove -e option on ubuntu from return value in aws command
 
-`eval $(aws ecr get-login --region $(AWS_REGION) --registry-ids $(AWS_ACCOUNT)))`
+`eval $(aws ecr get-login --region eu-west-1 | sed "s/-e none//")`
 
 Setup infra:
 
