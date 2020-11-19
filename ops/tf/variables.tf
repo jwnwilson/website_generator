@@ -3,6 +3,10 @@ variable "node_count" {
   default = 2
 }
 
+variable "project" {
+  default = "jwn-test"
+}
+
 variable "domain" {
   default = "jwnwilson-kube.co.uk"
 }
@@ -14,6 +18,10 @@ variable "scaleway_ssh" {
 }
 
 variable "scaleway_organization_id" {
+  default = ""
+}
+
+variable "scaleway_project_id" {
   default = ""
 }
 

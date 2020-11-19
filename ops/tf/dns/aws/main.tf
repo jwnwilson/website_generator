@@ -6,10 +6,11 @@ variable "region" {}
 
 variable "domain" {}
 
+variable "project" {}
+
 variable "ips" {
   type = list
 }
-
 
 variable "wildcard_dns" {
   type = string
@@ -26,19 +27,19 @@ data "aws_route53_zone" "selected_domain" {
   name = "${var.domain}."
 }
 
-resource "aws_route53_record" "root" {
+resource "aws_route53_record" "cms" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
-  name    = ""
+  name    = format("%s_cms", var.project)
   type    = "A"
   ttl     = "300"
   records = var.ips
 }
 
-resource "aws_route53_record" "wildcard" {
+resource "aws_route53_record" "client" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
-  name    = "*"
-  type    = "CNAME"
+  name    = format("%s_preview", var.project)
+  type    = "A"
   ttl     = "300"
-  records = [var.wildcard_dns]
+  records = var.ips
 }
 

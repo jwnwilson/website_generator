@@ -21,6 +21,8 @@ export TF_VAR_aws_access_key=
 export TF_VAR_aws_secret_key=
 export TF_VAR_scaleway_access_key=
 export TF_VAR_scaleway_secret_key=
+export TF_VAR_scaleway_organization_id=
+
 ```
 
 Authenticate docker:
@@ -39,7 +41,6 @@ Deploy code:
 
 ## ToDo
 
-- Fix error on no deployments in deploy plugin
 - Setup multi-site deployment:
   - Do through ops, have list of products and for each create:
   - new db

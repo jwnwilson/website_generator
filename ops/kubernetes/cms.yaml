@@ -49,6 +49,8 @@ spec:
               value: jwnwilson@hotmail.co.uk
             - name: CMS_PASSWORD
               value: $J9Z9dYi*AP^
+            - name: SITE_NAME
+              value: jwnwilson.co.uk
       restartPolicy: Always
 status: {}
 

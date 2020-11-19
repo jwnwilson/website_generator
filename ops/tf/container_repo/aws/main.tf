@@ -1,6 +1,6 @@
-variable "cms_repo" {}
+variable "project" {}
 
-variable "client_repo" {}
+variable "cms_repo" {}
 
 variable "nginx_repo" {}
 
@@ -18,15 +18,6 @@ provider "aws" {
 
 resource "aws_ecr_repository" "cms" {
   name                 = var.cms_repo
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
-
-resource "aws_ecr_repository" "client" {
-  name                 = var.client_repo
   image_tag_mutability = "MUTABLE"
 
   image_scanning_configuration {
