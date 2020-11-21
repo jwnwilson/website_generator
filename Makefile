@@ -89,6 +89,5 @@ deploy: push
 refresh-preview:
 	curl -X POST https://preview.jwnwilson-kube.co.uk/__refresh
 
-# This needs to be moved to terraform
 refresh-cdn:
 	aws cloudfront create-invalidation --distribution-id $(CDN_ID) --paths "/*"
