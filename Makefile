@@ -69,7 +69,7 @@ build:
 
 # Login to AWS and set a 12 hour access token for the cluster have access to the AWS ECR repo
 login:
-	bash ./ops/scripts/docker_login.sh
+	cd ops && make auth
 
 push: login build
 	# Using defined aws env vars

@@ -10,14 +10,14 @@ export CLUSTER_ID=$(terraform output cluster_id | grep -oE "([^\/]+$)")
 
 echo "Created Kapsule cluster: ${CLUSTER_ID}"
 
-export IPS=""
+export IPS='[]'
 # Wait until cluster has ips
-until [ "${IPS}" != "" ]
+until [[ "${IPS}" != *'""'* && "${IPS}" != '[]'  ]]
 do
     terraform refresh
-    export IPS=$(terraform output ips | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b")
+    export IPS=`terraform output ips`
     echo "Waiting for cluster IPs: ${IPS}"
-    sleep 5
+    sleep 5s
 done
 
 # Setup DNS for cluster
@@ -29,7 +29,7 @@ cd ..
 # Download k8 config file
 CLUSTER_ID=${CLUSTER_ID} ./scripts/k8_auth.sh
 # Give K8 cluster access to AWS ECR
-./scripts/docker_login.sh
+AWS_REGION="eu-west-1" AWS_ACCOUNT="675468650888" ./scripts/docker_login.sh
 
 # Setup SSL
 # Following steps here: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes

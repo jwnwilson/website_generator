@@ -29,7 +29,7 @@ data "aws_route53_zone" "selected_domain" {
 
 resource "aws_route53_record" "cms" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
-  name    = format("%s_cms", var.project)
+  name    = format("%s-cms", var.project)
   type    = "A"
   ttl     = "300"
   records = var.ips
@@ -37,7 +37,7 @@ resource "aws_route53_record" "cms" {
 
 resource "aws_route53_record" "client" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
-  name    = format("%s_preview", var.project)
+  name    = format("%s-preview", var.project)
   type    = "A"
   ttl     = "300"
   records = var.ips
