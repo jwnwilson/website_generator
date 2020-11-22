@@ -4,7 +4,7 @@ variable "node_count" {
 }
 
 variable "project" {
-  default = "jwn-test-2"
+  default = "jwn-test"
 }
 
 variable "domain" {

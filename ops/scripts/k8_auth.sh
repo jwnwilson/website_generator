@@ -9,6 +9,12 @@ else
     mkdir ~/.kube
 fi
 
+# Get cluster id from terraform
+cd tf
+export CLUSTER_ID=$(terraform output cluster_id | grep -oE "([^\/]+$)")
+cd ..
+
+# download terraform config
 echo "Getting auth details for cluster: ${CLUSTER_ID}"
 curl -H "X-Auth-Token: ${TF_VAR_scaleway_secret_key}" "https://api.scaleway.com/k8s/v1/regions/fr-par/clusters/${CLUSTER_ID}/kubeconfig?dl=1" >> ${KUBE_CONFIG_PATH}
 

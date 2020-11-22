@@ -10,8 +10,8 @@ spec:
   tls:
   - hosts:
     - jwnwilson-kube.co.uk
-    - cms.jwnwilson-kube.co.uk
-    - preview.jwnwilson-kube.co.uk
+    - {{CMS}}.jwnwilson-kube.co.uk
+    - {{PREVIEW}}.jwnwilson-kube.co.uk
     - mail.jwnwilson-kube.co.uk
     secretName: jwnwilson-kube-co-uk-tls
   rules:
@@ -21,13 +21,13 @@ spec:
       - backend:
           serviceName: nginx
           servicePort: 80
-  - host: cms.jwnwilson-kube.co.uk
+  - host: {{CMS}}.jwnwilson-kube.co.uk
     http:
       paths:
       - backend:
           serviceName: cms
           servicePort: 1337
-  - host: preview.jwnwilson-kube.co.uk
+  - host: {{PREVIEW}}.jwnwilson-kube.co.uk
     http:
       paths:
       - backend:

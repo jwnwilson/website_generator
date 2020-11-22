@@ -1,7 +1,7 @@
 .EXPORT_ALL_VARIABLES:
 
 # Default cluster
-CLUSTER_ID:=45593a44-5e71-48b5-bbe4-8e9809f3dbc0
+# CLUSTER_ID:=45593a44-5e71-48b5-bbe4-8e9809f3dbc0
 KUBE_CONFIG_PATH:=~/.kube/config
 AWS_ACCOUNT:=675468650888
 DOCKER_REPO:=$(AWS_ACCOUNT).dkr.ecr.eu-west-1.amazonaws.com

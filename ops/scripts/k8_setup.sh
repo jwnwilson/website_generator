@@ -7,6 +7,8 @@ terraform plan -target=module.provider.scaleway_k8s_pool_beta.pool -out=infra.tf
 terraform apply infra.tfplan
 
 export CLUSTER_ID=$(terraform output cluster_id | grep -oE "([^\/]+$)")
+export PREVIEW_SUBDOMAIN=$(terraform output preview_domain)
+export CMS_SUBDOMAIN=$(terraform output cms_domain)
 
 echo "Created Kapsule cluster: ${CLUSTER_ID}"
 
@@ -40,4 +42,12 @@ kubectl apply -f kubernetes/letsencrypt.yaml
 kubectl describe certificate
 
 # Apply containers to the cluster
-kubectl apply -f ./kubernetes
+kubectl apply -f ./kubernetes/client.yaml
+kubectl apply -f ./kubernetes/cms.yaml
+kubectl apply -f ./kubernetes/dashboard.yaml
+kubectl apply -f ./kubernetes/db.yaml
+kubectl apply -f ./kubernetes/limit-cpu.yaml
+kubectl apply -f ./kubernetes/nginx.yaml
+# Crude substitution for subdomain
+cat ./kubernetes/ingress.yaml | sed "s/{{CMS}}/${CMS_SUBDOMAIN}/g" | sed "s/{{PREVIEW}}/${PREVIEW_SUBDOMAIN}/g" | kubectl apply -f -
+

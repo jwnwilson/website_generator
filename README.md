@@ -42,11 +42,7 @@ Deploy code:
 ## ToDo
 
 - Setup multi-site deployment:
-  - Do through ops, have list of products and for each create:
-  - new db
-  - new cms
-  - new preview
-  - new subdomains for each
+  - Fix SSL
   - Add Site model with S3 bucket name
   - Setup cdn for new website
 - Setup CI / CD
