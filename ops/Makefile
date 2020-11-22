@@ -3,6 +3,10 @@
 # Default cluster
 CLUSTER_ID:=45593a44-5e71-48b5-bbe4-8e9809f3dbc0
 KUBE_CONFIG_PATH:=~/.kube/config
+AWS_ACCOUNT:=675468650888
+DOCKER_REPO:=$(AWS_ACCOUNT).dkr.ecr.eu-west-1.amazonaws.com
+DOCKER_CONTAINERS:=$(shell docker ps -q)
+AWS_REGION:=eu-west-1
 
 # Login to our k8 cluster and store creds in ~/.kube/config
 # Get AWS ECR token and create secret on cluster to download images
