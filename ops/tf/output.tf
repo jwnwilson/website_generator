@@ -2,6 +2,10 @@ output "cluster_id" {
     value = module.provider.cluster_id
 }
 
+output "wildcard_dns" {
+    value = module.provider.wildcard_dns
+}
+
 output "ips" {
     value = module.provider.ips
 }

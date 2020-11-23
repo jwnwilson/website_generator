@@ -18,7 +18,7 @@ provider "aws" {
 
 # Note had to create this manually, need to create cert and cloudfront in region us-east-1 for this to work
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.domain_name
+  domain_name       = var.site_name
   validation_method = "DNS"
 
   lifecycle {

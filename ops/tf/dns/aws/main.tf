@@ -27,19 +27,36 @@ data "aws_route53_zone" "selected_domain" {
   name = "${var.domain}."
 }
 
-resource "aws_route53_record" "cms" {
+resource "aws_route53_record" "root" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
-  name    = format("%s-cms", var.project)
+  name    = ""
   type    = "A"
   ttl     = "300"
   records = var.ips
 }
 
+
+resource "aws_route53_record" "wildcard" {
+  zone_id = data.aws_route53_zone.selected_domain.zone_id
+  name    = "*"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [var.wildcard_dns]
+}
+
+resource "aws_route53_record" "cms" {
+  zone_id = data.aws_route53_zone.selected_domain.zone_id
+  name    = format("%s-cms", var.project)
+  type    = "CNAME"
+  ttl     = "300"
+  records = [replace(var.wildcard_dns, "*", format("%s-cms", var.project))]
+}
+
 resource "aws_route53_record" "client" {
   zone_id = data.aws_route53_zone.selected_domain.zone_id
   name    = format("%s-preview", var.project)
-  type    = "A"
+  type    = "CNAME"
   ttl     = "300"
-  records = var.ips
+  records = [replace(var.wildcard_dns, "*", format("%s-preview", var.project))]
 }
 

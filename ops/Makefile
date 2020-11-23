@@ -44,4 +44,4 @@ destroy:
 dashboard: dash-auth
 	-pkill -f "kubectl"
 	kubectl proxy --kubeconfig ${KUBE_CONFIG_PATH} &
-	open http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+	google-chrome http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
