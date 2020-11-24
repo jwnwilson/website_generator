@@ -31,10 +31,11 @@ module "container_repo" {
   region          = var.aws_region
 }
 
-module "deploy" {
-  source = "./deploy/aws"
+module "static_site" {
+  source = "./static_site/aws"
 
   site_name       = var.site_name
+  site_subdomain  = var.site_subdomain
   access_key      = var.aws_access_key
   secret_key      = var.aws_secret_key
   region          = var.aws_region

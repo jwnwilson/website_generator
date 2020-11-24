@@ -36,7 +36,7 @@ setup:
 	kubectl get pods -A
 
 # Setup S3 bucket and CDN
-#	bash ./scripts/site_setup.sh
+	bash ./scripts/site_setup.sh
 
 destroy:
 	cd tf && terraform destroy

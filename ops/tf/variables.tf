@@ -8,7 +8,12 @@ variable "project" {
 }
 
 variable "site_name" {
-  default = "test.jwnwilson.co.uk"
+  default = "jwnwilson.co.uk"
+}
+
+# Optional will publish site to ${site_subdomain}.${site_name}
+variable "site_subdomain" {
+  default = "test"
 }
 
 variable "domain" {

@@ -1,4 +1,10 @@
+locals {
+  full_site_name = "${var.site_subdomain}.${var.site_name}"
+}
+
 variable "site_name" {}
+
+variable "site_subdomain" {}
 
 variable "access_key" {}
 
@@ -14,13 +20,13 @@ provider "aws" {
 }
 
 # Route53 Domain Name & Resource Records
-resource "aws_route53_zone" "site_zone" {
+data "aws_route53_zone" "site_zone" {
   name = var.site_name
 }
 
 # s3 Bucket with Website settings
 resource "aws_s3_bucket" "site_bucket" {
-  bucket = var.site_name
+  bucket = local.full_site_name
   acl = "public-read"
   website {
     index_document = "index.html"
@@ -43,16 +49,34 @@ resource "aws_s3_bucket_policy" "site_policy" {
                 "AWS": "*"
             },
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::${var.site_name}/*"
+            "Resource": "arn:aws:s3:::${local.full_site_name}/*"
         }
     ]
 }
 POLICY
 }
 
+resource "aws_route53_record" "cert" {
+  for_each = {
+    for dvo in aws_acm_certificate.cert.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.site_zone.zone_id
+}
+
+
 # Note had to create this manually, need to create cert and cloudfront in region us-east-1 for this to work
 resource "aws_acm_certificate" "cert" {
-  domain_name       = var.site_name
+  domain_name       = local.full_site_name
   validation_method = "DNS"
 
   lifecycle {
@@ -60,21 +84,26 @@ resource "aws_acm_certificate" "cert" {
   }
 }
 
+resource "aws_acm_certificate_validation" "cert" {
+  certificate_arn         = aws_acm_certificate.cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.cert : record.fqdn]
+}
+
 # cloudfront distribution
 resource "aws_cloudfront_distribution" "site_distribution" {
   origin {
     domain_name = aws_s3_bucket.site_bucket.bucket_domain_name
-    origin_id = "${var.site_name}-origin"
+    origin_id = "${local.full_site_name}-origin"
   }
   enabled = true
-  aliases = [var.site_name]
+  aliases = [local.full_site_name]
   price_class = "PriceClass_100"
   default_root_object = "index.html"
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH",
                       "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "${var.site_name}-origin"
+    target_origin_id = "${local.full_site_name}-origin"
     forwarded_values {
       query_string = true
       cookies {
@@ -92,8 +121,20 @@ resource "aws_cloudfront_distribution" "site_distribution" {
     }
   }
   viewer_certificate {
-    acm_certificate_arn = aws_acm_certificate.cert.arn
+    acm_certificate_arn = aws_acm_certificate_validation.cert.certificate_arn
     ssl_support_method  = "sni-only"
     minimum_protocol_version = "TLSv1.1_2016" # defaults wrong, set
+  }
+}
+
+resource "aws_route53_record" "site" {
+  zone_id = data.aws_route53_zone.site_zone.zone_id
+  name    = var.site_subdomain
+  type    = "A"
+  
+  alias {
+    name = aws_cloudfront_distribution.site_distribution.domain_name
+    zone_id = aws_cloudfront_distribution.site_distribution.hosted_zone_id
+    evaluate_target_health = false
   }
 }
