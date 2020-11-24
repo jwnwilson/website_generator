@@ -67,9 +67,9 @@ To make changes / see a final website:
 
 ## ToDo
 
-- Setup CI / CD
 - Add card tests
 - Add testing to CMS
+- Setup CI / CD
 - Move to typescript (Auto supported by gatsby)
 - Setup sentry on client and cms
 
