@@ -17,3 +17,7 @@ output "cms_domain" {
 output "preview_domain" {
     value = module.dns.preview_domain
 }
+
+output "site_name" {
+    value = var.site_name
+}

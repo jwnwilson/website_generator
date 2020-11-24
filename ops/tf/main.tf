@@ -34,8 +34,7 @@ module "container_repo" {
 module "deploy" {
   source = "./deploy/aws"
 
-  site_name       = var.project
-  domain_name     = var.domain
+  site_name       = var.site_name
   access_key      = var.aws_access_key
   secret_key      = var.aws_secret_key
   region          = var.aws_region

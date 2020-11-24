@@ -26,6 +26,7 @@ terraform apply infra.tfplan
 
 export PREVIEW_SUBDOMAIN=$(terraform output preview_domain)
 export CMS_SUBDOMAIN=$(terraform output cms_domain)
+export SITE_NAME=$(terraform output site_name)
 
 # Login to this cluster
 cd ..
@@ -36,7 +37,8 @@ AWS_REGION="eu-west-1" AWS_ACCOUNT="675468650888" ./scripts/docker_login.sh
 
 # Apply containers to the cluster
 kubectl apply -f ./kubernetes/client.yaml
-kubectl apply -f ./kubernetes/cms.yaml
+# Crude substitution for site name
+cat ./kubernetes/ingress.yaml | sed "s/{{SITE_NAME}}/${SITE_NAME}/g" | kubectl apply -f -
 kubectl apply -f ./kubernetes/dashboard.yaml
 kubectl apply -f ./kubernetes/db.yaml
 kubectl apply -f ./kubernetes/limit-cpu.yaml
@@ -48,6 +50,14 @@ cat ./kubernetes/ingress.yaml | sed "s/{{CMS}}/${CMS_SUBDOMAIN}/g" | sed "s/{{PR
 # Following steps here: https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes
 kubectl create namespace cert-manager
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.16.1/cert-manager.yaml
-kubectl apply -f ./kubernetes/letsencrypt.yaml
+
+ENCRYPT_RESULT=""
+# Wait until lets encrypt is setup
+until [[ "${ENCRYPT_RESULT}" == "clusterissuer.cert-manager.io/letsencrypt-prod created" ]]
+do
+    echo "Attempting to setup cluster issuer"
+    ENCRYPT_RESULT=$(kubectl apply -f ./kubernetes/letsencrypt.yaml)
+done
+
 # Show our certificartion info
 kubectl describe certificate

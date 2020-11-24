@@ -7,6 +7,10 @@ variable "project" {
   default = "jwn-test"
 }
 
+variable "site_name" {
+  default = "test.jwnwilson.co.uk"
+}
+
 variable "domain" {
   default = "jwnwilson-kube.co.uk"
 }

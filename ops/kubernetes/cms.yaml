@@ -50,7 +50,7 @@ spec:
             - name: CMS_PASSWORD
               value: $J9Z9dYi*AP^
             - name: SITE_NAME
-              value: jwnwilson.co.uk
+              value: {{SITE_NAME}}
       restartPolicy: Always
 status: {}
 

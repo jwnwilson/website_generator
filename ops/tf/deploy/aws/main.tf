@@ -6,9 +6,6 @@ variable "secret_key" {}
 
 variable "region" {}
 
-variable "domain_name" {}
-
-
 # Configure the AWS Provider
 provider "aws" {
   access_key        = var.access_key
@@ -16,14 +13,9 @@ provider "aws" {
   region            = "us-east-1"
 }
 
-# Note had to create this manually, need to create cert and cloudfront in region us-east-1 for this to work
-resource "aws_acm_certificate" "cert" {
-  domain_name       = var.site_name
-  validation_method = "DNS"
-
-  lifecycle {
-    create_before_destroy = true
-  }
+# Route53 Domain Name & Resource Records
+resource "aws_route53_zone" "site_zone" {
+  name = var.site_name
 }
 
 # s3 Bucket with Website settings
@@ -58,9 +50,14 @@ resource "aws_s3_bucket_policy" "site_policy" {
 POLICY
 }
 
-# Route53 Domain Name & Resource Records
-resource "aws_route53_zone" "site_zone" {
-  name = var.site_name
+# Note had to create this manually, need to create cert and cloudfront in region us-east-1 for this to work
+resource "aws_acm_certificate" "cert" {
+  domain_name       = var.site_name
+  validation_method = "DNS"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # cloudfront distribution
