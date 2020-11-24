@@ -28,6 +28,7 @@ data "aws_route53_zone" "site_zone" {
 resource "aws_s3_bucket" "site_bucket" {
   bucket = local.full_site_name
   acl = "public-read"
+  force_destroy = true
   website {
     index_document = "index.html"
     error_document = "error.html"

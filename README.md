@@ -67,6 +67,7 @@ To make changes / see a final website:
 
 ## ToDo
 
+- Customize the component picker for more components
 - Add card tests
 - Add testing to CMS
 - Setup CI / CD
