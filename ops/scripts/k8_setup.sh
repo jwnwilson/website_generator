@@ -38,7 +38,7 @@ AWS_REGION="eu-west-1" AWS_ACCOUNT="675468650888" ./scripts/docker_login.sh
 # Apply containers to the cluster
 kubectl apply -f ./kubernetes/client.yaml
 # Crude substitution for site name
-cat ./kubernetes/ingress.yaml | sed "s/{{SITE_NAME}}/${SITE_NAME}/g" | kubectl apply -f -
+cat ./kubernetes/cms.yaml | sed "s/{{SITE_NAME}}/${SITE_NAME}/g" | kubectl apply -f -
 kubectl apply -f ./kubernetes/dashboard.yaml
 kubectl apply -f ./kubernetes/db.yaml
 kubectl apply -f ./kubernetes/limit-cpu.yaml
@@ -53,7 +53,7 @@ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/relea
 
 ENCRYPT_RESULT=""
 # Wait until lets encrypt is setup
-until [[ "${ENCRYPT_RESULT}" == "clusterissuer.cert-manager.io/letsencrypt-prod created" ]]
+until [[ "${ENCRYPT_RESULT}" == "clusterissuer.cert-manager.io/letsencrypt-prod created" || "${ENCRYPT_RESULT}" == "clusterissuer.cert-manager.io/letsencrypt-prod unchanged" ]]
 do
     echo "Attempting to setup cluster issuer"
     ENCRYPT_RESULT=$(kubectl apply -f ./kubernetes/letsencrypt.yaml)
